@@ -1,8 +1,14 @@
 {% extends "base.html" %}
+
 {% block scripts %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
+
+L.control.layers(baseLayers, null, {collapsed: true, position: 'topright'}).addTo(map);
+map.panTo(new L.LatLng(21, 92));
+
 var cities;
+
 $.getJSON("static/js/testdata.json")
   .done(function(data) {
     //console.log(data);
@@ -16,12 +22,11 @@ $.getJSON("static/js/testdata.json")
     var timestamps = [];
     var min = Infinity;
     var max = -Infinity;
-
 		for (var feature in data.features) {
 			var properties = data.features[feature].properties;
 			for (var attribute in properties) {
-				if (attribute != 'name') {
-					if ( $.inArray(attribute,timestamps) === -1) {
+				if(attribute != 'name') {
+					if($.inArray(attribute,timestamps) === -1) {
 						timestamps.push(attribute);
 					}
 					if (properties[attribute] < min) {
@@ -68,10 +73,9 @@ $.getJSON("static/js/testdata.json")
 			var radius = calcPropRadius(props[timestamp]);
 			var popupContent = '<b>' + String(props[timestamp]) +
 					' units</b><br>' +
-					'<i>' + props.name +
+					'<i>' + props.name; /*+
 					'</i> in </i>' +
-					timestamp + '</i>';
-
+					timestamp + '</i>';*/
 			layer.setRadius(radius);
 			layer.bindPopup(popupContent, { offset: new L.Point(0,-radius) });
 		});
@@ -122,11 +126,13 @@ $.getJSON("static/js/testdata.json")
 		legend.addTo(map);
 } // end createLegend(); */
 
+//var startTimestamp;
 function createTemporalLegend(startTimestamp) {
 		var temporalLegend = L.control({ position: 'bottomleft' });
 		temporalLegend.onAdd = function(map) {
 			var output = L.DomUtil.create("output", "temporal-legend");
- 			$(output).text(startTimestamp)
+      startTimestamp = "October 2017"
+      $(output).text(startTimestamp)
 			return output;
 		}
 		temporalLegend.addTo(map);
@@ -134,6 +140,7 @@ function createTemporalLegend(startTimestamp) {
 
 function createSliderUI(timestamps) {
 		var sliderControl = L.control({ position: 'bottomleft'} );
+    startTimestamp = ["Oct 2017","Nov 2017","Dec 2017"]
 		sliderControl.onAdd = function(map) {
 			var slider = L.DomUtil.create("input", "range-slider");
 		    L.DomEvent.addListener(slider, 'mousedown', function(e) {
@@ -144,18 +151,21 @@ function createSliderUI(timestamps) {
 				.attr({'type':'range',
 					'max': timestamps[timestamps.length-1],
 					'min': timestamps[0],
-					'step': 1,
-          'value': String(timestamps[0])})
-		  		.on('input change', function() {
+          'step': 1,
+          'value': String(timestamps[0])
+        }).on('input change', function() {
 		  		updatePropSymbols($(this).val().toString());
           $(".temporal-legend").text(this.value);
+          if(this.value==10) { return $(".temporal-legend").text("October 2017") } //correct
+          if(this.value==11) { return $(".temporal-legend").text("November 2017") }
+          if(this.value==12) { return $(".temporal-legend").text("December 2017") }
 		  	});
 			return slider;
 		}
 		sliderControl.addTo(map)
-    createTemporalLegend(timestamps[0]);
+    createTemporalLegend(timestamps[0]); //correct
 	}
 
 </script>
-{{super()}}
+<!--{{super()}}-->
 {% endblock %}

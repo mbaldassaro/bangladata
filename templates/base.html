@@ -10,8 +10,8 @@
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
 	<div class="navbar-header" id="navhover">
-	    <button type="button" class="navbar-toggle" 
-data-toggle="collapse" data-toggle="collapse" 
+	    <button type="button" class="navbar-toggle"
+data-toggle="collapse" data-toggle="collapse"
 data-target=".navbar-ex1-collapse">
 		<span class="sr-only">Toggle navigation</span>
 		<span class="icon-bar"></span>
@@ -25,9 +25,9 @@ data-target=".navbar-ex1-collapse">
 		<li><a href="{{ url_for('test') }}">Map1</a></li>
 		<li><a href="#">Map2</a></li>
 		<li><a href="#">Map3</a></li>
-		<li><a href="#" data-toggle="modal" 
+		<li><a href="#" data-toggle="modal"
 data-target="#aboutModal" style="outline-width:0;">About</a><li>
-		<li><a href="#" data-toggle="modal" 
+		<li><a href="#" data-toggle="modal"
 data-target="#dataModal" style="outline-width:0;">Data</a></li>
 	    </ul>
 	</div>
@@ -42,9 +42,9 @@ data-target="#dataModal" style="outline-width:0;">Data</a></li>
 	<div class="modal-content">
 	    <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">About</h4>    
+		<h4 class="modal-title">About</h4>
 	    </div>
-	    <div class="modal-body">Bangladata is an initiative by Democracy International to collect, open, visualize and analyze election-related data on an on going basis. 
+	    <div class="modal-body">Bangladata is an initiative by Democracy International to collect, open, visualize and analyze election-related data on an on going basis.
 	  <br><br>The goal of Bangladata is to strengthen Bangladeshi democracy through greater transparency and accountability. DI aims to achieve this goal by:
           <br><br>1. Creating a centralized hub of election-related data and maps that facilitate evidence-based, data-driven decision-making to improve the electoral process
           <br><br>2. Presenting information in a highly accessible way so that stakeholders can measure progress and identify trends from one election cycle to the next
@@ -66,7 +66,7 @@ data-target="#dataModal" style="outline-width:0;">Data</a></li>
                 <h4 class="modal-title">Data</h4>
             </div>
         <div class="modal-body"> The Bangladata platform utilizes official election data published the <a href="#" target="_blank">Bangladesh Election Commission</a>.
-         <br><br>Platform data and maps are available for download by Democracy International via<a href="https://github.com/mbaldassaro/bangladata/tree/master/static/js/data" 
+         <br><br>Platform data and maps are available for download by Democracy International via<a href="https://github.com/mbaldassaro/bangladata/tree/master/static/js/data"
 target="_blank"> Github</a>. The data is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a>.
          <br><br>The map layers are available via <a href="http://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> and <a href="http://www.esri.com/about-esri" target="_blank">ESRI</a>
         </div>
@@ -78,7 +78,7 @@ target="_blank"> Github</a>. The data is licensed under <a href="https://creativ
   </div>
 </div>
 
-<--map-->
+<!--map-->
 <div class="jumbotron" id="map"></div>
 <script>
 var cartoLink = '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
@@ -101,4 +101,3 @@ var baseLayers = {
 };
 </script>
 {% endblock %}
-

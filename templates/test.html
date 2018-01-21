@@ -1,31 +1,98 @@
 {% extends "base.html" %}
+{% block head %}
+<style>
+.legend, .temporal-legend {
+		padding: 6px 10px;
+		font: 14px/16px 'Lato', Helvetica, sans-serif;
+		background: white;
+		background: rgba(255,255,255,0.8);
+		box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		border-radius: 5px;
+	}
+
+#legendTitle {
+		text-align: center;
+		margin-bottom: 15px;
+		/*font-variant: small-caps;*/
+}
+
+.symbolsContainer {
+		float: left;
+		margin-left: 86px;
+}
+
+.legendCircle {
+		border-radius: 50%;
+		/*border: 1px solid #537898;*/
+		border: 1px solid gold;
+		/*background: rgba(113, 133, 152, .6);*/
+		background: rgba(255,155,31,.6);
+		display: inline-block;
+}
+
+.legendValue {
+		position: absolute;
+		font: 'Lato';
+		right: 15px;
+}
+
+.leaflet-control-bootstrapmodal {
+}
+
+.leaflet-control-bootstrapmodal i {
+    font-size: 16px;
+    color: #444;
+    opacity: 0.6;
+    line-height: 26px;
+}
+
+.leaflet-touch .leaflet-control-bootstrapmodal i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+</style>
+{{super()}}
+{% endblock %}
 {% block content %}
 <!--info modals-->
-<div class="modal" role="dialog" id="modal_about">
+<div class="modal fade" role="dialog" id="modal_about">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">About This Plugin</h4>
+                <h4 class="modal-title">About The Map</h4>
             </div>
             <div class="modal-body">
-                <p>This control simply opens a Bootstrap modal. This is great for placing Help links, for making legends that don't consume screen space, or even contact and feedback forms.</p>
-                <p>For more information, see <a href="https://github.com/gregallensworth/L.Control.BootstrapModal" target="_blank">check out the repo</a>.</p>
+                <p>This map displays the camp locations and estimated populations of Rohingya refugees in and around Cox's Bazar since data was made available in September 2017.
+                In total, nearly one million Rohingyas have crossed the border from Myanmar and taken refuge in Bangladesh.
+                The International Organization for Migration has reported that since August 2017 more than 650,000 Rohingyas have taken refuge in temporary makeshift settlements in Bangladesh border communities.
+                Drag the slider in the bottom left corner of the map to see monthly refugee population estimates in, and movements between, makeshift settlements.
+                 </p>
+                <p>A caveat on refugee population estimates from the Humanitarian Data Exchange platform:
+                  "Fluid movement makes the tracking of new arrivals challenging.
+                  Figures are triangulated estimates based on the visual observation of key informants. The new arrivals have not been verified at household level.
+                  In particular, the number of affected population in host communities remains unclear. Daily data for arrivals in host communities is not available."</p>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- a Bootstrap modal, which we'll bind to the control via the modalId parameter -->
-<div class="modal" role="dialog" id="modal_help">
+<div class="modal fade" role="dialog" id="modal_help">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Help</h4>
+                <h4 class="modal-title">About the Data</h4>
             </div>
             <div class="modal-body">
-                <p>For information on using this control plugin, see <a href="https://github.com/gregallensworth/L.Control.BootstrapModal" target="_blank">the project on Github</a>.</p>
+                <p>The data was compiled from the "Location of Rohingya Refugees in Cox’s Bazar" dataset published on the
+                <a href="https://data.humdata.org/dataset/site-location-of-rohingya-refugees-in-cox-s-bazar" target="_blank">Humanitarian Data Exchange</a> by the
+                <a href="https://data.humdata.org/organization/inter-sector-coordination-group" target="_blank">Inter Sector Coordination Group</a>.</p>
+                <p>The source dataset contains the location (latitude and longitude), type, and estimated population of the Rohingya Refugees in and around Cox's Bazar, Bangladesh.
+                  It is updated regularly and licensed for reuse under
+                <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode" target="_blank">Public Domain / No Restrictions (CC0)</a>.</p>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
@@ -35,14 +102,15 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-
+$(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topright'}).addTo(map);
 //map.panTo(new L.LatLng(21.212711, 92.163433));
 //map.flyTo([21.212711, 92.163433], 10);
 //map.flyTo([21.171149, 92.155243], 10);
 map.flyTo([21.133391, 92.187985], 10);
+});
+
 var cities;
 
 $.getJSON("static/js/test.json")
@@ -206,6 +274,7 @@ function createSliderUI(timestamps) {
 		sliderControl.addTo(map)
     createTemporalLegend(timestamps[0]); //correct
 	}
+
 //bootstrap modal
   L.Control.BootstrapModal = L.Control.extend({
       options: {
@@ -239,7 +308,7 @@ function createSliderUI(timestamps) {
           this.controlDiv           = L.DomUtil.create('div', 'leaflet-control-bootstrapmodal leaflet-bar');
           this.controlDiv.control   = this;
           this.controlDiv.title     = this.options.tooltip;
-          this.controlDiv.innerHTML = '<a href="#"><i class="glyphicon glyphicon-' + this.options.glyph + '"></i></a>';
+          this.controlDiv.innerHTML = '<a href="#"><i class="fa fa-' + this.options.glyph + '"></i></a>';
           L.DomEvent
               .addListener(this.controlDiv, 'mousedown', L.DomEvent.stopPropagation)
               .addListener(this.controlDiv, 'click', L.DomEvent.stopPropagation)
@@ -257,16 +326,18 @@ function createSliderUI(timestamps) {
       }
   });
 
-   new L.Control.BootstrapModal({
-        modalId: 'modal_help',
-        tooltip: "How to use this thing",
-        glyph: 'question-sign'
-    }).addTo(map);
-    new L.Control.BootstrapModal({
+  new L.Control.BootstrapModal({
         modalId: 'modal_about',
-        tooltip: "What is it?",
-        glyph: 'info-sign'
-    }).addTo(map);
+        tooltip: "About the Map",
+        glyph: 'info-circle'
+  }).addTo(map);
+
+  new L.Control.BootstrapModal({
+        modalId: 'modal_help',
+        tooltip: "About the Data",
+        glyph: 'database'
+  }).addTo(map);
+
 
 /*    The MIT License (MIT)
 

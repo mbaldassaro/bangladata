@@ -13,9 +13,13 @@ def index():
     return render_template('base.html')
 
 
-@app.route('/test')
-def test():
-    return render_template('test.html')
+@app.route('/rohingya')
+def rohingya():
+    return render_template('rohingya.html')
+
+@app.route('/parlelections')
+def parlelections():
+    return render_template('parlelections.html')
 
 if __name__ == '__main__':
     manager.run()

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {% endblock %}
@@ -31,10 +32,10 @@ data-target=".navbar-ex1-collapse">
           <ul class="dropdown-menu">
           <li><a href="{{ url_for('parlelections') }}">Parliamentary Elections</a></li>
           <li><a href="{{ url_for('rohingya') }}">Rohingya Refugees</a></li>
-		      <li><a href="#">Map3</a></li>
+		      <li><a href="{{ url_for('tabletop') }}">Tabletop</a></li>
         </ul>
 		<li><a href="#" data-toggle="modal"
-data-target="#aboutModal" style="outline-width:0;">About</a><li>
+data-target="#aboutModal" style="outline-width:0;">About</a></li>
 		<li><a href="#" data-toggle="modal"
 data-target="#dataModal" style="outline-width:0;">Data</a></li>
 	    </ul>

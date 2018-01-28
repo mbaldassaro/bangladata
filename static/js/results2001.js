@@ -34,6 +34,10 @@ function resetHighlight(e) {
       results2001info.update();
   }
 
+/*function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }*/ //does not work with L.circleMarker
+
 results2001info.onAdd = function(map) {
       this._div = L.DomUtil.create('div', 'info');
       this.update();
@@ -75,6 +79,7 @@ var results2001geojson = L.geoJSON(results2001, {
       fillOpacity: 0.3
     }).on({
       mouseover: highlightFeature,
+      //click: zoomToFeature,
       mouseout: resetHighlight
     });
   }

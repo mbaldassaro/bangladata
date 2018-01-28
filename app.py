@@ -21,5 +21,9 @@ def rohingya():
 def parlelections():
     return render_template('parlelections.html')
 
+@app.route('/tabletop')
+def tabletop():
+    return render_template('tabletop.html')    
+
 if __name__ == '__main__':
     manager.run()

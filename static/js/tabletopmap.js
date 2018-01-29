@@ -1,129 +1,83 @@
+/*Step 1) Load map layer*/
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
 map.flyTo([21.133391, 92.187985], 10);
 });
 
+/*Step 2) Initialize tabletop to read published Google Sheet*/
 function init() {
-  Tabletop.init( { key: 'https://docs.google.com/spreadsheets/d/1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA/pubhtml',
-                   callback: function(data, tabletop) {
-                       console.log(data)
-                   },
-                   simpleSheet: true } )
+  Tabletop.init({
+    key: 'https://docs.google.com/spreadsheets/d/1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA/pubhtml',
+      callback: function(data, tabletop) { console.log(data) },
+      simpleSheet: true } )
 }
+
+/*Step 3) Set Leaflet Layer Group - Individual Marker OR Marker Cluster*/
 window.addEventListener('DOMContentLoaded', init)
 if (window.location.hash === "#cluster") {
-	// Set up cluster group
-	var markers = new L.MarkerClusterGroup();
+	var markers = new L.MarkerClusterGroup();  	// Set up cluster group
 } else {
-	// Otherwise set up normal groupx`
-	var markers = new L.LayerGroup();
+	var markers = new L.LayerGroup();  	// Otherwise set up normal marker group
 }
-// Google Docs spreadsheet key
-var spreadsheet_key = '1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA';
-// Name of lat, long columns in Google spreadsheet
-var lat_column = 'latitude';
-var long_column = 'longitude';
-// Marker options
-var radius = 8;
-// Regular fill
-var fill_color = "#023858";
-var border_color = "#FFF";
-// Hover
-var fill_color_hover = "#FFF";
-var border_color_hover = "#333"
 
-var global_markers_data;
-// Function that creates our popup
+//Step 4) Declare spreadsheet properties as variables
+var spreadsheet_key = '1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA'; // Google Docs spreadsheet key
+var lat_column = 'latitude';  // Name of lat column in Google spreadsheet
+var long_column = 'longitude'; // Name of long column in Google spreadsheet
+//var global_markers_data;
+
+//Step 5) Declare marker option variables / variables
+function getColor(d) {
+  return  d > 15  ? "blue"   :
+          d > 10  ? "yellow" :
+          d > 5   ? "darkred":
+          d > 0   ? "green"  :
+                    "gray" ;
+}
+
+function calcRadius(d) {
+    var scaleFactor = 10;
+    var area = d * scaleFactor;
+    return Math.sqrt(area/Math.PI) * 2;
+}
+
+//Step 6) Declare info popup
 function generatePopup(content){
-    // Generate header
-	var popup_header = "<h5>" + content['name'] + "</h5>"
-	// Generate content
+	var popup_header = '<h6>' + content['name'] + '</h5>'
 	var popup_content = '<h6>' + content['dummy'] + '</h6>'
 	return popup_header + popup_content;
 }
 
-// This goes through our JSON file and puts markers on map
-function loadMarkersToMap(markers_data) {
-	// If we haven't captured the Tabletop data yet
-	// We'll set the Tabletop data to global_markers_data
-	if (global_markers_data !== undefined) {
-		markers_data = global_markers_data;
-	// If we have, we'll load global_markers_data instead of loading Tabletop again
-	} else {
-		global_markers_data = markers_data;
-	}
-
-	for (var num = 0; num < markers_data.length; num++) {
-		// Capture current iteration through JSON file
-		current = markers_data[num];
-
-		// Add lat, long to marker
-		var marker_location = new L.LatLng(current[lat_column], current[long_column]);
-
-		// Determine radius of the circle by the value in total
-		// radius_actual = Math.sqrt(current['total'] / 3.14) * 2.8;
-
-		// Options for our circle marker
+//Step 7) Loop through Google Spreadsheet and place markers on map
+function loadMarkersToMap(data) {
+  for(var i = 0; i < data.length; i++) {
+    current = data[i];
+    var marker_location = new L.LatLng(current[lat_column], current[long_column]);
 		var layer_marker = L.circleMarker(marker_location, {
-			radius: radius,
-			fillColor: fill_color,
-			color: border_color,
+			radius: calcRadius(current.dummy),
+			fillColor: getColor(current.dummy),
+			color: getColor(current.dummy),
 			weight: 1,
 			opacity: 1,
-			fillOpacity: 0.8
-		});
+			fillOpacity: 0.6
+		}).on({
+      mouseover: function(e) {
+        this.openPopup();
+        this.setStyle({ fillOpacity: 1 });
+      },
+      mouseout: function(e) {
+        this.closePopup();
+        this.setStyle({ fillOpacity: 0.6 });
+      }
+    });
 
-		// Generate popup
-		layer_marker.bindPopup( generatePopup(current) );
-
-		// Add events to marker
-		(function (num){
-			// Must call separate popup(e) function to make sure right data is shown
-			function mouseOver(e) {
-				var layer_marker = e.target;
-		        layer_marker.setStyle({
-		            radius: radius + 1,
-		            fillColor: fill_color_hover,
-		            color: border_color_hover,
-		            weight: 2,
-		            opacity: 1,
-		            fillOpacity: 1
-				});
-				// layer_marker.openPopup();
-		    }
-
-		    // What happens when mouse leaves the marker
-		    function mouseOut(e) {
-				var layer_marker = e.target;
-				layer_marker.setStyle({
-					radius: radius + 1,
-					fillColor: fill_color,
-					color: border_color,
-					weight: 1,
-					opacity: 1,
-					fillOpacity: 0.8
-		        });
-		        // layer_marker.closePopup();
-		    }
-
-		    // Call mouseover, mouseout functions
-		    layer_marker.on({
-		    	mouseover: mouseOver,
-		    	mouseout: mouseOut
-		    });
-
-		})(num)
-		// Add to feature group
+    layer_marker.bindPopup(generatePopup(current));
 		markers.addLayer(layer_marker);
 	}
-	// Add feature group to map
 	map.addLayer(markers);
+}
 
-	// Clear load text
-	// $('.sidebar_text_intro').html('');
-};
-
-// Pull data from Google spreadsheet via Tabletop
+//Step 8) Pull data from Google spreadsheet via Tabletop
 function initializeTabletopObjectMarkers(){
 	Tabletop.init({
     	key: spreadsheet_key,
@@ -133,6 +87,5 @@ function initializeTabletopObjectMarkers(){
     });
 }
 
-// Add JSON data to map
-// If not done with map-tabletop-geojson.js
+// Add JSON data to map - if not done with map-tabletop-geojson.js
 initializeTabletopObjectMarkers();

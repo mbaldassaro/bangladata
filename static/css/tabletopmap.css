@@ -1,0 +1,35 @@
+.legend {
+  text-align: left;
+  line-height: 18px;
+  color: #555;
+  background: rgba(255,255,255,0.8);
+  padding-bottom: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-radius: 5px;
+  border: 2px solid rgba(0,0,0,0.2)!important;
+  background-clip: padding-box!important;
+}
+
+.legend i {
+  width: 18px;
+  height: 18px;
+  float: left;
+  margin-right: 1em;
+  opacity: 0.6;
+  margin-top: -0.2em;
+  }
+
+
+.info {
+  font-family: 'Lato', Helvetica, sans-serif;
+  color: #555;
+  background: white;
+  background: rgba(255,255,255,0.8);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding-right: 1em;
+  padding-left: 1em;
+  border-radius: 5px;
+  border: 2px solid rgba(0,0,0,0.2)!important;
+  background-clip: padding-box!important;
+}

@@ -92,7 +92,6 @@ target="_blank"> Github</a>. The data is licensed under <a href="https://creativ
 
 <!--map-->
 <div class="jumbotron" id="map"></div>
-
 <script>
 var cartoLink = '<a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>';
 var cartoUrl = 'http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png';
@@ -113,4 +112,5 @@ var baseLayers = {
   'Satellite': satMap
 };
 </script>
+<script src="{{ url_for('static', filename='js/mapmodal.js')}}"></script>
 {% endblock %}

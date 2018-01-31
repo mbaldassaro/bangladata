@@ -1,14 +1,4 @@
-/* var tableLegend = L.control({ position: 'bottomright' }); */
-
-/*Step 1) Load map layer*/  //place inside html page script to set layer
-/*
-$(document).ready(function() {
-L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
-map.flyTo([21.133391, 92.187985], 10);
-});
-*/
-
-/*Step 2) Initialize tabletop to read published Google Sheet*/
+/*Step 2) //Same */
 function init() {
   Tabletop.init({
     key: 'https://docs.google.com/spreadsheets/d/1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA/pubhtml',
@@ -16,25 +6,25 @@ function init() {
       simpleSheet: true } )
 }
 
-/*Step 3) Set Leaflet Layer Group - Individual Marker OR Marker Cluster*/
-var markers;  //declared outside function for use in layer control
+/*Step 3) Change: markersOne */
+var markersOne;  //declared outside function for use in layer control
 window.addEventListener('DOMContentLoaded', init)
 if (window.location.hash === "#cluster") {
-	var markers = new L.MarkerClusterGroup();  	// Set up cluster group
+	var markersOne = new L.MarkerClusterGroup();  	// Set up cluster group
 } else {
-	var markers = new L.LayerGroup();  	// Otherwise set up normal marker group
+	var markersOne = new L.LayerGroup();  	// Otherwise set up normal marker group
 }
 
-//Step 4) Declare spreadsheet properties as variables
+//Step 4) Same
 var spreadsheet_key = '1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA'; // Google Docs spreadsheet key
 var lat_column = 'latitude';  // Name of lat column in Google spreadsheet
 var long_column = 'longitude'; // Name of long column in Google spreadsheet
 //var global_markers_data;
 
-//Step 5) Declare marker option variables / variables
+//Step 5) Same
 function getColor(d) {
-  return  d > 3  ? "blue"   :
-          d > 2  ? "yellow" :
+  return  d > 3   ? "blue"   :
+          d > 2   ? "yellow" :
           d > 1   ? "darkred":
           d > 0   ? "green"  :
                     "gray" ;
@@ -46,14 +36,14 @@ function calcRadius(d) {
     return Math.sqrt(area/Math.PI) * 2;
 }
 
-//Step 6) Declare info popup
+//Step 6) Same
 function generatePopup(content){
 	var popup_header = '<h6>' + content['name'] + '</h5>'
 	var popup_content = '<h6>' + content['dummy'] + '</h6>'
 	return popup_header + popup_content;
 }
 
-//Step 7) Loop through Google Spreadsheet and place markers on map
+//Step 7) Change if(current.type ==) { markersOne.addLayer(layer_marker); }
 function loadMarkersToMap(data) {
   for(var i = 0; i < data.length; i++) {
     current = data[i];
@@ -77,26 +67,12 @@ function loadMarkersToMap(data) {
     });
 
     layer_marker.bindPopup(generatePopup(current));
-		markers.addLayer(layer_marker);
+    if(current.type == '3') { markersOne.addLayer(layer_marker); }
 	}
 	//map.addLayer(markers);   //remove for layer control
 }
 
-/*
-tableLegend.onAdd = function(map) {
-    this._div = L.DomUtil.create('div', 'info legend'),
-    grades = [1, 2, 3, 4],
-    labels = ['<h4>Dummy Type</h4>' +
-    '<h6><strong>Dummy 1 ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 2 ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 3 ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
-    this._div.innerHTML = labels.join('');
-    return this._div;
-  };
-  */
-
-//Step 8) Pull data from Google spreadsheet via Tabletop
+//Step 8: Same
 function initializeTabletopObjectMarkers(){
 	Tabletop.init({
     	key: spreadsheet_key,

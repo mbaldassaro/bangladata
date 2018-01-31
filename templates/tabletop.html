@@ -53,5 +53,38 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>
+<script src="{{ url_for('static', filename='js/tabletop1.js')}}"></script>
+<script>
+$(document).ready(function() {
+L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
+map.flyTo([21.133391, 92.187985], 10);
+});
+
+var markers;
+var markersOne;
+
+var overlayMaps = {
+  "Tabletop Test": markers,
+  "Tabletop Test2": markersOne
+};
+
+map.addLayer(markers);
+L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
+
+var tableLegend = L.control({ position: 'bottomright' });
+tableLegend.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'info legend'),
+    grades = [1, 2, 3, 4],
+    labels = ['<h4>Dummy Type</h4>' +
+    '<h6><strong>Dummy 1 ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
+    '<h6><strong>Dummy 2 ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
+    '<h6><strong>Dummy 3 ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
+    '<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
+    this._div.innerHTML = labels.join('');
+    return this._div;
+  };
+
+tableLegend.addTo(map);
+</script>
 {{super()}}
 {% endblock %}

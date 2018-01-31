@@ -55,6 +55,7 @@
 <script src="{{ url_for('static', filename='data/results2008.json')}}"></script>
 <script src="{{ url_for('static', filename='js/results2001.js')}}"></script>
 <script src="{{ url_for('static', filename='js/results2008.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>-->
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -63,10 +64,12 @@ map.flyTo([24, 90], 7);
 
 var results2001geojson;
 var results2008geojson;
+//var markers;
 
 var overlayMaps = {
   "2001 Elections": results2001geojson,
-  "2008 Elections": results2008geojson,
+  "2008 Elections": results2008geojson//,
+  //"Tabletop" : markers
 };
 
 map.addLayer(results2001geojson);

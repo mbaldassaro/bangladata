@@ -11,12 +11,21 @@
   background-clip: padding-box!important;
 }
 
-.legend i {
+.vertical {
   width: 18px;
   height: 18px;
   float: left;
   margin-right: 1em;
   opacity: 0.6;
+  margin-top: -0.2em;
+}
+
+.horizontal {
+  width: 9px;
+  height: 18px;
+  float: left;
+  margin-right: 0em;
+  opacity: 0.8;
   margin-top: -0.2em;
 }
 

@@ -61,10 +61,10 @@ results2001legend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
     grades = [1, 2, 3, 4],
     labels = ['<h4>Party-Coalition</h4>' +
-    '<h6><strong>Awami League ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
-    '<h6><strong>Four Party Alliance ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
-    '<h6><strong>Jatiya Party ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
-    '<h6><strong>Others ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>'];
+    '<h6><strong>Awami League ' + '<i class="vertical" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
+    '<h6><strong>Four Party Alliance ' + '<i class="vertical" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
+    '<h6><strong>Jatiya Party ' + '<i class="vertical" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
+    '<h6><strong>Others ' + '<i class="vertical" style="background:' + getColor(grades[3]) + '"></i></strong></h6>'];
     this._div.innerHTML = labels.join('');
     return this._div;
   };

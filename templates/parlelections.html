@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block head %}
 <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/parlelections.css') }}">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.2/nv.d3.css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.16/d3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.2/nv.d3.min.js"></script>-->
 {{super()}}
 {% endblock %}
 {% block content %}
@@ -53,9 +56,10 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='data/results2001.json')}}"></script>
 <script src="{{ url_for('static', filename='data/results2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/results2008con.json' )}}"></script>
 <script src="{{ url_for('static', filename='js/results2001.js')}}"></script>
 <script src="{{ url_for('static', filename='js/results2008.js')}}"></script>
-<!--<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>-->
+<script src="{{ url_for('static', filename='js/results2008con.js')}}"></script>-->
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -64,12 +68,13 @@ map.flyTo([24, 90], 7);
 
 var results2001geojson;
 var results2008geojson;
-//var markers;
+var results2008congeojson;
+//var markers
 
 var overlayMaps = {
   "2001 Elections": results2001geojson,
-  "2008 Elections": results2008geojson//,
-  //"Tabletop" : markers
+  "2008 Elections": results2008geojson,
+  "2008 Elections - Constituency": results2008congeojson
 };
 
 map.addLayer(results2001geojson);
@@ -95,6 +100,14 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = results2008info;
     results2008info.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - Constituency') {
+    map.removeControl(currentLegend);
+    currentLegend = results2008conlegend;
+    results2008conlegend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = results2008coninfo;
+    results2008coninfo.addTo(map);
   }
 });
 </script>

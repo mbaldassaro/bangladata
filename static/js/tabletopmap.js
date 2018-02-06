@@ -26,9 +26,9 @@ if (window.location.hash === "#cluster") {
 }
 
 //Step 4) Declare spreadsheet properties as variables
-var spreadsheet_key = '1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA'; // Google Docs spreadsheet key
-var lat_column = 'latitude';  // Name of lat column in Google spreadsheet
-var long_column = 'longitude'; // Name of long column in Google spreadsheet
+var spreadsheet_key = '1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA';
+var lat_column = 'Latitude';  // Name of lat column in Google spreadsheet
+var long_column = 'Longitude'; // Name of long column in Google spreadsheet
 //var global_markers_data;
 
 //Step 5) Declare marker option variables / variables

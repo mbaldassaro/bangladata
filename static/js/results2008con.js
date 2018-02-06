@@ -1,5 +1,9 @@
 var results2008coninfo = L.control({ position: 'bottomright' } );
 var results2008conlegend = L.control( { position: 'bottomright' } );
+var results2008congeojson = L.geoJSON(results2008con, {
+  style: style,
+  onEachFeature: eachFeature
+});
 
 function style(feature) {
   return {
@@ -99,11 +103,13 @@ function highlightFeature(e) {
          layer.bringToFront();
      }
      results2008coninfo.update(layer.feature.properties);
+     //results2008coninfo.onAdd(layer.feature.properties);
   }
 
 function resetHighlight(e) {
       results2008congeojson.resetStyle(e.target);
       results2008coninfo.update();
+      //results2008coninfo.onAdd();
   }
 
 function zoomToFeature(e) {
@@ -119,26 +125,23 @@ function eachFeature(feature, layer) {
       }
 
 results2008coninfo.onAdd = function(map) {
-      this._div = L.DomUtil.create('div', 'info');
-      //this._div = L.DomUtil.create('div', 'svg');
+      this._div = L.DomUtil.create('svg', 'info');
       this.update();
       return this._div;
   };
 
 results2008coninfo.update = function(props) {
     this._div.innerHTML = (props ?
-        '<h6>Constituency: ' + props.constituency + '</h6>' +
+        '<h6><strong>Constituency: ' + props.constituency + '</strong></h6>' +
         '<h6><strong>Winner: ' + props.winner + '</strong></h6>' +
-        '<b>Margin of Victory: ' + props.marginPercentage + '%</b>' +
-        '<h6>Registered Voters: ' + props.registeredVoters + '</h6>' +
-        '<h6>Valid Votes: ' + props.validVotes + '</h6>' +
+        '<h6><strong>Margin of Victory: ' + props.marginPercentage + '%</strong></h6>' +
         '<h6>Mohajote: ' + props.mohajote + ' ' + '(' + props.mohajotePercentage + '%)</h6>' +
-        '<h6>Awami League: ' + props.awamiLeague + ' ' + '(' + props.awamiLeaguePercentage + '%)</h6>' +
         '<h6>Four Party Alliance: ' + props.fourPartyAlliance + ' ' + '(' + props.fourPartyAlliancePercentage + '%)</h6>' +
+        '<h6>Awami League: ' + props.awamiLeague + ' ' + '(' + props.awamiLeaguePercentage + '%)</h6>' +
         '<h6>BNP: ' + props.bangladeshNationalParty + ' ' + '(' + props.bangladeshNationalPartyPercentage + '%)</h6>' +
         '<h6>Jatiya Party: ' + props.jatiyaParty + ' ' + '(' + props.jatiyaPartyPercentage + '%)</h6>'  +
         '<h6>Others: ' + props.others + ' ' + '(' + props.othersPercentage + '%)</h6>' + '':'')
-      };
+    };
 
 results2008conlegend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
@@ -179,7 +182,7 @@ results2008conlegend.update = function(e) {
     return this._div;
   };
 
-var results2008congeojson = L.geoJSON(results2008con, {
+/*var results2008congeojson = L.geoJSON(results2008con, {
     style: style,
     onEachFeature: eachFeature
-});
+});*/

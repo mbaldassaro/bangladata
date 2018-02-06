@@ -10,7 +10,7 @@ manager = Manager(app)
 
 @app.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('rohingya.html')
 
 
 @app.route('/rohingya')
@@ -23,7 +23,7 @@ def parlelections():
 
 @app.route('/tabletop')
 def tabletop():
-    return render_template('tabletop.html')    
+    return render_template('tabletop.html')
 
 if __name__ == '__main__':
     manager.run()

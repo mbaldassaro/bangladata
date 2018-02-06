@@ -50,7 +50,7 @@ results2008info.update = function(props) {
         '<h6>Mohajote: ' + props.mohajote + ' ' + '(' + props.mohajotePercentage + '%)</h6>' +
         '<h6>Awami League: ' + props.awamiLeague + ' ' + '(' + props.awamiLeaguePercentage + '%)</h6>' +
         '<h6>Four Party Alliance: ' + props.fourPartyAlliance + ' ' + '(' + props.fourPartyAlliancePercentage + '%)</h6>' +
-        '<h6>BNP: ' + props.bnp + ' ' + '(' + props.bnpPercentage + '%)</h6>' +
+        '<h6>BNP: ' + props.bangladeshNationalParty + ' ' + '(' + props.bangladeshNationalPartyPercentage + '%)</h6>' +
         '<h6>Jatiya Party: ' + props.jatiyaParty + ' ' + '(' + props.jatiyaPartyPercentage + '%)</h6>'  +
         '<h6>Others: ' + props.others + ' ' + '(' + props.othersPercentage + '%)</h6>' + '':'')
       };

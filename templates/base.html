@@ -4,13 +4,15 @@
     {{super()}}
     <link rel="shortcut icon" href ="{{ url_for('static', filename='img/favicon.ico' )}}">
     <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+    <!--<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />-->
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/MarkerCluster.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/MarkerCluster.Default.css" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <!--<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/leaflet.markercluster.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/leaflet.markercluster-src.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -28,7 +30,7 @@ data-target=".navbar-ex1-collapse">
 		<span class="icon-bar"></span>
 	    </button>
       <a class="navbar-brand" href="#"><img class="img-responsive" id="brand" src="{{ url_for('static', filename='img/bangla.png' )}}"></a>
-	    <a class="navbar-brand" href="/" style="margin-left:-2em;">Bangladata</a>
+	    <a class="navbar-brand" href="#" style="margin-left:-2em;">Bangladata</a>
 	</div>
 	<div class="navbar-collapse collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav navbar-left">
@@ -109,7 +111,7 @@ var satAttr = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX,
 var cartoMap = L.tileLayer(cartoUrl, {attribution: cartoAttr});
 var mountMap = L.tileLayer(mountUrl, {attribution: mountAttr});
 var satMap = L.tileLayer(satUrl, {attribution: satAttr});
-var map = L.map('map', {layers: [cartoMap]}).setView([24, 90], 8);
+var map = L.map('map', {layers: [satMap]}).setView([24, 90], 8);
 var baseLayers = {
   'Road': cartoMap,
   'Terrain': mountMap,

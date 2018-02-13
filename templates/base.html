@@ -111,7 +111,7 @@ var satAttr = 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX,
 var cartoMap = L.tileLayer(cartoUrl, {attribution: cartoAttr});
 var mountMap = L.tileLayer(mountUrl, {attribution: mountAttr});
 var satMap = L.tileLayer(satUrl, {attribution: satAttr});
-var map = L.map('map', {layers: [satMap]}).setView([24, 90], 8);
+var map = L.map('map', {layers: [cartoMap]}).setView([24, 90], 8);
 var baseLayers = {
   'Road': cartoMap,
   'Terrain': mountMap,

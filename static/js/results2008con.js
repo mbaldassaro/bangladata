@@ -12,69 +12,59 @@ function style(feature) {
     opacity: 1,
     color: '#ffffff',
     dashArray: '0',
-    fillOpacity: 0.8
+    fillOpacity: 0.6
   }
 }
 
 function getResults2008conColor(d) {
   return  d > 459 ? "#084594" :
-          d > 449 ? "#2171b6" :
-          d > 439 ? "#4292c6" :
-          d > 429 ? "#6baed6" :
-          d > 419 ? "#9ecae1" :
-          d > 409 ? "#deebf7" :
-          d > 400 ? "#eff3ff" :
+          d > 439 ? "#2171b6" :
+          d > 419 ? "#4292c6" :
+          d > 409 ? "#6baed6" :
+          d > 400 ? "#9ecae1" :
           d > 359 ? "#ffff00" :
-          d > 349 ? "#ffff4d" :
-          d > 339 ? "#ffff66" :
-          d > 329 ? "#ffff80" :
-          d > 319 ? "#ffff99" :
+          d > 339 ? "#ffff4d" :
+          d > 319 ? "#ffff66" :
           d > 309 ? "#ffffb3" :
           d > 300 ? "#ffffcc" :
           d > 259 ? "#67000d" :
-          d > 249 ? "#a50f15" :
-          d > 239 ? "#cb181d" :
-          d > 229 ? "#fb6a4a" :
-          d > 219 ? "#fcbba1" :
-          d > 209 ? "#fee0d2" :
-          d > 200 ? "#fff5f0" :
+          d > 239 ? "#a50f15" :
+          d > 219 ? "#cb181d" :
+          d > 209 ? "#fb6a4a" :
+          //d > 200 ? "#fcbba1" :
+          d > 200 ? "#fee0d2" :
+          //d > 200 ? "#fff5f0" :
           d > 159 ? "#005a32" :
-          d > 149 ? "#238b45" :
-          d > 139 ? "#41ab5d" :
-          d > 129 ? "#74c476" :
-          d > 119 ? "#a1d99b" :
-          d > 109 ? "#c7e9c0" :
-          d > 100 ? "#edf8e9" :
-                    "gray";
+          d > 139 ? "#238b45" :
+          d > 119 ? "#41ab5d" :
+          d > 109 ? "#74c476" :
+          d > 100 ? "#a1d99b" :
+                      "gray";
   }
 
   function getColorAwami(d) {
     return d > 159 ? "#005a32" :
-           d > 149 ? "#238b45" :
-           d > 139 ? "#41ab5d" :
-           d > 129 ? "#74c476" :
-           d > 119 ? "#a1d99b" :
-           d > 109 ? "#c7e9c0" :
-           d > 100 ? "#edf8e9" :
+           d > 139 ? "#238b45" :
+           d > 119 ? "#41ab5d" :
+           d > 109 ? "#74c476" :
+           d > 100 ? "#a1d99b" :
                         "gray";
   }
 
   function getColorBNP(d) {
     return d > 259 ? "#67000d" :
-           d > 249 ? "#a50f15" :
-           d > 239 ? "#cb181d" :
-           d > 229 ? "#fb6a4a" :
-           d > 219 ? "#fcbba1" :
-           d > 209 ? "#fee0d2" :
-           d > 200 ? "#fff5f0" :
+           d > 239 ? "#a50f15" :
+           d > 219 ? "#cb181d" :
+           d > 209 ? "#fb6a4a" :
+           //d > 200 ? "#fcbba1" :
+           d > 200 ? "#fee0d2" :
+           //d > 200 ? "#fff5f0" :
                       "gray";
   }
   function getColorJP(d) {
     return d > 359 ? "#ffff00" :
-           d > 349 ? "#ffff4d" :
-           d > 339 ? "#ffff66" :
-           d > 329 ? "#ffff80" :
-           d > 319 ? "#ffff99" :
+           d > 339 ? "#ffff4d" :
+           d > 319 ? "#ffff66" :
            d > 309 ? "#ffffb3" :
            d > 300 ? "#ffffcc" :
                         "gray";
@@ -82,13 +72,11 @@ function getResults2008conColor(d) {
 
   function getColorOther(d) {
     return d > 459 ? "#084594" :
-           d > 449 ? "#2171b6" :
-           d > 439 ? "#4292c6" :
-           d > 429 ? "#6baed6" :
-           d > 419 ? "#9ecae1" :
-           d > 409 ? "#deebf7" :
-           d > 400 ? "#eff3ff" :
-                      "gray";
+           d > 439 ? "#2171b6" :
+           d > 419 ? "#4292c6" :
+           d > 409 ? "#6baed6" :
+           d > 400 ? "#9ecae1" :
+                         "gray";
   }
 
 function highlightFeature(e) {
@@ -153,10 +141,10 @@ results2008conlegend.onAdd = function(map) {
 results2008conlegend.update = function(e) {
   title =['<h4>Margin of Victory</h4>' + '<h6><1% - 60%+</h6>'];
   this._div = L.DomUtil.create('div', 'info legend'),
-  gradesA = [100, 109, 119, 129, 139, 149, 159];
-  gradesB = [200, 209, 219, 229, 239, 249, 259];
-  gradesC = [300, 309, 319, 329, 339, 349, 359];
-  gradesD = [400, 409, 419, 429, 439, 449, 459];
+  gradesA = [100, 109, 119, 139, 159];
+  gradesB = [200, 209, 219, 239, 259];
+  gradesC = [300, 309, 319, 339, 359];
+  gradesD = [400, 409, 419, 439, 459];
   labelA = [];
   labelB = ['<h6>&nbsp Mohajote-AL</h6>'];
   labelC = ['<h6>&nbsp 4P-BNP</h6>'];

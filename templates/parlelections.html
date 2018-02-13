@@ -16,15 +16,7 @@
                 <h4 class="modal-title">About The Map</h4>
             </div>
             <div class="modal-body">
-                <p>This map displays the camp locations and estimated populations of Rohingya refugees in and around Cox's Bazar since data was made available in September 2017.
-                In total, nearly one million Rohingyas have crossed the border from Myanmar and taken refuge in Bangladesh.
-                The International Organization for Migration has reported that since August 2017 more than 650,000 Rohingyas have taken refuge in temporary makeshift settlements in Bangladesh border communities.
-                Drag the slider in the bottom left corner of the map to see monthly refugee population estimates in, and movements between, makeshift settlements.
-                 </p>
-                <p>A caveat on refugee population estimates from the Humanitarian Data Exchange platform:
-                  "Fluid movement makes the tracking of new arrivals challenging.
-                  Figures are triangulated estimates based on the visual observation of key informants. The new arrivals have not been verified at household level.
-                  In particular, the number of affected population in host communities remains unclear. Daily data for arrivals in host communities is not available."</p>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. </p>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
@@ -39,12 +31,7 @@
                 <h4 class="modal-title">About the Data</h4>
             </div>
             <div class="modal-body">
-                <p>The data was compiled from the "Location of Rohingya Refugees in Cox’s Bazar" dataset published on the
-                <a href="https://data.humdata.org/dataset/site-location-of-rohingya-refugees-in-cox-s-bazar" target="_blank">Humanitarian Data Exchange</a> by the
-                <a href="https://data.humdata.org/organization/inter-sector-coordination-group" target="_blank">Inter Sector Coordination Group</a>.</p>
-                <p>The source dataset contains the location (latitude and longitude), type, and estimated population of the Rohingya Refugees in and around Cox's Bazar, Bangladesh.
-                  It is updated regularly and licensed for reuse under
-                <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode" target="_blank">Public Domain / No Restrictions (CC0)</a>.</p>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
@@ -56,10 +43,12 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='data/results2001.json')}}"></script>
 <script src="{{ url_for('static', filename='data/results2008.json')}}"></script>
-<script src="{{ url_for('static', filename='data/results2008con.json' )}}"></script>
+<script src="{{ url_for('static', filename='data/results2008con.json')}}"></script>
+<script src="{{ url_for('static', filename='data/swing.json')}}"></script>
 <script src="{{ url_for('static', filename='js/results2001.js')}}"></script>
 <script src="{{ url_for('static', filename='js/results2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/results2008con.js')}}"></script>
+<script src="{{ url_for('static', filename='js/swing.js')}}"></script>
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -69,20 +58,22 @@ map.flyTo([24, 90], 7);
 var results2001geojson;
 var results2008geojson;
 var results2008congeojson;
+var swinggeojson;
 //var markers
 
 var overlayMaps = {
   "2001 Elections - Magnitude": results2001geojson,
   "2008 Elections - Magnitude": results2008geojson,
-  "2008 Elections - Constituency": results2008congeojson
+  "2008 Elections - Constituency": results2008congeojson,
+  "2008 Elections - Swing": swinggeojson
 };
 
-map.addLayer(results2008congeojson);
+map.addLayer(results2001geojson);
 L.control.layers(overlayMaps, null, {collapsed: false, position: 'bottomleft'}).addTo(map);
-results2008conlegend.addTo(map);
-results2008coninfo.addTo(map);
-var currentLegend = results2008conlegend;
-var currentInfo = results2008coninfo;
+results2001legend.addTo(map);
+results2001info.addTo(map);
+var currentLegend = results2001legend;
+var currentInfo = results2001info;
 
 map.on('baselayerchange', function(eventLayer) {
   if(eventLayer.name === '2001 Elections - Magnitude') {
@@ -108,6 +99,14 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = results2008coninfo;
     results2008coninfo.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - Swing') {
+    map.removeControl(currentLegend);
+    currentLegend = swinglegend;
+    swinglegend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = swinginfo;
+    swinginfo.addTo(map);
   }
 });
 </script>

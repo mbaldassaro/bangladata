@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/tabletopmap.css') }}">
+{{super()}}
+{% endblock %}
+
+{% block content %}
+<!--info modals-->
+<div class="modal fade" role="dialog" id="modal_about">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About The Map</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- a Bootstrap modal, which we'll bind to the control via the modalId parameter -->
+<div class="modal fade" role="dialog" id="modal_help">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About the Data</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{{super()}}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='data/coverage.json')}}"></script>
+<script src="{{ url_for('static', filename='data/swing.json')}}"></script>
+<script src="{{ url_for('static', filename='js/swing.js')}}"></script>
+<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>
+<script src="{{ url_for('static', filename='js/tabletop1.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverageTHP.js')}}"></script>
+<script>
+$(document).ready(function() {
+L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
+map.flyTo([24, 90], 7);
+});
+
+var swinggeojson;
+var coveragegeojson;
+var markersDI;
+var markers;
+var markersOne;
+
+var overlayMaps = {
+  "Swing Districts": swinggeojson,
+  "SPL Districts": coveragegeojson,
+  "DI": markersDI,
+  "THP": markersTHP
+  //"IFES": markersOne
+};
+
+map.addLayer(coveragegeojson);
+map.addLayer(swinggeojson);
+//map.addLayer(markersDI);
+//map.addLayer(markersTHP);
+L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
+
+var tableLegend = L.control({ position: 'bottomright' });
+tableLegend.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'info legend'),
+    grades = [1, 2, 3, 4],
+    labels = ['<h4>Dummy Type</h4>' +
+    '<h6><strong>Dummy 1 ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
+    '<h6><strong>Dummy 2 ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
+    '<h6><strong>Dummy 3 ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
+    '<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
+    this._div.innerHTML = labels.join('');
+    return this._div;
+  };
+
+
+//tableLegend.addTo(map);
+swinglegend.addTo(map);
+swinginfo.addTo(map);
+</script>
+{{super()}}
+{% endblock %}

@@ -25,5 +25,9 @@ def parlelections():
 def tabletop():
     return render_template('tabletop.html')
 
+@app.route('/coverage')
+def coverage():
+    return render_template('coverage.html')
+
 if __name__ == '__main__':
     manager.run()

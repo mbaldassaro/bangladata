@@ -47,6 +47,7 @@
 <script src="{{ url_for('static', filename='js/coverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverageTHP.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverageIFES.js')}}"></script>
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -57,18 +58,19 @@ var swinggeojson;
 var coveragegeojson;
 var markersDI;
 var markers;
+var markersIFES;
 //var markersOne;
 
 var overlayMaps = {
   "Swing Constituencies": swinggeojson,
-  "SPL Districts": coveragegeojson,
-  "DI": markersDI,
-  "THP": markersTHP
-  //"IFES": markersOne
+  "SPL Election Coverage": coveragegeojson,
+  "DI Locations": markersDI,
+  "DI-THP Pave Locations": markersTHP,
+  "IFES-THP Pave Locations": markersIFES
 };
 
 //map.addLayer(coveragegeojson);
-map.addLayer(coveragegeojson);
+map.addLayer(swinggeojson);
 //map.addLayer(markersDI);
 //map.addLayer(markersTHP);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);

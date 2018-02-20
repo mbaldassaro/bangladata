@@ -42,8 +42,8 @@
 <script src="{{ url_for('static', filename='data/coverage.json')}}"></script>
 <script src="{{ url_for('static', filename='data/swing.json')}}"></script>
 <script src="{{ url_for('static', filename='js/swing.js')}}"></script>
-<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>
-<script src="{{ url_for('static', filename='js/tabletop1.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>
+<script src="{{ url_for('static', filename='js/tabletop1.js')}}"></script>-->
 <script src="{{ url_for('static', filename='js/coverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverageTHP.js')}}"></script>
@@ -57,7 +57,7 @@ var swinggeojson;
 var coveragegeojson;
 var markersDI;
 var markers;
-var markersOne;
+//var markersOne;
 
 var overlayMaps = {
   "Swing Constituencies": swinggeojson,
@@ -68,12 +68,12 @@ var overlayMaps = {
 };
 
 //map.addLayer(coveragegeojson);
-map.addLayer(swinggeojson);
+map.addLayer(coveragegeojson);
 //map.addLayer(markersDI);
 //map.addLayer(markersTHP);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
 
-var tableLegend = L.control({ position: 'bottomright' });
+/*var tableLegend = L.control({ position: 'bottomright' });
 tableLegend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
     grades = [1, 2, 3, 4],
@@ -84,7 +84,7 @@ tableLegend.onAdd = function(map) {
     '<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
     this._div.innerHTML = labels.join('');
     return this._div;
-  };
+  };*/
 
 
 //tableLegend.addTo(map);

@@ -39,7 +39,7 @@ function calcRadius(d) {
 //Step 6) Same
 function generatePopup(content){
 	var popup_header = '<h6>' + content['location'] + '</h5>'
-	var popup_content = '<h6>' + content['name'] + '</h6>' + '<h6>' + content['description'] + '</h6>'
+	var popup_content = '<h6>' + content['description'] + '</h6>'
 	return popup_header + popup_content;
 }
 

@@ -43,41 +43,29 @@
 <script src="{{ url_for('static', filename='js/swing.js')}}"></script>
 <script src="{{ url_for('static', filename='data/coverage.json')}}"></script>
 <script src="{{ url_for('static', filename='data/ifescoverage.json')}}"></script>
-<!--<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>
-<script src="{{ url_for('static', filename='js/tabletop1.js')}}"></script>-->
-
 <script src="{{ url_for('static', filename='js/coverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>
 <script src="{{ url_for('static', filename='js/ifescoverage.js')}}"></script>
-<!--<script src="{{ url_for('static', filename='js/coverageTHP.js')}}"></script>
-<script src="{{ url_for('static', filename='js/coverageIFES.js')}}"></script>-->
 <script>
-$(document).ready(function() {
+//$(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
 map.flyTo([24, 90], 7);
-});
+//});
 
 var swinggeojson;
 var coveragegeojson;
 var ifescoveragegeojson;
 var markersDI;
-//var markers;
-//var markersIFES;
-//var markersOne;
 
 var overlayMaps = {
   "Swing Constituencies": swinggeojson,
   "DI Election Coverage": coveragegeojson,
   "DI Office Locations": markersDI,
   "IFES Gap Coverage": ifescoveragegeojson
-  //"DI-THP Pave Locations": markersTHP,
-  //"IFES-THP Pave Locations": markersIFES
 };
 
 //map.addLayer(coveragegeojson);
 map.addLayer(swinggeojson);
-//map.addLayer(markersDI);
-//map.addLayer(markersTHP);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
 
 /*var tableLegend = L.control({ position: 'bottomright' });

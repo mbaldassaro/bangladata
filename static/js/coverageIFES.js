@@ -58,11 +58,11 @@ function loadMarkersToMap(data) {
 		}).on({
       mouseover: function(e) {
         this.openPopup();
-        this.setStyle({ fillOpacity: 1 });
+        //this.setStyle({ fillOpacity: 1 });
       },
       mouseout: function(e) {
         this.closePopup();
-        this.setStyle({ fillOpacity: 0.6 });
+        //this.setStyle({ fillOpacity: 0.6 });
       }
     });
 

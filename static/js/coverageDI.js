@@ -3,12 +3,12 @@ function init() {
   Tabletop.init({
     key: 'https://docs.google.com/spreadsheets/d/1aI0S3p-ZF4kfh5GEvXHjNY-i2MHd9StKrTkrqWwEMCo/pubhtml',
       callback: function(data, tabletop) { console.log(data) },
-      simpleSheet: true } )
+      simpleSheet: true })
 }
 
 /*Step 3) Change: markersOne */
 var markersDI;  //declared outside function for use in layer control
-window.addEventListener('DOMContentLoaded', init)
+window.addEventListener('DOMContentLoaded', init, { passive: true })
 if (window.location.hash === "#cluster") {
 	var markersDI = new L.MarkerClusterGroup();  	// Set up cluster group
 } else {
@@ -58,11 +58,11 @@ function loadMarkersToMap(data) {
 		}).on({
       mouseover: function(e) {
         this.openPopup();
-        this.setStyle({ fillOpacity: 1 });
+        //this.setStyle({ fillOpacity: 1 });
       },
       mouseout: function(e) {
         this.closePopup();
-        this.setStyle({ fillOpacity: 0.6 });
+        //this.setStyle({ fillOpacity: 0.6 });
       }
     });
 

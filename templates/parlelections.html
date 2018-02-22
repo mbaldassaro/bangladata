@@ -3,6 +3,7 @@
 <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/parlelections.css') }}">
 {{super()}}
 {% endblock %}
+
 {% block content %}
 <!--info modals-->
 <div class="modal fade" role="dialog" id="modal_about">
@@ -30,13 +31,13 @@
                   The "Swing" map displays the election constituencies that were decided by margins of victory of less than 10% in the 2008 elections.
                   The color of the constituency corresponds to the winning coalition or party.
                 </p>
-            </div>
-            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+              </div>
+              <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+          </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 <!-- a Bootstrap modal, which we'll bind to the control via the modalId parameter -->
-<div class="modal fade" role="dialog" id="modal_help">
+<<div class="modal fade" role="dialog" id="modal_help">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -47,6 +48,7 @@
                 <p>The data was compiled from the <a href="http://www.ec.org.bd/MenuExternalFilesEng/124.pdf" target="_blank">Eight Parliament Election Statistical Report (2001)</a>
                   and the <a href="http://www.ec.org.bd/MenuExternalFilesEng/304.pdf" target="_blank">Ninth Parliament Election Statistical Report (2008)</a>
                   published on the website of the <a href="http://www.ec.org.bd/" target="_blank">Election Commission of Bangladesh</a></p>
+                </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

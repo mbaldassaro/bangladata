@@ -3,6 +3,7 @@
 var coveragegeojson = L.geoJSON(coverage, {
   style: style,
   onEachFeature: onFeature
+  //eachLayer: onFeature
 });
 
 function style(feature) {
@@ -16,7 +17,7 @@ function style(feature) {
   }
 }
 
-function onFeature(feature, layer) {
+/*function onFeature(feature, layer) {
   layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</h6>').on({
     mouseover: function(e) {
       this.openPopup();
@@ -27,4 +28,18 @@ function onFeature(feature, layer) {
       //this.setStyle({ fillOpacity: 0.6 });
     }
 });
+}*/
+
+/*
+function onFeature(feature, layer) {
+  layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</p>', {autoClose:false}).on({
+  mouseover: function(e) {
+    this.openPopup();
+  }
+});
 }
+*/
+
+function onFeature(feature, layer) {
+  layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</p>');
+  }

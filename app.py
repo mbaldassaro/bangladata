@@ -21,9 +21,9 @@ def rohingya():
 def parlelections():
     return render_template('parlelections.html')
 
-@app.route('/tabletop')
-def tabletop():
-    return render_template('tabletop.html')
+@app.route('/violence')
+def violence():
+    return render_template('violence.html')
 
 @app.route('/coverage')
 def coverage():

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block head %}
+<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/tabletopmap.css') }}">
+{{super()}}
+{% endblock %}
+
+{% block content %}
+<!--info modals-->
+<div class="modal fade" role="dialog" id="modal_about">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About The Map</h4>
+            </div>
+            <div class="modal-body">
+                <p>This map displays the camp locations and estimated populations of Rohingya refugees in and around Cox's Bazar since data was made available in September 2017.
+                In total, nearly one million Rohingyas have crossed the border from Myanmar and taken refuge in Bangladesh.
+                The International Organization for Migration has reported that since August 2017 more than 650,000 Rohingyas have taken refuge in temporary makeshift settlements in Bangladesh border communities.
+                Drag the slider in the bottom left corner of the map to see monthly refugee population estimates in, and movements between, makeshift settlements.
+                 </p>
+                <p>A caveat on refugee population estimates from the Humanitarian Data Exchange platform:
+                  "Fluid movement makes the tracking of new arrivals challenging.
+                  Figures are triangulated estimates based on the visual observation of key informants. The new arrivals have not been verified at household level.
+                  In particular, the number of affected population in host communities remains unclear. Daily data for arrivals in host communities is not available."</p>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- a Bootstrap modal, which we'll bind to the control via the modalId parameter -->
+<div class="modal fade" role="dialog" id="modal_help">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About the Data</h4>
+            </div>
+            <div class="modal-body">
+                <p>The data was compiled from the "Location of Rohingya Refugees in Cox’s Bazar" dataset published on the
+                <a href="https://data.humdata.org/dataset/site-location-of-rohingya-refugees-in-cox-s-bazar" target="_blank">Humanitarian Data Exchange</a> by the
+                <a href="https://data.humdata.org/organization/inter-sector-coordination-group" target="_blank">Inter Sector Coordination Group</a>.</p>
+                <p>The source dataset contains the location (latitude and longitude), type, and estimated population of the Rohingya Refugees in and around Cox's Bazar, Bangladesh.
+                  It is updated regularly and licensed for reuse under
+                <a href="https://creativecommons.org/publicdomain/zero/1.0/legalcode" target="_blank">Public Domain / No Restrictions (CC0)</a>.</p>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{{super()}}
+{% endblock %}
+
+{% block scripts %}
+<!--<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>-->
+<script src="{{ url_for('static', filename='js/vims1.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims2.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims3.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims4.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims5.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims6.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims7.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims8.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims9.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims10.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims11.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims12.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims13.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims14.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims15.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims16.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims17.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims18.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims19.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims20.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims21.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims22.js')}}"></script>
+<script>
+$(document).ready(function() {
+L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
+map.flyTo([24, 90], 7);
+});
+
+//var markers;
+var vims1;
+var vims2;
+var vims3;
+var vims4;
+var vims5;
+var vims6;
+var vims7;
+var vims8;
+var vims9;
+var vims10;
+var vims11;
+var vims12;
+var vims13;
+var vims14;
+var vims15;
+var vims16;
+var vims17;
+var vims18;
+var vims19;
+var vims20;
+var vims21;
+var vims22;
+
+var overlayMaps = {
+  //"Tabletop Test": markers,
+  "Abduction / Hostage": vims1,
+  "Assault": vims2,
+  "Blockade": vims17,
+  "Clash": vims3,
+  "Crossfire / Extrajudicial": vims4,
+  "Demonstration": vims5,
+  "Property Destruction": vims6,
+  "Fight": vims7,
+  "Gunfight": vims8,
+  "Hartal": vims9,
+  "Mob Violence": vims10,
+  "Other": vims11,
+  "Political Arrest": vims12,
+  "Political Protest": vims13,
+  "Raid": vims14,
+  "Sabotage": vims15,
+  "Sexual Assault": vims16,
+  "Unclear": vims18,
+  "Violence (Security Forces)": vims19,
+  "Violence (Ballot Hijack)": vims20,
+  "Violent Demonstration": vims21,
+  "Violent Hartal": vims22
+};
+
+map.addLayer(vims1);
+L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
+
+var tableLegend = L.control({ position: 'bottomright' });
+tableLegend.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'info legend'),
+    grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+    labels = ['<h4>Incident Type</h4>' +
+    '<h6><strong>Assault ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
+    '<h6><strong>Clash ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
+    '<h6><strong>Crossfire/Extrajudicial ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' +
+    '<h6><strong>Fight ' + '<i class="circle" style="background:' + getColor(grades[6]) + '"></i></strong></h6>' +
+    '<h6><strong>Gunfight ' + '<i class="circle" style="background:' + getColor(grades[7]) + '"></i></strong></h6>' +
+    '<h6><strong>Mob Violence ' + '<i class="circle" style="background:' + getColor(grades[9]) + '"></i></strong></h6>' +
+    '<h6><strong>Sexual Assault ' + '<i class="circle" style="background:' + getColor(grades[15]) + '"></i></strong></h6>' +
+    '<h6><strong>Abduction/Hostage ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
+    '<h6><strong>Property Destruction ' + '<i class="circle" style="background:' + getColor(grades[5]) + '"></i></strong></h6>' +
+    '<h6><strong>Raid ' + '<i class="circle" style="background:' + getColor(grades[13]) + '"></i></strong></h6>' +
+    '<h6><strong>Sabotage ' + '<i class="circle" style="background:' + getColor(grades[14]) + '"></i></strong></h6>' +
+    '<h6><strong>Blockade ' + '<i class="circle" style="background:' + getColor(grades[16]) + '"></i></strong></h6>' +
+    '<h6><strong>Demonstration ' + '<i class="circle" style="background:' + getColor(grades[4]) + '"></i></strong></h6>' +
+    '<h6><strong>Hartal ' + '<i class="circle" style="background:' + getColor(grades[8]) + '"></i></strong></h6>' +
+    '<h6><strong>Political Arrest ' + '<i class="circle" style="background:' + getColor(grades[11]) + '"></i></strong></h6>' +
+    '<h6><strong>Political Protest ' + '<i class="circle" style="background:' + getColor(grades[12]) + '"></i></strong></h6>' +
+    '<h6><strong>Violence (Security Forces) ' + '<i class="circle" style="background:' + getColor(grades[18]) + '"></i></strong></h6>' +
+    '<h6><strong>Violence (Ballot Hijack) ' + '<i class="circle" style="background:' + getColor(grades[19]) + '"></i></strong></h6>' +
+    '<h6><strong>Violent Demonstration ' + '<i class="circle" style="background:' + getColor(grades[20]) + '"></i></strong></h6>' +
+    '<h6><strong>Violent Hartal ' + '<i class="circle" style="background:' + getColor(grades[21]) + '"></i></strong></h6>' +
+    '<h6><strong>Other ' + '<i class="circle" style="background:' + getColor(grades[10]) + '"></i></strong></h6>' +
+    '<h6><strong>Unclear ' + '<i class="circle" style="background:' + getColor(grades[17]) + '"></i></strong></h6>'];
+    this._div.innerHTML = labels.join('');
+    return this._div;
+  };
+
+tableLegend.addTo(map);
+</script>
+{{super()}}
+{% endblock %}

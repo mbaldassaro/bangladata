@@ -17,7 +17,7 @@ function style(feature) {
   }
 }
 
-/*function onFeature(feature, layer) {
+function onFeature(feature, layer) {
   layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</h6>').on({
     mouseover: function(e) {
       this.openPopup();
@@ -28,18 +28,4 @@ function style(feature) {
       //this.setStyle({ fillOpacity: 0.6 });
     }
 });
-}*/
-
-/*
-function onFeature(feature, layer) {
-  layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</p>', {autoClose:false}).on({
-  mouseover: function(e) {
-    this.openPopup();
-  }
-});
 }
-*/
-
-function onFeature(feature, layer) {
-  layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</p>');
-  }

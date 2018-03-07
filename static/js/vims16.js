@@ -1,14 +1,4 @@
-/* var tableLegend = L.control({ position: 'bottomright' }); */
-
-/*Step 1) Load map layer*/  //place inside html page script to set layer
-/*
-$(document).ready(function() {
-L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
-map.flyTo([21.133391, 92.187985], 10);
-});
-*/
-
-/*Step 2) Initialize tabletop to read published Google Sheet*/
+/*Step 2) //Same */
 function init() {
   Tabletop.init({
     key: 'https://docs.google.com/spreadsheets/d/1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA/pubhtml',
@@ -16,22 +6,22 @@ function init() {
       simpleSheet: true } )
 }
 
-/*Step 3) Set Leaflet Layer Group - Individual Marker OR Marker Cluster*/
-var markers;  //declared outside function for use in layer control
+/*Step 3) Change: vims16 */
+var vims16;  //declared outside function for use in layer control
 window.addEventListener('DOMContentLoaded', init)
 if (window.location.hash === "#cluster") {
-	var markers = new L.MarkerClusterGroup();  	// Set up cluster group
+	var vims16 = new L.MarkerClusterGroup();  	// Set up cluster group
 } else {
-	var markers = new L.LayerGroup();  	// Otherwise set up normal marker group
+	var vims16 = new L.LayerGroup();  	// Otherwise set up normal marker group
 }
 
-//Step 4) Declare spreadsheet properties as variables
+//Step 4) Same
 var spreadsheet_key = '1qyhvJKLyF5s2mrVgRUKFzTjHJk6Zip7wRYBltig21yA';
 var lat_column = 'Latitude';  // Name of lat column in Google spreadsheet
 var long_column = 'Longitude'; // Name of long column in Google spreadsheet
 //var global_markers_data;
 
-//Step 5) Declare marker option variables / variables
+//Step 5) Same
 function getColor(d) {
   return  d > 21  ? "#08306b"   :
           d > 20  ? "#08519c"   :
@@ -64,22 +54,26 @@ function getColor(d) {
     return Math.sqrt(area/Math.PI) * 2;
 }*/
 
-//Step 6) Declare info popup
+//Step 6) Same
 function generatePopup(content){
-	var popup_header = '<h6>' + content['EventType1'] + '</h5>'
-	var popup_content = '<h6>' + content['EventDescription'] + '</h6>'
-	return popup_header + popup_content;
+	var popup_header = '<h6>Incident Type: ' + content['EventType1'] + '</h6>'
+  var popup_content1 = '<h6>Date: ' + content['EventDate'] + '</h6>'
+  var popup_content2 = '<h6>Location: ' + content['LocationUpazillaThana'] + '<h6>'
+  var popup_content3 = '<h6>Perpetrator: ' + content['Perpetrator1'] + '</h6>'
+  var popup_content4 = '<h6>Target: ' + content['MainTargetGroup'] + '</h6>'
+	var popup_contentD = '<h6>Description: ' + content['EventDescription'] + '</h6>'
+	return popup_header + popup_content1 + popup_content2 + popup_content3 + popup_content4 + popup_contentD;
 }
 
-//Step 7) Loop through Google Spreadsheet and place markers on map
+//Step 7) Change if(current.type ==) { vims16.addLayer(layer_marker); }
 function loadMarkersToMap(data) {
   for(var i = 0; i < data.length; i++) {
     current = data[i];
     var marker_location = new L.LatLng(current[lat_column], current[long_column]);
 		var layer_marker = L.circleMarker(marker_location, {
-      //radius: calcRadius(current.type),
-      radius: 4,
-			fillColor: getColor(current.type),
+			//radius: calcRadius(current.type),
+      radius: 3,
+      fillColor: getColor(current.type),
 			color: getColor(current.type),
 			weight: 1,
 			opacity: 1,
@@ -91,31 +85,17 @@ function loadMarkersToMap(data) {
       },
       mouseout: function(e) {
         this.closePopup();
-        this.setStyle({ fillOpacity: 0.6 });
+        this.setStyle({ fillOpacity: 0.8 });
       }
     });
 
     layer_marker.bindPopup(generatePopup(current));
-		markers.addLayer(layer_marker);
+    if(current.type == '16') { vims16.addLayer(layer_marker); }
 	}
 	//map.addLayer(markers);   //remove for layer control
 }
 
-/*
-tableLegend.onAdd = function(map) {
-    this._div = L.DomUtil.create('div', 'info legend'),
-    grades = [1, 2, 3, 4],
-    labels = ['<h4>Dummy Type</h4>' +
-    '<h6><strong>Dummy 1 ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 2 ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 3 ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
-    this._div.innerHTML = labels.join('');
-    return this._div;
-  };
-  */
-
-//Step 8) Pull data from Google spreadsheet via Tabletop
+//Step 8: Same
 function initializeTabletopObjectMarkers(){
 	Tabletop.init({
     	key: spreadsheet_key,

@@ -52,29 +52,39 @@
 {% endblock %}
 
 {% block scripts %}
-<!--<script src="{{ url_for('static', filename='js/tabletopmap.js')}}"></script>-->
-<script src="{{ url_for('static', filename='js/vims1.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims2.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims3.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims4.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims5.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims6.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims7.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims8.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims9.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims10.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims11.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims12.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims13.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims14.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims15.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims16.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims17.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims18.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims19.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims20.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims21.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims22.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/test/tabletopmap.js')}}"></script>-->
+<!--<script src="{{ url_for('static', filename='js/vims/vims1.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims2.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims3.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims4.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims5.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims6.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims7.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims8.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims9.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims10.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims11.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims12.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims13.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims14.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims15.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims16.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims17.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims18.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims19.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims20.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims21.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vims/vims22.js')}}"></script>-->
+<script src="{{ url_for('static', filename='data/didistricts.json')}}"></script>
+<script src="{{ url_for('static', filename='data/ifesgap.json')}}"></script>
+<script src="{{ url_for('static', filename='data/results2008con.json')}}"></script>
+<script src="{{ url_for('static', filename='js/vimsintraparty.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vimsinterparty.js')}}"></script>
+<script src="{{ url_for('static', filename='js/vimselections.js')}}"></script>
+<script src="{{ url_for('static', filename='js/2008con.js')}}"></script>
+<script src="{{ url_for('static', filename='js/ifesgap.js')}}"></script>
+<script src="{{ url_for('static', filename='js/didistricts.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>-->
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -82,7 +92,7 @@ map.flyTo([24, 90], 7);
 });
 
 //var markers;
-var vims1;
+/*var vims1;
 var vims2;
 var vims3;
 var vims4;
@@ -103,10 +113,17 @@ var vims18;
 var vims19;
 var vims20;
 var vims21;
-var vims22;
+var vims22;*/
+var vimsintraparty;
+var vimsinterparty;
+var vimselections;
+var congeojson;
+var ifesgapgeojson;
+var didistrictsgeojson;
+//var markersDI;
 
 var overlayMaps = {
-  //"Tabletop Test": markers,
+  /*"Tabletop Test": markers,
   "Abduction / Hostage": vims1,
   "Assault": vims2,
   "Blockade": vims17,
@@ -128,16 +145,23 @@ var overlayMaps = {
   "Violence (Security Forces)": vims19,
   "Violence (Ballot Hijack)": vims20,
   "Violent Demonstration": vims21,
-  "Violent Hartal": vims22
+  "Violent Hartal": vims22*/
+  "Intra-Party Violence": vimsintraparty,
+  "Inter-Party Violence": vimsinterparty,
+  "Electoral Violence": vimselections,
+  "2008 Election Constituencies": congeojson,
+  "DI SPL Coverage": didistrictsgeojson,
+  //"DI Office Locations": markersDI,
+  "IFES Gap Coverage": ifesgapgeojson
 };
 
-map.addLayer(vims1);
+map.addLayer(vimsintraparty);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
 
 var tableLegend = L.control({ position: 'bottomright' });
 tableLegend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
-    grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
+    /*grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
     labels = ['<h4>Incident Type</h4>' +
     '<h6><strong>Assault ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
     '<h6><strong>Clash ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
@@ -160,7 +184,14 @@ tableLegend.onAdd = function(map) {
     '<h6><strong>Violent Demonstration ' + '<i class="circle" style="background:' + getColor(grades[20]) + '"></i></strong></h6>' +
     '<h6><strong>Violent Hartal ' + '<i class="circle" style="background:' + getColor(grades[21]) + '"></i></strong></h6>' +
     '<h6><strong>Other ' + '<i class="circle" style="background:' + getColor(grades[10]) + '"></i></strong></h6>' +
-    '<h6><strong>Unclear ' + '<i class="circle" style="background:' + getColor(grades[17]) + '"></i></strong></h6>'];
+    '<h6><strong>Unclear ' + '<i class="circle" style="background:' + getColor(grades[17]) + '"></i></strong></h6>'];*/
+    grades = [1, 2, 3, 4, 5],
+    labels = ['<h4>Incident Type</h4>' +
+    '<h6><strong>Intra-Party Violence ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
+    '<h6><strong>Inter-Party Violence ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
+    '<h6><strong>Electoral Violence ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>']; //+
+    //'<h6><strong>Fight ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' +
+    //'<h6><strong>Gunfight ' + '<i class="circle" style="background:' + getColor(grades[4]) + '"></i></strong></h6>'];
     this._div.innerHTML = labels.join('');
     return this._div;
   };

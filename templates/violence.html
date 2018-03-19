@@ -75,15 +75,17 @@
 <script src="{{ url_for('static', filename='js/vims/vims20.js')}}"></script>
 <script src="{{ url_for('static', filename='js/vims/vims21.js')}}"></script>
 <script src="{{ url_for('static', filename='js/vims/vims22.js')}}"></script>-->
-<script src="{{ url_for('static', filename='data/didistricts.json')}}"></script>
-<script src="{{ url_for('static', filename='data/ifesgap.json')}}"></script>
-<script src="{{ url_for('static', filename='data/results2008con.json')}}"></script>
-<script src="{{ url_for('static', filename='js/vimsintraparty.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vimsinterparty.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vimselections.js')}}"></script>
-<script src="{{ url_for('static', filename='js/2008con.js')}}"></script>
-<script src="{{ url_for('static', filename='js/ifesgap.js')}}"></script>
-<script src="{{ url_for('static', filename='js/didistricts.js')}}"></script>
+<script src="{{ url_for('static', filename='data/violence/didistricts.json')}}"></script>
+<script src="{{ url_for('static', filename='data/violence/ifesgap.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/results2008con.json')}}"></script>
+<script src="{{ url_for('static', filename='data/violence/swingDD2.json')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimsintraparty.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimsinterparty.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimselections.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/2008con.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/ifesgap.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/didistricts.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/swingDD.js')}}"></script>
 <!--<script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>-->
 <script>
 $(document).ready(function() {
@@ -120,6 +122,7 @@ var vimselections;
 var congeojson;
 var ifesgapgeojson;
 var didistrictsgeojson;
+var results2008DDgeojson;
 //var markersDI;
 
 var overlayMaps = {
@@ -152,7 +155,8 @@ var overlayMaps = {
   "2008 Election Constituencies": congeojson,
   "DI SPL Coverage": didistrictsgeojson,
   //"DI Office Locations": markersDI,
-  "IFES Gap Coverage": ifesgapgeojson
+  "IFES Gap Coverage": ifesgapgeojson,
+  "Swing-Stronghold": results2008DDgeojson
 };
 
 map.addLayer(vimsintraparty);

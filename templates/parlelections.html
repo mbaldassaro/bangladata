@@ -57,31 +57,80 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='data/results2001.json')}}"></script>
-<script src="{{ url_for('static', filename='data/results2008.json')}}"></script>
-<script src="{{ url_for('static', filename='data/results2008con.json')}}"></script>
-<script src="{{ url_for('static', filename='data/swing.json')}}"></script>
-<script src="{{ url_for('static', filename='js/results2001.js')}}"></script>
-<script src="{{ url_for('static', filename='js/results2008.js')}}"></script>
-<script src="{{ url_for('static', filename='js/results2008con.js')}}"></script>
-<script src="{{ url_for('static', filename='js/swing.js')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/results2001.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/results2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/results2008con.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/swing.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/turnout2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/awami2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/bnp2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/jatiya2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/other2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/cancelled2008.json')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/results2001.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/results2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/results2008con.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/swing.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/turnout2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/awami2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/bnp2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/jatiya2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/other2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/cancelled2008.js')}}"></script>
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
 map.flyTo([24, 90], 7);
 });
 
+var totalVotes = "Total Votes";
+var totalSeats = "Total Seats";
+var pctVote = "Vote Percentage";
+var recVotes = "Votes Received";
+var wonSeats = "Seats Won";
+var diff = "Difference (+/-)";
+var otherVotes = "Other Votes";
+var otherSeats = "Other Seats";
+var otherPct = "Other Percentage";
+var voterReg = "Registered Voters";
+var voterTot = "Total Voters";
+var turnout = "Turnout Percentage";
+var voterRegF = "Registered Female Voters";
+var voterTotF = "Female Voter Turnout";
+var voterPctF = "Female Turnout Percentage";
+var voterRegM = "Registered Male Voters";
+var voterTotM = "Male Voter Turnout";
+var voterPctM = "Male Turnout Percentage";
+var difference = "Difference (+/-)";
+var castBallot = "Ballots Cast";
+var votesInv = "Invalid Votes";
+var pctInv = "Invalid Percentage";
+var winner = "Winner";
+var runnerUp = "Runner Up";
+var cancelled = "Cancelled Ballots";
+var cancelledPercentage = "Cancelled Percentage";
+
 var results2001geojson;
 var results2008geojson;
 var results2008congeojson;
 var swinggeojson;
-//var markers
+var turnout2008geojson;
+var awami2008geojson;
+var jatiya2008geojson;
+var other2008geojson;
+var cancelled2008geojson;
 
 var overlayMaps = {
   "2001 Elections - Magnitude": results2001geojson,
   "2008 Elections - Magnitude": results2008geojson,
   "2008 Elections - Constituency": results2008congeojson,
-  "2008 Elections - Swing": swinggeojson
+  "2008 Elections - Swing": swinggeojson,
+  "2008 Elections - Turnout": turnout2008geojson,
+  "2008 Elections - AL": awami2008geojson,
+  "2008 Elections - BNP": bnp2008geojson,
+  "2008 Elections - JP": jatiya2008geojson,
+  "2008 Elections - Other": other2008geojson,
+  "2008 Elections - Cancelled": cancelled2008geojson
 };
 
 map.addLayer(results2001geojson);
@@ -123,6 +172,54 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = swinginfo;
     swinginfo.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - Turnout') {
+    map.removeControl(currentLegend);
+    currentLegend = turnout2008legend;
+    turnout2008legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = turnout2008info;
+    turnout2008info.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - AL') {
+    map.removeControl(currentLegend);
+    currentLegend = awami2008legend;
+    awami2008legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = awami2008info;
+    awami2008info.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - BNP') {
+    map.removeControl(currentLegend);
+    currentLegend = bnp2008legend;
+    bnp2008legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = bnp2008info;
+    bnp2008info.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - JP') {
+    map.removeControl(currentLegend);
+    currentLegend = jatiya2008legend;
+    jatiya2008legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = jatiya2008info;
+    jatiya2008info.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - Other') {
+    map.removeControl(currentLegend);
+    currentLegend = other2008legend;
+    other2008legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = other2008info;
+    other2008info.addTo(map);
+  }
+  else if(eventLayer.name === '2008 Elections - Cancelled') {
+    map.removeControl(currentLegend);
+    currentLegend = cancelled2008legend;
+    cancelled2008legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = cancelled2008info;
+    cancelled2008info.addTo(map);
   }
 });
 </script>

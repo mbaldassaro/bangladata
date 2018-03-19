@@ -8,7 +8,7 @@ map.flyTo([21.133391, 92.187985], 10);
 
 var cities;
 
-$.getJSON("static/data/rohingya.json")
+$.getJSON("static/data/rohingya/rohingya.json")
   .done(function(data) {
     //console.log(data);
     var info = processData(data);

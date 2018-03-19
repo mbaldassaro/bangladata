@@ -39,13 +39,13 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='data/swing.json')}}"></script>
-<script src="{{ url_for('static', filename='js/swing.js')}}"></script>
-<script src="{{ url_for('static', filename='data/dicoverage.json')}}"></script>
-<script src="{{ url_for('static', filename='data/ifescoverage.json')}}"></script>
-<script src="{{ url_for('static', filename='js/coverage.js')}}"></script>
-<script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>
-<script src="{{ url_for('static', filename='js/ifescoverage.js')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/swing.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/dicoverage.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/ifescoverage.json')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/swing.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/coverage.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/coverageDI.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/ifescoverage.js')}}"></script>
 <script>
 //$(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);

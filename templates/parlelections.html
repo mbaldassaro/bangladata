@@ -67,6 +67,7 @@
 <script src="{{ url_for('static', filename='data/elections/jatiya2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/other2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/cancelled2008.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/battleground.json')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/results2001.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/results2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/results2008con.js')}}"></script>
@@ -77,6 +78,7 @@
 <script src="{{ url_for('static', filename='js/elections/jatiya2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/other2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/cancelled2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -109,6 +111,14 @@ var winner = "Winner";
 var runnerUp = "Runner Up";
 var cancelled = "Cancelled Ballots";
 var cancelledPercentage = "Cancelled Percentage";
+var winner1991 = "1991 Winner";
+var runnerUp1991 = "1991 Runner Up";
+var winner1996 = "1996 Winner";
+var runnerUp1996 = "1996 Runner Up";
+var winner2001 = "2001 Winner";
+var runnerUp2001 = "2001 Runner Up";
+var winner2008 = "2008 Winner";
+var runnerUp2008 = "2008 Runner Up";
 
 var results2001geojson;
 var results2008geojson;
@@ -119,8 +129,10 @@ var awami2008geojson;
 var jatiya2008geojson;
 var other2008geojson;
 var cancelled2008geojson;
+var battlegroundgeojson;
 
 var overlayMaps = {
+  "Battleground Constituencies": battlegroundgeojson,
   "2001 Elections - Magnitude": results2001geojson,
   "2008 Elections - Magnitude": results2008geojson,
   "2008 Elections - Constituency": results2008congeojson,
@@ -220,6 +232,14 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = cancelled2008info;
     cancelled2008info.addTo(map);
+  }
+  else if(eventLayer.name === 'Battleground Constituencies') {
+    map.removeControl(currentLegend);
+    currentLegend = battlegroundlegend;
+    battlegroundlegend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = battlegroundinfo;
+    battlegroundinfo.addTo(map);
   }
 });
 </script>

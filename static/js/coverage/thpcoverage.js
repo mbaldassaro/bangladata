@@ -1,11 +1,11 @@
-var ifescoveragegeojson = L.geoJSON(ifesgap, {
+var thpcoveragegeojson = L.geoJSON(thp, {
   style: style,
   onEachFeature: onFeature
 });
 
 function style(feature) {
   return {
-    fillColor: 'orange',
+    fillColor: 'blue',
     weight: 2,
     opacity: 1,
     color: '#ffffff',
@@ -15,7 +15,7 @@ function style(feature) {
 }
 
 function onFeature(feature, layer) {
-  layer.bindPopup('<h6>'+ feature.properties.adm2_en +'</h6>').on({
+  layer.bindPopup('<h6>'+ feature.properties.adm3_en +'</h6>').on({
     mouseover: function(e) {
       this.openPopup();
       //this.setStyle({ fillOpacity: 1 });

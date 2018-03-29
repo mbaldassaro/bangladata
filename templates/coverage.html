@@ -39,33 +39,61 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='data/elections/swing.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/battleground.json')}}"></script>
 <script src="{{ url_for('static', filename='data/coverage/dicoverage.json')}}"></script>
-<script src="{{ url_for('static', filename='data/coverage/ifescoverage.json')}}"></script>
-<script src="{{ url_for('static', filename='js/elections/swing.js')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/ifesgap.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/thpcoverage.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/vimsoctfeb.json')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/coverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/coverageDI.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/thpcoverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/ifescoverage.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/vimsrisk.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimsintraparty.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimsinterparty.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimselections.js')}}"></script>
 <script>
 //$(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
 map.flyTo([24, 90], 7);
 //});
 
-var swinggeojson;
+var battlegroundgeojson;
 var coveragegeojson;
+var thpcoveragegeojson;
 var ifescoveragegeojson;
+var vimsriskgeojson;
 var markersDI;
+var markersTHP;
+var vimsintraparty;
+var vimsinterparty;
+var vimselections;
+
+var winner1991 = "1991 Winner";
+var runnerUp1991 = "1991 Runner Up";
+var winner1996 = "1996 Winner";
+var runnerUp1996 = "1996 Runner Up";
+var winner2001 = "2001 Winner";
+var runnerUp2001 = "2001 Runner Up";
+var winner2008 = "2008 Winner";
+var runnerUp2008 = "2008 Runner Up";
 
 var overlayMaps = {
-  "Swing Constituencies": swinggeojson,
-  "DI Election Coverage": coveragegeojson,
-  "DI Office Locations": markersDI,
+  "Battleground Constituencies": battlegroundgeojson,
+  "SPL VIMS Political Violence (Choropleth)": vimsriskgeojson,
+  "SPL VIMS Intra-Party Violence (Point)": vimsintraparty,
+  "SPL VIMS Inter-Party Violence (Point)": vimsinterparty,
+  "SPL VIMS Electoral Violence (Point)": vimselections,
+  "SPL DI Coverage": coveragegeojson,
+  "SPL THP Coverage": thpcoveragegeojson,
+  "SPL DI Office Locations": markersDI,
+  "SPL THP Office Locations": markersTHP,
   "IFES Gap Coverage": ifescoveragegeojson
 };
 
 //map.addLayer(coveragegeojson);
-map.addLayer(swinggeojson);
+map.addLayer(battlegroundgeojson);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
 
 /*var tableLegend = L.control({ position: 'bottomright' });
@@ -83,8 +111,8 @@ tableLegend.onAdd = function(map) {
 
 
 //tableLegend.addTo(map);
-swinglegend.addTo(map);
-swinginfo.addTo(map);
+battlegroundlegend.addTo(map);
+battlegroundinfo.addTo(map);
 </script>
 {{super()}}
 {% endblock %}

@@ -8,11 +8,14 @@ function init() {
 
 /*Step 3) Change: markersOne */
 var markersDI;  //declared outside function for use in layer control
+var markersTHP;
 window.addEventListener('DOMContentLoaded', init, { passive: true })
 if (window.location.hash === "#cluster") {
 	var markersDI = new L.MarkerClusterGroup();  	// Set up cluster group
+  var markersTHP = new L.MarkerClusterGroup();
 } else {
 	var markersDI = new L.LayerGroup();  	// Otherwise set up normal marker group
+  var markersTHP = new L.LayerGroup();
 }
 
 //Step 4) Same
@@ -22,10 +25,10 @@ var long_column = 'Longitude'; // Name of long column in Google spreadsheet
 //var global_markers_data;
 
 //Step 5) Same
-function getColor(d) {
-  return  d > 3   ? "blue"   :
-          d > 2   ? "yellow" :
-          d > 1   ? "darkred":
+function getOfficeColor(d) {
+  return  d > 3   ? "red"   :
+          d > 2   ? "teal" :
+          d > 1   ? "purple":
           d > 0   ? "green"  :
                     "gray" ;
 }
@@ -37,7 +40,7 @@ function calcRadius(d) {
 }
 
 //Step 6) Same
-function generatePopup(content){
+function generateOfficePopup(content){
 	var popup_header = '<h6>' + content['location'] + '</h5>'
 	var popup_content = '<h6>' + content['description'] + '</h6>'
 	return popup_header + popup_content;
@@ -48,13 +51,15 @@ function loadMarkersToMap(data) {
   for(var i = 0; i < data.length; i++) {
     current = data[i];
     var marker_location = new L.LatLng(current[lat_column], current[long_column]);
-		var layer_marker = L.marker(marker_location, {
+    var layer_marker = L.circleMarker(marker_location, {
+    //var layer_marker = L.marker(marker_location, {
 			//radius: calcRadius(current.type),
-			fillColor: getColor(current.type),
-			color: getColor(current.type),
+      radius: 8,
+			fillColor: getOfficeColor(current.type),
+			color: getOfficeColor(current.type),
 			weight: 1,
 			opacity: 1,
-			fillOpacity: 0.6
+			fillOpacity: 0.8
 		}).on({
       mouseover: function(e) {
         this.openPopup();
@@ -66,8 +71,9 @@ function loadMarkersToMap(data) {
       }
     });
 
-    layer_marker.bindPopup(generatePopup(current));
+    layer_marker.bindPopup(generateOfficePopup(current));
     if(current.type == '3') { markersDI.addLayer(layer_marker); }
+    if(current.type == '2') { markersTHP.addLayer(layer_marker); }
 	}
 	//map.addLayer(markers);   //remove for layer control
 }

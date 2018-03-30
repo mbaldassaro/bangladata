@@ -8,7 +8,8 @@ var coveragegeojson = L.geoJSON(coverage, {
 
 function style(feature) {
   return {
-    fillColor: 'lightblue',
+    //fillColor: 'lightblue',
+    fillColor: '#cccccc',
     weight: 2,
     opacity: 1,
     color: '#ffffff',

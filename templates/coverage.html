@@ -11,10 +11,35 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">About The Map</h4>
+                <h4 class="modal-title">About The Maps</h4>
             </div>
             <div class="modal-body">
-                <p></p>
+              <h5>Battleground Constituencies</h5>
+                <h6>"Strong", "lean", and "swing" electoral constituencies are determined from election results data from 1991 to 2008 collected, opened and analyzed by SPL DI.
+                  The method used to determine "strong" vs. "lean" vs. "swing" constituencies is as follows (note: the swing calculation from BNP to AL in the 2008 elections is 8.59%):
+                  <ul>
+                    <li>Strong AL: Won 91, 96, 01 AND won 08 > 8.59%</li>
+                    <li>Strong BNP: Won 91, 96, 01, 08</li>
+                    <li>Strong JP: Won 91, 96, 01, 08</li>
+                    <li>Lean AL: Won 91, 96, 01 AND Won 08 < 8.59% OR Won 08 > 8.59%</li>
+                    <li>Lean BNP: Lost 91, 96, or 01 AND Won 08</li>
+                    <li>Lean JP: Lost 91, 96, or 01 AND Won 08 > 8.59%</li>
+                    <li>Swing: BNP won 3 previous AND AL Won 08 < 8.59% OR JP Won 3 previous AND AL Won 08 < 8.59% OR BNP, AL, or JP Won 2 of 4 and AL Won 08 < 8.59%</li>
+                  </ul>
+                  Based on these calculations, the "swing" constituencies (won by AL, JP or Independents in 2008) can be considered election battlegrounds.
+                  Some "Lean AL", "Lean BNP", and "Lean JP" constituencies could also be in play depending on shifts in public support levels since 2008.
+                </h6>
+                <h5>Political Violence Risk Levels</h5>
+                <h6>Political violence risk levels are determined from SPL VIMS incident data from October 2017 to February 2018.
+                  Political violence incidents are attributable to intra-party, inter-party, and election-related tensions:
+                  <ul>
+                    <li>High: few to several incidents of political violence</li>
+                    <li>Medium: multiple incidents of political violence</li>
+                    <li>Low: one incident of political violence</li>
+                  </ul>
+                </h6>
+                <h5>Violent Swings</h5>
+                  <h6>Violent swings blah blah blah</h6>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
@@ -96,23 +121,42 @@ var overlayMaps = {
 map.addLayer(battlegroundgeojson);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
 
-/*var tableLegend = L.control({ position: 'bottomright' });
+var tableInfo = L.control({ position: 'bottomleft' });
+tableInfo.onAdd = function(map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this._div.innerHTML = "<h6>hello i'm an information thingbob.</h6>" +
+                          "<h6>I provide helpful information to you.</h6>" +
+                          "<h6>I can go on and on for miles and miles</h6>";
+    return this._div;
+  };
+
+var tableLegend = L.control({ position: 'bottomright' });
 tableLegend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
     grades = [1, 2, 3, 4],
-    labels = ['<h4>Dummy Type</h4>' +
-    '<h6><strong>Dummy 1 ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 2 ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 3 ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
-    '<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
+    labels = ['<h6><strong>District / Upazila Coverage</strong></h6>' +
+    '<h6><strong>SPL DI Coverage ' + '<i class="circle" style="background:#cccccc"></i></strong></h6>' +
+    '<h6><strong>SPL THP Coverage ' + '<i class="circle" style="background:#969696"></i></strong></h6>' +
+    '<h6><strong>IFES Gap Coverage ' + '<i class="circle" style="background:#737373"></i></strong></h6>' ];
+    //'<h6><strong>Dummy 4 ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' ];
     this._div.innerHTML = labels.join('');
     return this._div;
-  };*/
+  };
 
-
-//tableLegend.addTo(map);
 battlegroundlegend.addTo(map);
+vimsrisklegend.addTo(map);
+tableLegend.addTo(map);
 battlegroundinfo.addTo(map);
+tableInfo.addTo(map);
+/*map.on('baselayerchange', function(eventLayer) {
+    if(eventLayer.name === 'SPL VIMS Political Violence (Choropleth)') {
+      map.removeControl(currentLegend);
+      currentLegend = vimsrisklegend;
+      vimsrisklegend.addTo(map);
+    }
+});*/
+//tableLegend.addTo(map);
+//vimsrisklegend.addTo(map);
 </script>
 {{super()}}
 {% endblock %}

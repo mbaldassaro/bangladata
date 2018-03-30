@@ -5,7 +5,8 @@ var ifescoveragegeojson = L.geoJSON(ifesgap, {
 
 function style(feature) {
   return {
-    fillColor: 'orange',
+    //fillColor: 'orange',
+    fillColor: '#737373',
     weight: 2,
     opacity: 1,
     color: '#ffffff',

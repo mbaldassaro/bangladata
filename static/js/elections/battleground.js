@@ -15,10 +15,10 @@ function battlegroundstyle(feature) {
 
 function getColorbattleground(d) {
     return d > 300 ? '#4a1486' :
-           d > 200 ? '#99000d' :
+           d > 200 ? '#084594' :
            d > 100 ? '#005a32' :
            d > 30 ? '#807dba' :
-           d > 20 ? '#fc9272' :
+           d > 20 ? '#6baed6' :
            d > 10 ? '#a1d99b' :
            d > 0 ? '#fed976' :
            //d > 3 ? '#c6dbef' :
@@ -111,7 +111,7 @@ function zoomToFeature(e) {
             this._div = L.DomUtil.create('div', 'info legend');
             //grades = [1, 2, 3, 4, 11, 21, 31, 101, 201, 301],
             grades = [1, 11, 21, 31, 101, 201, 301],
-            labels = ['<h4>Battleground Constituencies</h4>' +
+            labels = ['<h6><strong>Battleground Constituencies</strong></h6>' +
             //'<h6><strong>Tossup ' + '<i class="vertical" style="background:' + getColorbattleground(grades[0]) + '"></i></strong></h6>' +
             //'<h6><strong>Possible BNP Flip' + '<i class="vertical" style="background:' + getColorbattleground(grades[1]) + '"></i></strong></h6>' +
             //'<h6><strong>Possible JP Flip' + '<i class="vertical" style="background:' + getColorbattleground(grades[2]) + '"></i></strong></h6>' +

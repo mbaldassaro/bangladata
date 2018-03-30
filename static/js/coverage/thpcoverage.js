@@ -5,7 +5,8 @@ var thpcoveragegeojson = L.geoJSON(thp, {
 
 function style(feature) {
   return {
-    fillColor: 'blue',
+    //fillColor: 'blue',
+    fillColor: '#969696',
     weight: 2,
     opacity: 1,
     color: '#ffffff',

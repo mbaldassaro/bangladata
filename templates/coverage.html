@@ -38,8 +38,16 @@
                     <li>Low: one incident of political violence</li>
                   </ul>
                 </h6>
-                <h5>Violent Swings</h5>
-                  <h6>Violent swings blah blah blah</h6>
+                <h5>Political Violence & Swing</h5>
+                  <h6>The Political Violence & Swing map highlights swing constitencies with political violence data per four categories:
+                    <ul>
+                      <li>Swing + High: A swing constituency that has witnessed few to several incidents of political violence</li>
+                      <li>Swing + Medium: A swing constituency that has witnessed multiple incidents of political violence</li>
+                      <li>Swing + Low: A swing constituency that has wintessed one incident of political violence</li>
+                      <li>Swing: A swing constituency that has wintessed zero incidents of political violence</li>
+                    </ul>
+                    This map is complementary to the Political Violence & No Swing map which represents constituencies that are not considered swing constituencies but have experienced varying levels of political violence.
+                  </h6>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
         </div><!-- /.modal-content -->
@@ -69,12 +77,18 @@
 <script src="{{ url_for('static', filename='data/coverage/ifesgap.json')}}"></script>
 <script src="{{ url_for('static', filename='data/coverage/thpcoverage.json')}}"></script>
 <script src="{{ url_for('static', filename='data/coverage/vimsoctfeb.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/violentswings.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/vimsnoswing.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/radicaldiv.json')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/coverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/coverageDI.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/thpcoverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/ifescoverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/vimsrisk.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/violentswings.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/vimsnoswing.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/radicaldiv.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimsintraparty.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimsinterparty.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimselections.js')}}"></script>
@@ -89,6 +103,9 @@ var coveragegeojson;
 var thpcoveragegeojson;
 var ifescoveragegeojson;
 var vimsriskgeojson;
+var violentswingsgeojson;
+var vimsnoswinggeojson;
+var radicaldivgeojson;
 var markersDI;
 var markersTHP;
 var vimsintraparty;
@@ -106,6 +123,8 @@ var runnerUp2008 = "2008 Runner Up";
 
 var overlayMaps = {
   "Battleground Constituencies": battlegroundgeojson,
+  "SPL VIMS Political Violence &amp; Swing": violentswingsgeojson,
+  "SPL VIMS Political Violence &amp; No Swing": vimsnoswinggeojson,
   "SPL VIMS Political Violence (Choropleth)": vimsriskgeojson,
   "SPL VIMS Intra-Party Violence (Point)": vimsintraparty,
   "SPL VIMS Inter-Party Violence (Point)": vimsinterparty,
@@ -114,7 +133,8 @@ var overlayMaps = {
   "SPL THP Coverage": thpcoveragegeojson,
   "SPL DI Office Locations": markersDI,
   "SPL THP Office Locations": markersTHP,
-  "IFES Gap Coverage": ifescoveragegeojson
+  "IFES Gap Coverage": ifescoveragegeojson,
+  "VE Divisions": radicaldivgeojson
 };
 
 //map.addLayer(coveragegeojson);
@@ -130,7 +150,7 @@ tableInfo.onAdd = function(map) {
     return this._div;
   };
 
-var tableLegend = L.control({ position: 'bottomright' });
+var tableLegend = L.control({ position: 'bottomleft' });
 tableLegend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
     grades = [1, 2, 3, 4],
@@ -145,9 +165,10 @@ tableLegend.onAdd = function(map) {
 
 battlegroundlegend.addTo(map);
 vimsrisklegend.addTo(map);
+violentswingslegend.addTo(map);
 tableLegend.addTo(map);
 battlegroundinfo.addTo(map);
-tableInfo.addTo(map);
+//tableInfo.addTo(map);
 /*map.on('baselayerchange', function(eventLayer) {
     if(eventLayer.name === 'SPL VIMS Political Violence (Choropleth)') {
       map.removeControl(currentLegend);

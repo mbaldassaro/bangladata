@@ -1,4 +1,4 @@
-var ifescoveragegeojson = L.geoJSON(ifesgap, {
+var ifescoveragegeojson = L.geoJSON(ifescoverage, {
   style: style,
   onEachFeature: onFeature
 });

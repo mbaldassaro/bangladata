@@ -52,40 +52,19 @@
 {% endblock %}
 
 {% block scripts %}
-<!--<script src="{{ url_for('static', filename='js/test/tabletopmap.js')}}"></script>-->
-<!--<script src="{{ url_for('static', filename='js/vims/vims1.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims2.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims3.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims4.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims5.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims6.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims7.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims8.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims9.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims10.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims11.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims12.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims13.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims14.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims15.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims16.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims17.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims18.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims19.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims20.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims21.js')}}"></script>
-<script src="{{ url_for('static', filename='js/vims/vims22.js')}}"></script>-->
-<script src="{{ url_for('static', filename='data/violence/didistricts.json')}}"></script>
-<script src="{{ url_for('static', filename='data/violence/ifesgap.json')}}"></script>
+<!--<script src="{{ url_for('static', filename='data/violence/didistricts.json')}}"></script>
+<script src="{{ url_for('static', filename='data/violence/ifesgap.json')}}"></script>-->
+<script src="{{ url_for('static', filename='data/violence/vimsapr2018.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/results2008con.json')}}"></script>
-<script src="{{ url_for('static', filename='data/violence/swingDD2.json')}}"></script>
+<!--<script src="{{ url_for('static', filename='data/violence/swingDD2.json')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimsintraparty.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimsinterparty.js')}}"></script>
-<script src="{{ url_for('static', filename='js/violence/vimselections.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimselections.js')}}"></script>-->
 <script src="{{ url_for('static', filename='js/violence/2008con.js')}}"></script>
-<script src="{{ url_for('static', filename='js/violence/ifesgap.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/vimsapr2018.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/violence/ifesgap.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/didistricts.js')}}"></script>
-<script src="{{ url_for('static', filename='js/violence/swingDD.js')}}"></script>
+<script src="{{ url_for('static', filename='js/violence/swingDD.js')}}"></script>-->
 <!--<script src="{{ url_for('static', filename='js/coverageDI.js')}}"></script>-->
 <script>
 $(document).ready(function() {
@@ -93,102 +72,38 @@ L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo
 map.flyTo([24, 90], 7);
 });
 
-//var markers;
-/*var vims1;
-var vims2;
-var vims3;
-var vims4;
-var vims5;
-var vims6;
-var vims7;
-var vims8;
-var vims9;
-var vims10;
-var vims11;
-var vims12;
-var vims13;
-var vims14;
-var vims15;
-var vims16;
-var vims17;
-var vims18;
-var vims19;
-var vims20;
-var vims21;
-var vims22;*/
-var vimsintraparty;
-var vimsinterparty;
-var vimselections;
+var district = "District";
+var violentIncidents = "Violent Incidents";
+var politicalViolence = "Incidents of Political Violence";
+
+//var vimsintraparty;
+//var vimsinterparty;
+//var vimselections;
+var vimsapr18geojson;
 var congeojson;
-var ifesgapgeojson;
-var didistrictsgeojson;
-var results2008DDgeojson;
+//var ifesgapgeojson;
+//var didistrictsgeojson;
+//var results2008DDgeojson;
 //var markersDI;
 
 var overlayMaps = {
-  /*"Tabletop Test": markers,
-  "Abduction / Hostage": vims1,
-  "Assault": vims2,
-  "Blockade": vims17,
-  "Clash": vims3,
-  "Crossfire / Extrajudicial": vims4,
-  "Demonstration": vims5,
-  "Property Destruction": vims6,
-  "Fight": vims7,
-  "Gunfight": vims8,
-  "Hartal": vims9,
-  "Mob Violence": vims10,
-  "Other": vims11,
-  "Political Arrest": vims12,
-  "Political Protest": vims13,
-  "Raid": vims14,
-  "Sabotage": vims15,
-  "Sexual Assault": vims16,
-  "Unclear": vims18,
-  "Violence (Security Forces)": vims19,
-  "Violence (Ballot Hijack)": vims20,
-  "Violent Demonstration": vims21,
-  "Violent Hartal": vims22*/
-  "Intra-Party Violence": vimsintraparty,
-  "Inter-Party Violence": vimsinterparty,
-  "Electoral Violence": vimselections,
-  "2008 Election Constituencies": congeojson,
-  "DI SPL Coverage": didistrictsgeojson,
+  //"Intra-Party Violence": vimsintraparty,
+  //"Inter-Party Violence": vimsinterparty,
+  //"Electoral Violence": vimselections,
+  "Political Violence Oct 2017-Apr 2018": vimsapr18geojson,
+  "2008 Election Constituencies": congeojson
+  //"DI SPL Coverage": didistrictsgeojson,
   //"DI Office Locations": markersDI,
-  "IFES Gap Coverage": ifesgapgeojson,
-  "Swing-Stronghold": results2008DDgeojson
+  //"IFES Gap Coverage": ifesgapgeojson,
+  //"Swing-Stronghold": results2008DDgeojson
 };
 
-map.addLayer(vimsintraparty);
+map.addLayer(vimsapr18geojson);
 L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
 
-var tableLegend = L.control({ position: 'bottomright' });
+/*var tableLegend = L.control({ position: 'bottomright' });
 tableLegend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
-    /*grades = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22],
-    labels = ['<h4>Incident Type</h4>' +
-    '<h6><strong>Assault ' + '<i class="circle" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
-    '<h6><strong>Clash ' + '<i class="circle" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
-    '<h6><strong>Crossfire/Extrajudicial ' + '<i class="circle" style="background:' + getColor(grades[3]) + '"></i></strong></h6>' +
-    '<h6><strong>Fight ' + '<i class="circle" style="background:' + getColor(grades[6]) + '"></i></strong></h6>' +
-    '<h6><strong>Gunfight ' + '<i class="circle" style="background:' + getColor(grades[7]) + '"></i></strong></h6>' +
-    '<h6><strong>Mob Violence ' + '<i class="circle" style="background:' + getColor(grades[9]) + '"></i></strong></h6>' +
-    '<h6><strong>Sexual Assault ' + '<i class="circle" style="background:' + getColor(grades[15]) + '"></i></strong></h6>' +
-    '<h6><strong>Abduction/Hostage ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
-    '<h6><strong>Property Destruction ' + '<i class="circle" style="background:' + getColor(grades[5]) + '"></i></strong></h6>' +
-    '<h6><strong>Raid ' + '<i class="circle" style="background:' + getColor(grades[13]) + '"></i></strong></h6>' +
-    '<h6><strong>Sabotage ' + '<i class="circle" style="background:' + getColor(grades[14]) + '"></i></strong></h6>' +
-    '<h6><strong>Blockade ' + '<i class="circle" style="background:' + getColor(grades[16]) + '"></i></strong></h6>' +
-    '<h6><strong>Demonstration ' + '<i class="circle" style="background:' + getColor(grades[4]) + '"></i></strong></h6>' +
-    '<h6><strong>Hartal ' + '<i class="circle" style="background:' + getColor(grades[8]) + '"></i></strong></h6>' +
-    '<h6><strong>Political Arrest ' + '<i class="circle" style="background:' + getColor(grades[11]) + '"></i></strong></h6>' +
-    '<h6><strong>Political Protest ' + '<i class="circle" style="background:' + getColor(grades[12]) + '"></i></strong></h6>' +
-    '<h6><strong>Violence (Security Forces) ' + '<i class="circle" style="background:' + getColor(grades[18]) + '"></i></strong></h6>' +
-    '<h6><strong>Violence (Ballot Hijack) ' + '<i class="circle" style="background:' + getColor(grades[19]) + '"></i></strong></h6>' +
-    '<h6><strong>Violent Demonstration ' + '<i class="circle" style="background:' + getColor(grades[20]) + '"></i></strong></h6>' +
-    '<h6><strong>Violent Hartal ' + '<i class="circle" style="background:' + getColor(grades[21]) + '"></i></strong></h6>' +
-    '<h6><strong>Other ' + '<i class="circle" style="background:' + getColor(grades[10]) + '"></i></strong></h6>' +
-    '<h6><strong>Unclear ' + '<i class="circle" style="background:' + getColor(grades[17]) + '"></i></strong></h6>'];*/
     grades = [1, 2, 3, 4, 5],
     labels = ['<h4>Incident Type</h4>' +
     '<h6><strong>Intra-Party Violence ' + '<i class="circle" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
@@ -198,9 +113,11 @@ tableLegend.onAdd = function(map) {
     //'<h6><strong>Gunfight ' + '<i class="circle" style="background:' + getColor(grades[4]) + '"></i></strong></h6>'];
     this._div.innerHTML = labels.join('');
     return this._div;
-  };
+  };*/
 
-tableLegend.addTo(map);
+//tableLegend.addTo(map);
+vimsapr18legend.addTo(map);
+vimsapr18info.addTo(map);
 </script>
 {{super()}}
 {% endblock %}

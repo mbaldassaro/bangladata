@@ -57,28 +57,28 @@
 {% endblock %}
 
 {% block scripts %}
-<script src="{{ url_for('static', filename='data/elections/results2001.json')}}"></script>
-<script src="{{ url_for('static', filename='data/elections/results2008.json')}}"></script>
-<script src="{{ url_for('static', filename='data/elections/results2008con.json')}}"></script>
-<script src="{{ url_for('static', filename='data/elections/swing.json')}}"></script>
+<!--<script src="{{ url_for('static', filename='data/elections/results2001.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/results2008.json')}}"></script>-->
+<script src="{{ url_for('static', filename='data/elections/results2008c.json')}}"></script>
+<!--<script src="{{ url_for('static', filename='data/elections/swing.json')}}"></script>-->
 <script src="{{ url_for('static', filename='data/elections/turnout2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/awami2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/bnp2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/jatiya2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/other2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/cancelled2008.json')}}"></script>
-<script src="{{ url_for('static', filename='data/elections/battleground.json')}}"></script>
+<!--<script src="{{ url_for('static', filename='data/elections/battleground.json')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/results2001.js')}}"></script>
-<script src="{{ url_for('static', filename='js/elections/results2008.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/results2008.js')}}"></script>-->
 <script src="{{ url_for('static', filename='js/elections/results2008con.js')}}"></script>
-<script src="{{ url_for('static', filename='js/elections/swing.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/elections/swing.js')}}"></script>-->
 <script src="{{ url_for('static', filename='js/elections/turnout2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/awami2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/bnp2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/jatiya2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/other2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/cancelled2008.js')}}"></script>
-<script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>
+<!--<script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>-->
 <script>
 $(document).ready(function() {
 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
@@ -132,11 +132,11 @@ var cancelled2008geojson;
 var battlegroundgeojson;
 
 var overlayMaps = {
-  "Battleground Constituencies": battlegroundgeojson,
-  "2001 Elections - Magnitude": results2001geojson,
-  "2008 Elections - Magnitude": results2008geojson,
+  //"Battleground Constituencies": battlegroundgeojson,
+  //"2001 Elections - Magnitude": results2001geojson,
+  //"2008 Elections - Magnitude": results2008geojson,
   "2008 Elections - Constituency": results2008congeojson,
-  "2008 Elections - Swing": swinggeojson,
+  //"2008 Elections - Swing": swinggeojson,
   "2008 Elections - Turnout": turnout2008geojson,
   "2008 Elections - AL": awami2008geojson,
   "2008 Elections - BNP": bnp2008geojson,
@@ -145,15 +145,15 @@ var overlayMaps = {
   "2008 Elections - Cancelled": cancelled2008geojson
 };
 
-map.addLayer(results2001geojson);
+map.addLayer(results2008congeojson);
 L.control.layers(overlayMaps, null, {collapsed: false, position: 'bottomleft'}).addTo(map);
-results2001legend.addTo(map);
-results2001info.addTo(map);
-var currentLegend = results2001legend;
-var currentInfo = results2001info;
+results2008conlegend.addTo(map);
+results2008coninfo.addTo(map);
+var currentLegend = results2008conlegend;
+var currentInfo = results2008coninfo;
 
 map.on('baselayerchange', function(eventLayer) {
-  if(eventLayer.name === '2001 Elections - Magnitude') {
+  /*if(eventLayer.name === '2001 Elections - Magnitude') {
     map.removeControl(currentLegend);
     currentLegend = results2001legend;
     results2001legend.addTo(map);
@@ -168,8 +168,8 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = results2008info;
     results2008info.addTo(map);
-  }
-  else if(eventLayer.name === '2008 Elections - Constituency') {
+  }*/
+  if(eventLayer.name === '2008 Elections - Constituency') {
     map.removeControl(currentLegend);
     currentLegend = results2008conlegend;
     results2008conlegend.addTo(map);
@@ -177,14 +177,14 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = results2008coninfo;
     results2008coninfo.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - Swing') {
+  /*else if(eventLayer.name === '2008 Elections - Swing') {
     map.removeControl(currentLegend);
     currentLegend = swinglegend;
     swinglegend.addTo(map);
     map.removeControl(currentInfo);
     currentInfo = swinginfo;
     swinginfo.addTo(map);
-  }
+  }*/
   else if(eventLayer.name === '2008 Elections - Turnout') {
     map.removeControl(currentLegend);
     currentLegend = turnout2008legend;
@@ -233,14 +233,14 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = cancelled2008info;
     cancelled2008info.addTo(map);
   }
-  else if(eventLayer.name === 'Battleground Constituencies') {
+  /*else if(eventLayer.name === 'Battleground Constituencies') {
     map.removeControl(currentLegend);
     currentLegend = battlegroundlegend;
     battlegroundlegend.addTo(map);
     map.removeControl(currentInfo);
     currentInfo = battlegroundinfo;
     battlegroundinfo.addTo(map);
-  }
+  }*/
 });
 </script>
 {{super()}}

@@ -10,7 +10,7 @@ manager = Manager(app)
 
 @app.route('/')
 def index():
-    return render_template('rohingya.html')
+    return render_template('parlelections.html')
 
 
 @app.route('/rohingya')
@@ -28,6 +28,14 @@ def violence():
 @app.route('/coverage')
 def coverage():
     return render_template('coverage.html')
+
+@app.route('/myanmar')
+def myanmar():
+    return render_template('myanmar.html')
+
+@app.route('/carto')
+def carto():
+    return render_template('carto.html')
 
 if __name__ == '__main__':
     manager.run()

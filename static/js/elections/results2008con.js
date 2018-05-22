@@ -21,24 +21,24 @@ function getResults2008conColor(d) {
           d > 439 ? "#2171b6" :
           d > 419 ? "#4292c6" :
           d > 409 ? "#6baed6" :
-          d > 400 ? "#9ecae1" :
-          d > 359 ? "#ffff00" :
-          d > 339 ? "#ffff4d" :
-          d > 319 ? "#ffff66" :
-          d > 309 ? "#ffffb3" :
-          d > 300 ? "#ffffcc" :
+          d > 359 ? "#4a1486" :
+          d > 339 ? "#6a51a3" :
+          d > 319 ? "#807dba" :
+          d > 309 ? "#bcbddc" :
           d > 259 ? "#67000d" :
           d > 239 ? "#a50f15" :
           d > 219 ? "#cb181d" :
           d > 209 ? "#fb6a4a" :
           //d > 200 ? "#fcbba1" :
-          d > 200 ? "#fee0d2" :
           //d > 200 ? "#fff5f0" :
           d > 159 ? "#005a32" :
           d > 139 ? "#238b45" :
           d > 119 ? "#41ab5d" :
           d > 109 ? "#74c476" :
-          d > 100 ? "#a1d99b" :
+          d > 40 ? "#9ecae1" :
+          d > 30 ? "#f2f0f7" :
+          d > 20 ? "#fee0d2" :
+          d > 10 ? "#a1d99b" :
                       "gray";
   }
 
@@ -47,7 +47,7 @@ function getResults2008conColor(d) {
            d > 139 ? "#238b45" :
            d > 119 ? "#41ab5d" :
            d > 109 ? "#74c476" :
-           d > 100 ? "#a1d99b" :
+           d > 10 ? "#a1d99b" :
                         "gray";
   }
 
@@ -57,16 +57,16 @@ function getResults2008conColor(d) {
            d > 219 ? "#cb181d" :
            d > 209 ? "#fb6a4a" :
            //d > 200 ? "#fcbba1" :
-           d > 200 ? "#fee0d2" :
+           d > 20 ? "#fee0d2" :
            //d > 200 ? "#fff5f0" :
                       "gray";
   }
   function getColorJP(d) {
-    return d > 359 ? "#ffff00" :
-           d > 339 ? "#ffff4d" :
-           d > 319 ? "#ffff66" :
-           d > 309 ? "#ffffb3" :
-           d > 300 ? "#ffffcc" :
+    return d > 359 ? "#4a1486" :
+           d > 339 ? "#6a51a3" :
+           d > 319 ? "#807dba" :
+           d > 309 ? "#bcbddc" :
+           d > 30 ?  "#f2f0f7" :
                         "gray";
   }
 
@@ -75,7 +75,7 @@ function getResults2008conColor(d) {
            d > 439 ? "#2171b6" :
            d > 419 ? "#4292c6" :
            d > 409 ? "#6baed6" :
-           d > 400 ? "#9ecae1" :
+           d > 40 ? "#9ecae1" :
                          "gray";
   }
 
@@ -121,14 +121,13 @@ results2008coninfo.onAdd = function(map) {
 results2008coninfo.update = function(props) {
     this._div.innerHTML = (props ?
         '<h6><strong>Constituency: ' + props.constituency + '</strong></h6>' +
-        '<h6><strong>Winner: ' + props.winner + '</strong></h6>' +
+        '<h6><strong>Winner: ' + props.first + ' ' + '(' + props.winnerPCT2008 + ')' + '</strong></h6>' +
+        '<h6>Runner Up: ' + props.second + ' ' + '(' + props.runnerUpPCT + ')' + '</h6>' +
         '<h6><strong>Margin of Victory: ' + props.marginPercentage + '%</strong></h6>' +
-        '<h6>Mohajote: ' + props.mohajote + ' ' + '(' + props.mohajotePercentage + '%)</h6>' +
-        '<h6>Four Party Alliance: ' + props.fourPartyAlliance + ' ' + '(' + props.fourPartyAlliancePercentage + '%)</h6>' +
-        '<h6>Awami League: ' + props.awamiLeague + ' ' + '(' + props.awamiLeaguePercentage + '%)</h6>' +
-        '<h6>BNP: ' + props.bangladeshNationalParty + ' ' + '(' + props.bangladeshNationalPartyPercentage + '%)</h6>' +
-        '<h6>Jatiya Party: ' + props.jatiyaParty + ' ' + '(' + props.jatiyaPartyPercentage + '%)</h6>'  +
-        '<h6>Others: ' + props.others + ' ' + '(' + props.othersPercentage + '%)</h6>' + '':'')
+        '<h6>AL: ' + props.awami + ' ' + '(' + props.awamiPercentage + '%)</h6>' +
+        '<h6>BNP: ' + props.bnp + ' ' + '(' + props.bnpPercentage + '%)</h6>' +
+        '<h6>Jatiya: ' + props.jp + ' ' + '(' + props.jpPercentage + '%)</h6>'  +
+        '<h6>Others: ' + props.otherVotes + ' ' + '(' + props.otherPercentage + '%)</h6>' + '':'')
     };
 
 results2008conlegend.onAdd = function(map) {
@@ -141,14 +140,14 @@ results2008conlegend.onAdd = function(map) {
 results2008conlegend.update = function(e) {
   title =['<h4>Margin of Victory</h4>' + '<h6><1% - 60%+</h6>'];
   this._div = L.DomUtil.create('div', 'info legend'),
-  gradesA = [100, 109, 119, 139, 159];
-  gradesB = [200, 209, 219, 239, 259];
-  gradesC = [300, 309, 319, 339, 359];
-  gradesD = [400, 409, 419, 439, 459];
+  gradesA = [10, 109, 119, 139, 159];
+  gradesB = [20, 209, 219, 239, 259];
+  gradesC = [30, 309, 319, 339, 359];
+  gradesD = [40, 409, 419, 439, 459];
   labelA = [];
-  labelB = ['<h6>&nbsp Mohajote-AL</h6>'];
-  labelC = ['<h6>&nbsp 4P-BNP</h6>'];
-  labelD = ['<h6>&nbsp Jatiya Party</h6>'];
+  labelB = ['<h6>&nbsp AL</h6>'];
+  labelC = ['<h6>&nbsp BNP</h6>'];
+  labelD = ['<h6>&nbsp Jatiya</h6>'];
   labelE = ['<h6>&nbsp Other</h6>'];
   for(var i = 0; i < gradesA.length; i++) {
     labelA.push(

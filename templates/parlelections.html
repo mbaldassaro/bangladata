@@ -21,9 +21,10 @@
                   <br><br>
                   The Ninth National Parliamentary Elections were held on 29 December 2008.
                   The Awami League-backed Mohajote coalition won 262 of 300 seats. Voter turnout was 80%
-                  <!--<br><br>
-                  The "Magnitude" maps highlight the magnitude of the victory by a coalition or party in each constituency in the 2001 and 2008 elections, respectively.
-                  The larger the circle, the larger the margin of victory of the winning coalition or party over its nearest competitor.-->
+                  <br><br>
+                  The Tenth National Parliamentary Elections were held on 5 January 2014.
+                  The Awami League won 234 of 300 seats. The Bangladesh Nationalist Party Boycotted the Elections.
+                  154 of 300 constituencies were uncontested. Voter turnout in the 146 contested constituencies was 40%.
                   <br><br>
                   The "Winner" maps display the victories by constituency in the parliamentary elections.
                   The darker the color, the larger the margin of victory of the winning candidate over the runner up.
@@ -45,8 +46,9 @@
                 <h4 class="modal-title">About the Data</h4>
             </div>
             <div class="modal-body">
-                <p>The data was compiled from the <a href="http://www.ec.org.bd/MenuExternalFilesEng/124.pdf" target="_blank">Eight Parliament Election Statistical Report (2001)</a>
-                  and the <a href="http://www.ec.org.bd/MenuExternalFilesEng/304.pdf" target="_blank">Ninth Parliament Election Statistical Report (2008)</a>
+                <p>The data was compiled from the <a href="http://www.ec.org.bd/MenuExternalFilesEng/124.pdf" target="_blank">Eight Parliament Election Statistical Report (2001)</a>,
+                  the <a href="http://www.ec.org.bd/MenuExternalFilesEng/304.pdf" target="_blank">Ninth Parliament Election Statistical Report (2008)</a>, 
+                  and the Tenth Parliament Election Results (2014) <a href="http://www.ecs.gov.bd/page/election-results" target="_blank">Part I and Part II</a>.
                   published on the website of the <a href="http://www.ec.org.bd/" target="_blank">Election Commission of Bangladesh</a></p>
                 </div>
             <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
@@ -62,18 +64,23 @@
 <script src="{{ url_for('static', filename='data/elections/results2001c.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/results2008c.json')}}"></script>
 <!--<script src="{{ url_for('static', filename='data/elections/swing.json')}}"></script>-->
+<script src="{{ url_for('static', filename='data/elections/turnout2014.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/turnout2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/turnout2001.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/awami2014.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/awami2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/awami2001.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/bnp2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/bnp2001.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/jib2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/jib2001.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/jatiya2014.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/jatiya2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/jatiya2001.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/other2014.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/other2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/other2001.json')}}"></script>
+<script src="{{ url_for('static', filename='data/elections/cancelled2014.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/cancelled2008.json')}}"></script>
 <script src="{{ url_for('static', filename='data/elections/cancelled2001.json')}}"></script>
 <!--<script src="{{ url_for('static', filename='data/elections/battleground.json')}}"></script>
@@ -82,18 +89,23 @@
 <script src="{{ url_for('static', filename='js/elections/results2001con.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/results2008con.js')}}"></script>
 <!--<script src="{{ url_for('static', filename='js/elections/swing.js')}}"></script>-->
+<script src="{{ url_for('static', filename='js/elections/turnout2014.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/turnout2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/turnout2001.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/awami2014.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/awami2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/awami2001.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/bnp2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/bnp2001.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/jib2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/jib2001.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/jatiya2014.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/jatiya2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/jatiya2001.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/other2014.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/other2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/other2001.js')}}"></script>
+<script src="{{ url_for('static', filename='js/elections/cancelled2014.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/cancelled2008.js')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/cancelled2001.js')}}"></script>
 <!--<script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>-->
@@ -145,18 +157,23 @@ var overlayMaps = {
   "2008 Elections - Winner": results2008congeojson,
   "2001 Elections - Winner": results2001congeojson,
   //"2008 Elections - Swing": swinggeojson,
+  "2014 Elections - Turnout": turnout2014geojson,
   "2008 Elections - Turnout": turnout2008geojson,
   "2001 Elections - Turnout": turnout2001geojson,
+  "2014 Elections - AL": awami2014geojson,
   "2008 Elections - AL": awami2008geojson,
   "2001 Elections - AL": awami2001geojson,
   "2008 Elections - BNP": bnp2008geojson,
   "2001 Elections - BNP": bnp2001geojson,
   "2008 Elections - JIB": jib2008geojson,
   "2001 Elections - JIB": jib2001geojson,
+  "2014 Elections - JP": jatiya2014geojson,
   "2008 Elections - JP": jatiya2008geojson,
   "2001 Elections - JP": jatiya2001geojson,
+  "2014 Elections - Other": other2014geojson,
   "2008 Elections - Other": other2008geojson,
   "2001 Elections - Other": other2001geojson,
+  "2014 Elections - Cancelled": cancelled2014geojson,
   "2008 Elections - Cancelled": cancelled2008geojson,
   "2001 Elections - Cancelled": cancelled2001geojson
 };
@@ -209,6 +226,14 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = swinginfo;
     swinginfo.addTo(map);
   }*/
+  else if(eventLayer.name === '2014 Elections - Turnout') {
+    map.removeControl(currentLegend);
+    currentLegend = turnout2014legend;
+    turnout2014legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = turnout2014info;
+    turnout2014info.addTo(map);
+  }
   else if(eventLayer.name === '2008 Elections - Turnout') {
     map.removeControl(currentLegend);
     currentLegend = turnout2008legend;
@@ -224,6 +249,14 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = turnout2001info;
     turnout2001info.addTo(map);
+  }
+  else if(eventLayer.name === '2014 Elections - AL') {
+    map.removeControl(currentLegend);
+    currentLegend = awami2014legend;
+    awami2014legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = awami2014info;
+    awami2014info.addTo(map);
   }
   else if(eventLayer.name === '2008 Elections - AL') {
     map.removeControl(currentLegend);
@@ -273,6 +306,14 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jib2001info;
     jib2001info.addTo(map);
   }
+  else if(eventLayer.name === '2014 Elections - JP') {
+    map.removeControl(currentLegend);
+    currentLegend = jatiya2014legend;
+    jatiya2014legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = jatiya2014info;
+    jatiya2014info.addTo(map);
+  }
   else if(eventLayer.name === '2008 Elections - JP') {
     map.removeControl(currentLegend);
     currentLegend = jatiya2008legend;
@@ -289,6 +330,14 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jatiya2001info;
     jatiya2001info.addTo(map);
   }
+  else if(eventLayer.name === '2014 Elections - Other') {
+    map.removeControl(currentLegend);
+    currentLegend = other2014legend;
+    other2014legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = other2014info;
+    other2014info.addTo(map);
+  }
   else if(eventLayer.name === '2008 Elections - Other') {
     map.removeControl(currentLegend);
     currentLegend = other2008legend;
@@ -304,6 +353,14 @@ map.on('baselayerchange', function(eventLayer) {
     map.removeControl(currentInfo);
     currentInfo = other2001info;
     other2001info.addTo(map);
+  }
+  else if(eventLayer.name === '2014 Elections - Cancelled') {
+    map.removeControl(currentLegend);
+    currentLegend = cancelled2014legend;
+    cancelled2014legend.addTo(map);
+    map.removeControl(currentInfo);
+    currentInfo = cancelled2014info;
+    cancelled2014info.addTo(map);
   }
   else if(eventLayer.name === '2008 Elections - Cancelled') {
     map.removeControl(currentLegend);

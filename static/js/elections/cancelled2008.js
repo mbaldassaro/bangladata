@@ -17,7 +17,7 @@ function getColorcancelled2008(d) {
     return d > 1 ? '#969696' :
           //d > 1 ? '#bdbdbd' :
            d > 0 ? '#d9d9d9' :
-                  '#ffffd4';
+                  '#ffffff';
       }
 
 function highlightFeature(e) {
@@ -55,7 +55,7 @@ cancelled2008info.onAdd = function(map) {
 
 cancelled2008info.update = function(props) {
     this._div.innerHTML = (props ? '<h5>' + props.CST_N + '</h5>'
-      + '<h5>' + voterTot + ': ' + props.totalVotes + '</h5>'
+      + '<h5>' + voterTot + ': ' + props.turnout + '</h5>'
       + '<h5>' + cancelled + ': ' + props.cancelledBallots + '</h5>'
       + '<h5>' + cancelledPercentage + ': ' + props.percentage + '%</h5>'
       + '' : '')

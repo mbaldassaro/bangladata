@@ -14,15 +14,18 @@ function awami2008style(feature) {
 }
 
 function getColorAwami2008(d) {
-    return d > 70 ? '#005a32' :
-           d > 60 ? '#238b45' :
-           d > 50 ? '#41ab5d' :
-           d > 40 ? '#74c476' :
-           d > 30 ? '#a1d99b' :
-           d > 20 ? '#c7e9c0' :
-           d > 0 ?  '#edf8e9' :
-                    'lightgray' ;
-      }
+  return d > 90 ? '#00441b' :
+         d > 80 ? '#006d2c' :
+         d > 70 ? '#238b45' :
+         d > 60 ? '#41ae76' :
+         d > 50 ? '#66c2a4' :
+         d > 40 ? '#99d8c9' :
+         d > 30 ? '#ccece6' :
+         d > 20 ? '#e5f5f9' :
+         d > 10 ? '#f7fcfd' :
+         d > 0 ?  '#fdfffc' :
+                  'lightgray' ;
+    }
 
 function highlightFeature(e) {
     var layer = e.target;
@@ -75,7 +78,7 @@ function zoomToFeature(e) {
 
   awami2008legend.onAdd = function(map) {
           this._div = L.DomUtil.create('div', 'info legend'),
-          grades = [0, 20, 30, 40, 50, 60, 70],
+          grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
           labels = ['<h5>AL ' + pctVote + '</h5>'];
           this.update();
           return this._div;

@@ -1,10 +1,10 @@
-var turnout2001legend = L.control({position: 'bottomright'});
-var turnout2001info = L.control({position: 'bottomright'});
+var turnout2014legend = L.control({position: 'bottomright'});
+var turnout2014info = L.control({position: 'bottomright'});
 
 //Bas VT 2013 /////////////////////////////////////
-function turnout2001style(feature) {
+function turnout2014style(feature) {
   return {
-    fillColor: getColorTurnout2001(feature.properties.percentage),
+    fillColor: getColorTurnout2014(feature.properties.percentage),
     weight: 0.5,
     opacity: 1,
     color: '#FFFFFF',
@@ -13,14 +13,17 @@ function turnout2001style(feature) {
   }
 }
 
-function getColorTurnout2001(d) {
+function getColorTurnout2014(d) {
   return d > 90 ? '#800026' :
          d > 80 ? '#bd0026' :
          d > 70 ? '#cc4c02' :
          d > 60 ? '#ec7014' :
          d > 50 ? '#fe9929' :
          d > 40 ? '#fec44f' :
-         //d > 0 ? '#ffffe5' :
+         d > 30 ? '#fee391' :
+         d > 20 ? '#fff7bc' :
+         d > 10 ? '#ffffcc' :
+         d > 0 ?  '#ffffe5' :
                  "lightgray";
       }
 
@@ -35,15 +38,15 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
          layer.bringToFront();
      }
-     turnout2001info.update(layer.feature.properties);
+     turnout2014info.update(layer.feature.properties);
   }
 
 function resetHighlight(e) {
-      turnout2001geojson.resetStyle(e.target);
-      turnout2001info.update();
+      turnout2014geojson.resetStyle(e.target);
+      turnout2014info.update();
   }
 
-function turnout2001EachFeature(feature, layer) {
+function turnout2014EachFeature(feature, layer) {
       layer.on({
           mouseover: highlightFeature,
           mouseout: resetHighlight,
@@ -51,13 +54,13 @@ function turnout2001EachFeature(feature, layer) {
       });
     }
 
-turnout2001info.onAdd = function(map) {
+turnout2014info.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info');
     this.update();
     return this._div;
   };
 
-turnout2001info.update = function(props) {
+turnout2014info.update = function(props) {
     this._div.innerHTML = (props ? '<h5>' + props.constituency + '</h5>'
       + '<h5>' + voterReg + ': ' + props.regVoters + '</h5>'
       + '<h5>' + voterTot + ': ' + props.turnout + '</h5>'
@@ -72,18 +75,18 @@ function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
   }
 
-  turnout2001legend.onAdd = function(map) {
+  turnout2014legend.onAdd = function(map) {
               this._div = L.DomUtil.create('div', 'info legend'),
-              grades = [40, 50, 60, 70, 80, 90],
+              grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
               labels = ['<h5>' + turnout + '</h5>'];
               this.update();
               return this._div;
       };
 
-        turnout2001legend.update = function(e) {
+        turnout2014legend.update = function(e) {
           for (var i = 0; i < grades.length; i++) {
             labels.push(
-              '<i style="background: ' + getColorTurnout2001(grades[i] + 1) + '"></i> '
+              '<i style="background: ' + getColorTurnout2014(grades[i] + 1) + '"></i> '
               + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1]
               + '%<br>' : '%+'));
             }
@@ -92,9 +95,9 @@ function zoomToFeature(e) {
         };
 
   //VTBas
-  var turnout2001geojson = L.geoJson(turnout2001, {
-      style: turnout2001style,
-      onEachFeature: turnout2001EachFeature
+  var turnout2014geojson = L.geoJson(turnout2014, {
+      style: turnout2014style,
+      onEachFeature: turnout2014EachFeature
   });
 
 //END Bas VT 2013

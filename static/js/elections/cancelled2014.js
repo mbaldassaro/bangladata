@@ -1,10 +1,10 @@
-var turnout2001legend = L.control({position: 'bottomright'});
-var turnout2001info = L.control({position: 'bottomright'});
+var cancelled2014legend = L.control({position: 'bottomright'});
+var cancelled2014info = L.control({position: 'bottomright'});
 
 //Bas VT 2013 /////////////////////////////////////
-function turnout2001style(feature) {
+function cancelled2014style(feature) {
   return {
-    fillColor: getColorTurnout2001(feature.properties.percentage),
+    fillColor: getColorcancelled2014(feature.properties.percentage),
     weight: 0.5,
     opacity: 1,
     color: '#FFFFFF',
@@ -13,15 +13,13 @@ function turnout2001style(feature) {
   }
 }
 
-function getColorTurnout2001(d) {
-  return d > 90 ? '#800026' :
-         d > 80 ? '#bd0026' :
-         d > 70 ? '#cc4c02' :
-         d > 60 ? '#ec7014' :
-         d > 50 ? '#fe9929' :
-         d > 40 ? '#fec44f' :
-         //d > 0 ? '#ffffe5' :
-                 "lightgray";
+function getColorcancelled2014(d) {
+    return d > 3 ? '#525252' :
+            d > 2 ? '#737373' :
+            d > 1 ? '#969696' :
+          //d > 1 ? '#bdbdbd' :
+           d > 0 ? '#d9d9d9' :
+                  '#ffffff';
       }
 
 function highlightFeature(e) {
@@ -35,15 +33,15 @@ function highlightFeature(e) {
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
          layer.bringToFront();
      }
-     turnout2001info.update(layer.feature.properties);
+     cancelled2014info.update(layer.feature.properties);
   }
 
 function resetHighlight(e) {
-      turnout2001geojson.resetStyle(e.target);
-      turnout2001info.update();
+      cancelled2014geojson.resetStyle(e.target);
+      cancelled2014info.update();
   }
 
-function turnout2001EachFeature(feature, layer) {
+function cancelled2014EachFeature(feature, layer) {
       layer.on({
           mouseover: highlightFeature,
           mouseout: resetHighlight,
@@ -51,17 +49,17 @@ function turnout2001EachFeature(feature, layer) {
       });
     }
 
-turnout2001info.onAdd = function(map) {
+cancelled2014info.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info');
     this.update();
     return this._div;
   };
 
-turnout2001info.update = function(props) {
+cancelled2014info.update = function(props) {
     this._div.innerHTML = (props ? '<h5>' + props.constituency + '</h5>'
-      + '<h5>' + voterReg + ': ' + props.regVoters + '</h5>'
-      + '<h5>' + voterTot + ': ' + props.turnout + '</h5>'
-      + '<h5>' + turnout + ': ' + props.percentage + '%</h5>'
+      + '<h5>' + voterTot + ': ' + props.totalVotes + '</h5>'
+      + '<h5>' + cancelled + ': ' + props.cancelledBallots + '</h5>'
+      + '<h5>' + cancelledPercentage + ': ' + props.percentage + '%</h5>'
       + '' : '')
   };
 
@@ -72,18 +70,18 @@ function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
   }
 
-  turnout2001legend.onAdd = function(map) {
+  cancelled2014legend.onAdd = function(map) {
               this._div = L.DomUtil.create('div', 'info legend'),
-              grades = [40, 50, 60, 70, 80, 90],
-              labels = ['<h5>' + turnout + '</h5>'];
+              grades = [0, 1, 2, 3],
+              labels = ['<h5>' + cancelled + '</h5>'];
               this.update();
               return this._div;
       };
 
-        turnout2001legend.update = function(e) {
+        cancelled2014legend.update = function(e) {
           for (var i = 0; i < grades.length; i++) {
             labels.push(
-              '<i style="background: ' + getColorTurnout2001(grades[i] + 1) + '"></i> '
+              '<i style="background: ' + getColorcancelled2014(grades[i] + 1) + '"></i> '
               + grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1]
               + '%<br>' : '%+'));
             }
@@ -92,9 +90,9 @@ function zoomToFeature(e) {
         };
 
   //VTBas
-  var turnout2001geojson = L.geoJson(turnout2001, {
-      style: turnout2001style,
-      onEachFeature: turnout2001EachFeature
+  var cancelled2014geojson = L.geoJson(cancelled2014, {
+      style: cancelled2014style,
+      onEachFeature: cancelled2014EachFeature
   });
 
 //END Bas VT 2013

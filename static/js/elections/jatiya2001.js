@@ -14,13 +14,16 @@ function jatiya2001style(feature) {
 }
 
 function getColorjatiya2001(d) {
-    return d > 70 ? '#4a1486' :
-           d > 60 ? '#6a51a3' :
-           d > 50 ? '#807dba' :
-           d > 40 ? '#9e9ac8' :
-           d > 30 ? '#bcbddc' :
-           d > 20 ? '#dadaeb' :
-           d > 0 ?  '#f2f0f7' :
+    return d > 90 ? '#3f007d' :
+           d > 80 ? '#54278f' :
+           d > 70 ? '#6a51a3' :
+           d > 60 ? '#807dba' :
+           d > 50 ? '#9e9ac8' :
+           d > 40 ? '#bcbddc' :
+           d > 30 ? '#dadaeb' :
+           d > 20 ? '#efedf5' :
+           d > 10 ? '#fbf9ff' :
+           d > 0 ?  '#fcfbfd' :
                     'lightgray' ;
       }
 
@@ -75,7 +78,7 @@ function zoomToFeature(e) {
 
   jatiya2001legend.onAdd = function(map) {
           this._div = L.DomUtil.create('div', 'info legend'),
-          grades = [0, 20, 30, 40, 50, 60, 70],
+          grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
           labels = ['<h5>JP ' + pctVote + '</h5>'];
           this.update();
           return this._div;

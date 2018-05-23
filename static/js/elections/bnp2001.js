@@ -14,13 +14,16 @@ function bnp2001style(feature) {
 }
 
 function getColorbnp2001(d) {
-    return d > 70 ? '#99000d' :
-           d > 60 ? '#cb181d' :
-           d > 50 ? '#ef3b2c' :
-           d > 40 ? '#fb6a4a' :
-           d > 30 ? '#fc9272' :
-           d > 20 ? '#fcbba1' :
-           d > 0 ?  '#fee5d9' :
+    return d > 90 ? '#67000d' :
+           d > 80 ? '#a50f15' :
+           d > 70 ? '#cb181d' :
+           d > 60 ? '#ef3b2c' :
+           d > 50 ? '#fb6a4a' :
+           d > 40 ? '#fc9272' :
+           d > 30 ? '#fcbba1' :
+           d > 20 ? '#fee0d2' :
+           d > 10 ? '#fff5f0' :
+           d > 0 ?  '#fffbf9' :
                     'lightgray' ;
       }
 
@@ -75,7 +78,7 @@ function zoomToFeature(e) {
 
   bnp2001legend.onAdd = function(map) {
           this._div = L.DomUtil.create('div', 'info legend'),
-          grades = [0, 20, 30, 40, 50, 60, 70],
+          grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
           labels = ['<h5>BNP ' + pctVote + '</h5>'];
           this.update();
           return this._div;

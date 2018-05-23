@@ -14,13 +14,10 @@ function turnout2008style(feature) {
 }
 
 function getColorTurnout2008(d) {
-  return d > 95 ? '#8c2d04' :
-         d > 90 ? '#cc4c02' :
-         d > 85 ? '#ec7014' :
-         d > 80 ? '#fe9929' :
-         d > 75 ? '#fec44f' :
-         d > 70 ? '#fee391' :
-                  '#ffffd4';
+  return d > 90 ? '#800026' :
+         d > 80 ? '#bd0026' :
+         d > 70 ? '#cc4c02' :
+                  'lightgray';
       }
 
 function highlightFeature(e) {
@@ -73,7 +70,7 @@ function zoomToFeature(e) {
 
   turnout2008legend.onAdd = function(map) {
               this._div = L.DomUtil.create('div', 'info legend'),
-              grades = [70, 75, 80, 85, 90, 95],
+              grades = [70, 80, 90],
               labels = ['<h5>' + turnout + '</h5>'];
               this.update();
               return this._div;

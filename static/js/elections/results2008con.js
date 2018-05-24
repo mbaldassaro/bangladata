@@ -36,7 +36,7 @@ function getResults2008conColor(d) {
           d > 119 ? "#41ab5d" :
           d > 109 ? "#74c476" :
           d > 40 ? "#9ecae1" :
-          d > 30 ? "#f2f0f7" :
+          d > 30 ? "#dadaeb" :
           d > 20 ? "#fee0d2" :
           d > 10 ? "#a1d99b" :
                       "gray";
@@ -66,7 +66,7 @@ function getResults2008conColor(d) {
            d > 339 ? "#6a51a3" :
            d > 319 ? "#807dba" :
            d > 309 ? "#bcbddc" :
-           d > 30 ?  "#f2f0f7" :
+           d > 30 ?  "#dadaeb" :
                         "gray";
   }
 
@@ -121,8 +121,8 @@ results2008coninfo.onAdd = function(map) {
 results2008coninfo.update = function(props) {
     this._div.innerHTML = (props ?
         '<h6><strong>Constituency: ' + props.constituency + '</strong></h6>' +
-        '<h6><strong>Winner: ' + props.first + ' ' + '(' + props.winnerPCT2008 + ')' + '</strong></h6>' +
-        '<h6>Runner Up: ' + props.second + ' ' + '(' + props.runnerUpPCT + ')' + '</h6>' +
+        '<h6><strong>Winner: ' + props.first + ' ' + '(' + props.winnerPCT2008 + '%)' + '</strong></h6>' +
+        '<h6>Runner Up: ' + props.second + ' ' + '(' + props.runnerUpPCT + '%)' + '</h6>' +
         '<h6><strong>Margin of Victory: ' + props.marginPercentage + '%</strong></h6>' +
         '<h6>AL: ' + props.awami + ' ' + '(' + props.awamiPercentage + '%)</h6>' +
         '<h6>BNP: ' + props.bnp + ' ' + '(' + props.bnpPercentage + '%)</h6>' +

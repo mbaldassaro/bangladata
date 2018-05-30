@@ -1,5 +1,5 @@
 var battlegroundlegend = L.control({position: 'bottomright'});
-var battlegroundinfo = L.control({position: 'bottomright'});
+var battlegroundinfo = L.control({position: 'bottomleft'});
 
 //////////////////////////////////////////////
 function battlegroundstyle(feature) {

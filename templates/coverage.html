@@ -139,16 +139,7 @@ var overlayMaps = {
 
 //map.addLayer(coveragegeojson);
 map.addLayer(battlegroundgeojson);
-L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
-
-var tableInfo = L.control({ position: 'bottomleft' });
-tableInfo.onAdd = function(map) {
-    this._div = L.DomUtil.create('div', 'info');
-    this._div.innerHTML = "<h6>hello i'm an information thingbob.</h6>" +
-                          "<h6>I provide helpful information to you.</h6>" +
-                          "<h6>I can go on and on for miles and miles</h6>";
-    return this._div;
-  };
+L.control.layers(null, overlayMaps, {collapsed: true, position: 'bottomleft'}).addTo(map);
 
 var tableLegend = L.control({ position: 'bottomleft' });
 tableLegend.onAdd = function(map) {
@@ -162,6 +153,22 @@ tableLegend.onAdd = function(map) {
     this._div.innerHTML = labels.join('');
     return this._div;
   };
+
+  /*var currentLegend = battlegroundlegend;
+  var currentInfo = battlegroundinfo;
+  map.on('overlayadd', function(eventLayer) {
+    if(eventLayer.name === 'Battleground Constituencies') {
+      battlegroundlegend.addTo(map);
+    }
+    if (eventLayer.name !== 'Battleground Constituencies') {
+      map.removeControl(battlegroundlegend)}
+    if(eventLayer.name === 'SPL DI Coverage') {
+      tableLegend.addTo(map);
+    } else {map.removeControl(tableLegend)}
+      //map.removeControl(currentInfo);
+      //currentInfo = results2008coninfo;
+      //results2008coninfo.addTo(map);
+});*/
 
 battlegroundlegend.addTo(map);
 vimsrisklegend.addTo(map);

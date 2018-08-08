@@ -46,25 +46,25 @@ results2001info.onAdd = function(map) {
 
 results2001info.update = function(props) {
     this._div.innerHTML = (props ?
-        '<h6>Constituency: ' + props.constituency + '</h6>' +
-        '<h6><strong>Winner: ' + props.winner + '</strong></h6>' +
-        '<b>Margin of Victory: ' + props.marginPercentage + '%</b>' +
-        '<h6>Registered Voters: ' + props.registeredVoters + '</h6>' +
-        '<h6>Valid Votes: ' + props.validVotes + '</h6>' +
-        '<h6>Awami League: ' + props.awamiLeague + ' ' + '(' + props.awamiLeaguePercentage + '%)</h6>' +
-        '<h6>Four Party Alliance: ' + props.fourPartyAlliance + ' ' + '(' + props.fourPartyAlliancePercentage + '%)</h6>' +
-        '<h6>Jatiya Party: ' + props.jatiyaParty + ' ' + '(' + props.jatiyaPartyPercentage + '%)</h6>'  +
-        '<h6>Others: ' + props.others + ' ' + '(' + props.othersPercentage + '%)</h6>' + '':'')
+        '<h6>' + constituency + ': ' + props.constituency + '</h6>' +
+        '<h6><strong>' + winner + ': ' + props.winner + '</strong></h6>' +
+        '<b>' + margvict + ': ' + props.marginPercentage + '%</b>' +
+        '<h6>' + voterReg + ': ' + props.registeredVoters + '</h6>' +
+        '<h6>' + validVotes + ': ' + props.validVotes + '</h6>' +
+        '<h6>' + al ': ' + props.awamiLeague + ' ' + '(' + props.awamiLeaguePercentage + '%)</h6>' +
+        '<h6>' + fourp + ': ' + props.fourPartyAlliance + ' ' + '(' + props.fourPartyAlliancePercentage + '%)</h6>' +
+        '<h6>' + jp + ': ' + props.jatiyaParty + ' ' + '(' + props.jatiyaPartyPercentage + '%)</h6>'  +
+        '<h6>' + other + ': ' + props.others + ' ' + '(' + props.othersPercentage + '%)</h6>' + '':'')
       };
 
 results2001legend.onAdd = function(map) {
     this._div = L.DomUtil.create('div', 'info legend'),
     grades = [1, 2, 3, 4],
-    labels = ['<h4>Party-Coalition</h4>' +
-    '<h6><strong>Awami League ' + '<i class="vertical" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
-    '<h6><strong>Four Party Alliance ' + '<i class="vertical" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
-    '<h6><strong>Jatiya Party ' + '<i class="vertical" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
-    '<h6><strong>Others ' + '<i class="vertical" style="background:' + getColor(grades[3]) + '"></i></strong></h6>'];
+    labels = ['<h4>' + pc + '</h4>' +
+    '<h6><strong>' + al + '<i class="vertical" style="background:' + getColor(grades[0]) + '"></i></strong></h6>' +
+    '<h6><strong>' + bnp + '<i class="vertical" style="background:' + getColor(grades[1]) + '"></i></strong></h6>' +
+    '<h6><strong>' + jp + '<i class="vertical" style="background:' + getColor(grades[2]) + '"></i></strong></h6>' +
+    '<h6><strong>' + other + '<i class="vertical" style="background:' + getColor(grades[3]) + '"></i></strong></h6>'];
     this._div.innerHTML = labels.join('');
     return this._div;
   };

@@ -74,7 +74,7 @@ function zoomToFeature(e) {
   other2001legend.onAdd = function(map) {
           this._div = L.DomUtil.create('div', 'info legend'),
           grades = [0, 20, 30, 40, 50],
-          labels = ['<h5>Other ' + pctVote + '</h5>'];
+          labels = ['<h5>' + other + ' ' + pctVote + '</h5>'];
           this.update();
           return this._div;
   };

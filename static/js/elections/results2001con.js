@@ -144,15 +144,15 @@ results2001coninfo.onAdd = function(map) {
 
 results2001coninfo.update = function(props) {
     this._div.innerHTML = (props ?
-        '<h6><strong>Constituency: ' + props.constituency + '</strong></h6>' +
-        '<h6><strong>Winner: ' + props.first + ' ' + '(' + props.winnerPercentage + '%)' + '</strong></h6>' +
-        '<h6>Runner Up: ' + props.second + ' ' + '(' + props.runnerUpPercentage + '%)' + '</h6>' +
-        '<h6><strong>Margin of Victory: ' + props.marginPercentage + '%</strong></h6>' +
-        '<h6>AL: ' + props.awami + ' ' + '(' + props.awamiPercentage + '%)</h6>' +
-        '<h6>BNP: ' + props.bnp + ' ' + '(' + props.bnpPercentage + '%)</h6>' +
-        '<h6>Jatiya: ' + props.jp + ' ' + '(' + props.jpPercentage + '%)</h6>'  +
-        '<h6>JIB: ' + props.jib + ' ' + '(' + props.jibPercentage + '%)</h6>'  +
-        '<h6>Others: ' + props.otherVotes + ' ' + '(' + props.otherPercentage + '%)</h6>' + '':'')
+        '<h6>' + constituency + ': ' + props.constituency + '</strong></h6>' +
+        '<h6><strong>' + winner + ': ' + props.first + ' ' + '(' + props.winnerPercentage + '%)' + '</strong></h6>' +
+        '<h6>' + runnerUp + ': ' + props.second + ' ' + '(' + props.runnerUpPercentage + '%)' + '</h6>' +
+        '<h6><strong>' + margvict + ': ' + props.marginPercentage + '%</strong></h6>' +
+        '<h6>' + al + ': ' + props.awami + ' ' + '(' + props.awamiPercentage + '%)</h6>' +
+        '<h6>' + bnp + ': ' + props.bnp + ' ' + '(' + props.bnpPercentage + '%)</h6>' +
+        '<h6>' + jp + ': ' + props.jp + ' ' + '(' + props.jpPercentage + '%)</h6>'  +
+        '<h6>' + jib + ': ' + props.jib + ' ' + '(' + props.jibPercentage + '%)</h6>'  +
+        '<h6>' + other + ': ' + props.otherVotes + ' ' + '(' + props.otherPercentage + '%)</h6>' + '':'')
     };
 
 results2001conlegend.onAdd = function(map) {
@@ -163,7 +163,7 @@ results2001conlegend.onAdd = function(map) {
 
 
 results2001conlegend.update = function(e) {
-  title =['<h4>Margin of Victory</h4>' + '<h6><1% - 60%+</h6>'];
+  title =['<h4>' + margvict + '</h4>' + '<h6><1% - 60%+</h6>'];
   this._div = L.DomUtil.create('div', 'info legend'),
   gradesF = [10, 109, 119, 139, 159];
   gradesG = [20, 209, 219, 239, 259];
@@ -171,11 +171,11 @@ results2001conlegend.update = function(e) {
   gradesI = [40, 409, 419, 439, 459];
   gradesJ = [50, 509, 519, 539, 559];
   labelF = [];
-  labelG = ['<h6>&nbsp AL</h6>'];
-  labelH = ['<h6>&nbsp BNP</h6>'];
-  labelI = ['<h6>&nbsp Jatiya</h6>'];
-  labelJ = ['<h6>&nbsp JIB</h6>'];
-  labelK = ['<h6>&nbsp Other</h6>'];
+  labelG = ['<h6>&nbsp' + al + '</h6>'];
+  labelH = ['<h6>&nbsp' + bnp + '</h6>'];
+  labelI = ['<h6>&nbsp' + jp + '</h6>'];
+  labelJ = ['<h6>&nbsp' + jib + '</h6>'];
+  labelK = ['<h6>&nbsp' + other + '</h6>'];
   for(var i = 0; i < gradesF.length; i++) {
     labelF.push(
     '<i class="horizontal" style="background:' + getColorAwami1(gradesF[i] + 1) + '"></i>');

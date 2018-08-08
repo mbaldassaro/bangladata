@@ -79,7 +79,7 @@ function zoomToFeature(e) {
   jatiya2008legend.onAdd = function(map) {
           this._div = L.DomUtil.create('div', 'info legend'),
           grades = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
-          labels = ['<h5>JP ' + pctVote + '</h5>'];
+          labels = ['<h5>' + jp + ' '  + pctVote + '</h5>'];
           this.update();
           return this._div;
   };

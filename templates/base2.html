@@ -2,17 +2,12 @@
 {% block title %}Bangladata{% endblock %}
 {% block head %}
     {{super()}}
-    <head prefix="og:http://ogp.me/ns# fb:http://ogp.me/ns/fb# website:http://ogp.me/ns/wesbite">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="An initiative of Democracy International to collect, open, visualize and analyze Bangladesh election data on an ongoing basis">
-    <meta property='og:url' content="http://www.bangladata.com">
-    <meta property='og:title' content="Bangladata">
-    <meta property='og:description' content=""An initiative of Democracy International to collect, open, visualize and analyze Bangladesh election data on an ongoing basis"">
-    <!--<meta property='og:image' content="{{ url_for('static', filename='img/defaultimg.png' )}}">-->
     <link rel="shortcut icon" href ="{{ url_for('static', filename='img/favicon.ico' )}}">
     <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/style.css') }}">
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <!--<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>-->
+    <link rel="stylesheet" href="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <script src="https://cartodb-libs.global.ssl.fastly.net/cartodb.js/v3/3.15/cartodb.js"></script>
     <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/MarkerCluster.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.3.0/MarkerCluster.Default.css" />-->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
@@ -36,25 +31,23 @@ data-target=".navbar-ex1-collapse">
 		<span class="icon-bar"></span>
 	    </button>
       <a class="navbar-brand" href="#"><img class="img-responsive" id="brand" src="{{ url_for('static', filename='img/bangla.png' )}}"></a>
-	    <a class="navbar-brand" href="#" style="margin-left:-2em;">{{ _('Bangladata') }}</a>
+	    <a class="navbar-brand" href="#" style="margin-left:-2em;">Bangladata</a>
 	</div>
 	<div class="navbar-collapse collapse navbar-ex1-collapse">
 	    <ul class="nav navbar-nav navbar-left">
-        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ _('Maps') }}<span class="caret"></span></a>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Maps <span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li><a href="{{ url_for('parlelections') }}">{{ _('Parliamentary Elections') }}</a></li>
-          <!--<li><a href="{{ url_for('rohingya') }}">Rohingya Refugees</a></li>-->
-		      <!--<li><a href="{{ url_for('violence') }}">Violence</a></li>
-          <li><a href="{{ url_for('coverage') }}">Coverage</a></li>-->
+          <li><a href="{{ url_for('parlelections') }}">Parliamentary Elections</a></li>
+          <li><a href="{{ url_for('rohingya') }}">Rohingya Refugees</a></li>
+		      <li><a href="{{ url_for('violence') }}">Violence</a></li>
+          <li><a href="{{ url_for('coverage') }}">Coverage</a></li>
         </ul>
 		<li><a href="#" data-toggle="modal"
-data-target="#aboutModal" style="outline-width:0;">{{ _('About') }}</a></li>
+data-target="#aboutModal" style="outline-width:0;">About</a></li>
 		<li><a href="#" data-toggle="modal"
-data-target="#dataModal" style="outline-width:0;">{{ _('Data') }}</a></li>
+data-target="#dataModal" style="outline-width:0;">Data</a></li>
 	    </ul>
       <ul class="nav navbar-nav navbar-right">
-        <a class="pull-right" href="/en"><img class="img-responsive" id="EN" src="{{ url_for('static', filename='img/usflag.png' )}}"></a>
-        <a class="pull-right" href="/bn"><img class="img-responsive" id="BD" src="{{ url_for('static', filename='img/bdflag.png' )}}"></a>
         <a class="pull-right" href="http://democracyinternational.com" target="_blank"><img class="img-responsive" id="logo" src="{{ url_for('static', filename='img/dilogo.png' )}}"></a>
       </ul>
   </div>
@@ -69,16 +62,16 @@ data-target="#dataModal" style="outline-width:0;">{{ _('Data') }}</a></li>
 	<div class="modal-content">
 	    <div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-		<h4 class="modal-title">{{ _('About') }}</h4>
+		<h4 class="modal-title">About</h4>
 	    </div>
-	    <div class="modal-body">{{ _('Bangladata is an initiative by Democracy International to collect, open, visualize and analyze election-related data on an on going basis.') }}
-	  <br><br>{{ _('The goal of Bangladata is to strengthen Bangladeshi democracy through greater transparency and accountability. DI aims to achieve this goal by:') }}
-          <br><br>{{ _('1. Creating a centralized hub of election-related data and maps that facilitate evidence-based, data-driven decision-making to improve the electoral process') }}
-          <br><br>{{ _('2. Presenting information in a highly accessible way so that stakeholders can measure progress and identify trends from one election cycle to the next') }}
-          <br><br>{{ _('3. Providing a meaningful lens through which electoral developments and election observation findings can be contextualized and understood.') }}
+	    <div class="modal-body">Bangladata is an initiative by Democracy International to collect, open, visualize and analyze election-related data on an on going basis.
+	  <br><br>The goal of Bangladata is to strengthen Bangladeshi democracy through greater transparency and accountability. DI aims to achieve this goal by:
+          <br><br>1. Creating a centralized hub of election-related data and maps that facilitate evidence-based, data-driven decision-making to improve the electoral process
+          <br><br>2. Presenting information in a highly accessible way so that stakeholders can measure progress and identify trends from one election cycle to the next
+          <br><br>3. Providing a meaningful lens through which electoral developments and election observation findings can be contextualized and understood.
             </div>
 	    <div class="modal-footer">
-	    <button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button>
+	    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	    </div>
         </div>
     </div>
@@ -90,15 +83,15 @@ data-target="#dataModal" style="outline-width:0;">{{ _('Data') }}</a></li>
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">{{ _('Data') }}</h4>
+                <h4 class="modal-title">Data</h4>
             </div>
-        <div class="modal-body">{{ _('The Bangladata platform utilizes official election data published the') }} <a href="#" target="_blank">{{ _('Bangladesh Election Commission') }}</a>.
-         <br><br>{{ _('Platform data and maps are available for download by Democracy International via') }} <a href="https://github.com/mbaldassaro/bangladata/tree/master/static/data"
-target="_blank">Github</a>. {{ _('The data is licensed under') }} <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a>.
-         <br><br>{{ _('The map layers are available via') }} <a href="http://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> {{ _('and') }} <a href="http://www.esri.com/about-esri" target="_blank">ESRI</a>.
+        <div class="modal-body"> The Bangladata platform utilizes official election data published the <a href="#" target="_blank">Bangladesh Election Commission</a>.
+         <br><br>Platform data and maps are available for download by Democracy International via<a href="https://github.com/mbaldassaro/bangladata/tree/master/static/data"
+target="_blank"> Github</a>. The data is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC-BY-SA 4.0</a>.
+         <br><br>The map layers are available via <a href="http://www.openstreetmap.org/about" target="_blank">OpenStreetMap</a> and <a href="http://www.esri.com/about-esri" target="_blank">ESRI</a>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -122,9 +115,9 @@ var mountMap = L.tileLayer(mountUrl, {attribution: mountAttr});
 var satMap = L.tileLayer(satUrl, {attribution: satAttr});
 var map = L.map('map', {layers: [cartoMap]}).setView([24, 90], 8);
 var baseLayers = {
-  "{{gettext('Road')}}": cartoMap,
-  "{{gettext('Terrain')}}": mountMap,
-  "{{gettext('Satellite')}}": satMap
+  'Road': cartoMap,
+  'Terrain': mountMap,
+  'Satellite': satMap
 };
 </script>
 <script src="{{ url_for('static', filename='js/mapmodal.js')}}"></script>

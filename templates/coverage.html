@@ -81,6 +81,7 @@
 <script src="{{ url_for('static', filename='data/coverage/vimsnoswing.json')}}"></script>
 <script src="{{ url_for('static', filename='data/coverage/viswnosw.json')}}"></script>
 <script src="{{ url_for('static', filename='data/coverage/radicaldiv.json')}}"></script>
+<script src="{{ url_for('static', filename='data/coverage/cov.json')}}"></script>
 <script src="{{ url_for('static', filename='js/elections/battleground.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/coverage.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/coverageDI.js')}}"></script>
@@ -91,6 +92,7 @@
 <script src="{{ url_for('static', filename='js/coverage/vimsnoswing.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/viswnosw.js')}}"></script>
 <script src="{{ url_for('static', filename='js/coverage/radicaldiv.js')}}"></script>
+<script src="{{ url_for('static', filename='js/coverage/cov.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimsintraparty.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimsinterparty.js')}}"></script>
 <script src="{{ url_for('static', filename='js/violence/vimselections.js')}}"></script>
@@ -113,6 +115,7 @@ var markersTHP;
 var vimsintraparty;
 var vimsinterparty;
 var vimselections;
+var covgeojson;
 
 var winner1991 = "1991 Winner";
 var runnerUp1991 = "1991 Runner Up";
@@ -137,7 +140,8 @@ var overlayMaps = {
   "SPL DI Office Locations": markersDI,
   "SPL THP Office Locations": markersTHP,
   "IFES Gap Coverage": ifescoveragegeojson,
-  "VE Divisions": radicaldivgeojson
+  "VE Divisions": radicaldivgeojson,
+  "Cov": covgeojson
 };
 
 //map.addLayer(coveragegeojson);

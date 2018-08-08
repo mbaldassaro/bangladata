@@ -23,6 +23,27 @@
 	width: 100%;
 }
 
+#BD {
+	width: 2.2em;
+	height: 2.55em;
+	margin-left: 1em;
+	margin-top: 0.48em;
+}
+#EN {
+	width: 2em;
+	height: 1.5em;
+	margin-top: 1em;
+}
+
+#logo {
+  width: 8em;
+  height: 1.8em;
+  margin-top: .8em;
+  margin-left: .5em;
+	margin-right: .5em;
+  z-index: 5;
+}
+
 .dropdown-menu>li>a {
   display: block;
   background-color: #000000;
@@ -78,13 +99,7 @@ form {
 	z-index: 5;
 }
 
-#logo {
-  width: 8em;
-  height: 1.8em;
-  margin-top: .8em;
-  margin-left: .5em;
-  z-index: 5;
-}
+
 
 .leaflet-control-bootstrapmodal i {
     font-size: 16px;

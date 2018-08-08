@@ -75,7 +75,7 @@ function zoomToFeature(e) {
   jib2001legend.onAdd = function(map) {
           this._div = L.DomUtil.create('div', 'info legend'),
           grades = [0, 20, 30, 40, 50, 60],
-          labels = ['<h5>JIB ' + pctVote + '</h5>'];
+          labels = ['<h5>' + jib + ' '  + pctVote + '</h5>'];
           this.update();
           return this._div;
   };

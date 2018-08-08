@@ -1,0 +1,482 @@
+# Translations template for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-08-07 17:20-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.1\n"
+
+#: templates/base.html:39
+msgid "Bangladata"
+msgstr "বাংলা ডেটা"
+
+#: templates/base.html:43
+msgid "Maps"
+msgstr "মানচিত্র"
+
+#: templates/base.html:45
+msgid "Parliamentary Elections"
+msgstr "সংসদীয় নির্বাচন"
+
+#: templates/base.html:51 templates/base.html:72
+msgid "About"
+msgstr "সম্পর্কিত"
+
+#: templates/base.html:53 templates/base.html:93
+msgid "Data"
+msgstr "উপাত্ত"
+
+#: templates/base.html:74
+msgid ""
+"Bangladata is an initiative by Democracy International to collect, open, "
+"visualize and analyze election-related data on an on going basis."
+msgstr "বাংলা ডেট ডেমোক্রেসি ইন্টারন্যাশনাল একটি উদ্যোগ, সংগ্রহ, খোলা, "
+"চলমান ভিত্তিতে একটি নির্বাচন সংক্রান্ত তথ্য কল্পনা এবং বিশ্লেষণ।"
+
+#: templates/base.html:75
+msgid ""
+"The goal of Bangladata is to strengthen Bangladeshi democracy through "
+"greater transparency and accountability. DI aims to achieve this goal by:"
+msgstr "বাংলাদেশতাত্ত্বিক লক্ষ্যটি বাংলাদেশী গণতন্ত্রকে শক্তিশালী করা"
+"বৃহত্তর স্বচ্ছতা ও জবাবদিহিতা। DI এই লক্ষ্য অর্জনের লক্ষ্যে:"
+
+#: templates/base.html:76
+msgid ""
+"1. Creating a centralized hub of election-related data and maps that "
+"facilitate evidence-based, data-driven decision-making to improve the "
+"electoral process"
+msgstr "1. নির্বাচন সম্পর্কিত তথ্য এবং মানচিত্রগুলির একটি কেন্দ্রীভূত হাব তৈরি করা যা "
+"প্রমাণ-ভিত্তিক, তথ্য-ভিত্তিক সিদ্ধান্ত গ্রহণের সুবিধার্থে"
+"নির্বাচনী প্রক্রিয়া"
+
+#: templates/base.html:77
+msgid ""
+"2. Presenting information in a highly accessible way so that stakeholders"
+" can measure progress and identify trends from one election cycle to the "
+"next"
+msgstr "2. একটি অত্যন্ত অ্যাক্সেসযোগ্য পদ্ধতিতে তথ্য উপস্থাপন যাতে স্টেকহোল্ডারদের"
+"অগ্রগতি পরিমাপ এবং একটি নির্বাচনী চক্র থেকে প্রবণতা চিহ্নিত করতে পারে"
+"পরবর্তী"
+
+#: templates/base.html:78
+msgid ""
+"3. Providing a meaningful lens through which electoral developments and "
+"election observation findings can be contextualized and understood."
+msgstr "3. একটি অর্থপূর্ণ লেন্স প্রদান যার মাধ্যমে নির্বাচনী উন্নয়ন এবং"
+"নির্বাচন পর্যবেক্ষণ ফলাফল প্রাসঙ্গিক এবং বোঝা যায়।"
+
+#: templates/base.html:81 templates/base.html:101
+#: templates/parlelections.html:36 templates/parlelections.html:54
+msgid "Close"
+msgstr "শেষ"
+
+#: templates/base.html:95
+msgid "The Bangladata platform utilizes official election data published the"
+msgstr "বাংলা ডেটা প্ল্যাটফর্ম প্রকাশিত নির্বাচনের তথ্য ব্যবহার করে"
+
+#: templates/base.html:95
+msgid "Bangladesh Election Commission"
+msgstr "বাংলাদেশ নির্বাচন কমিশন"
+
+#: templates/base.html:96
+msgid ""
+"Platform data and maps are available for download by Democracy "
+"International via"
+msgstr "প্ল্যাটফর্ম তথ্য এবং মানচিত্র ডেমোক্রেসি কর্তৃক ডাউনলোডের জন্য উপলব্ধ"
+"আন্তর্জাতিক মাধ্যমে"
+
+#: templates/base.html:97
+msgid "The data is licensed under"
+msgstr "তথ্য অধীনে লাইসেন্স করা হয়"
+
+#: templates/base.html:98
+msgid "The map layers are available via"
+msgstr "মানচিত্র স্তরের মাধ্যমে উপলব্ধ"
+
+#: templates/base.html:98
+msgid "and"
+msgstr "এবং"
+
+#: templates/base.html:125
+msgid "Road"
+msgstr "রাস্তা"
+
+#: templates/base.html:126
+msgid "Terrain"
+msgstr "ভূখণ্ড"
+
+#: templates/base.html:127
+msgid "Satellite"
+msgstr "উপগ্রহ"
+
+#: templates/parlelections.html:14
+msgid "About The Map"
+msgstr "মানচিত্র সম্পর্কে"
+
+#: templates/parlelections.html:17
+msgid ""
+"These maps display parliamentary election results data from the 2001 and "
+"2008 elections"
+msgstr "এই মানচিত্র 2001 থেকে সংসদীয় নির্বাচনের ফলাফল প্রদর্শন করে এবং"
+"2008 সালের নির্বাচন"
+
+#: templates/parlelections.html:19
+msgid "The Eighth National Parliamentary Elections were held on 1 October 2001"
+msgstr "অষ্টম জাতীয় সংসদ নির্বাচন 1 অক্টোবর 2001 তারিখে অনুষ্ঠিত হয়"
+
+#: templates/parlelections.html:20
+msgid ""
+"The Bangladesh Nationalist Party-backed Four Party Alliance won 193 of "
+"300 seats. Voter turnout was 75"
+msgstr "বাংলাদেশ জাতীয়তাবাদী দল-সমর্থিত চার দলীয় জোট 193 টির জয়ী"
+"300 টি আসন। ভোটার ভোট 75"
+
+#: templates/parlelections.html:22
+msgid "The Ninth National Parliamentary Elections were held on 29 December 2008"
+msgstr "২9 শে ডিসেম্বর ২008 তারিখে নবম জাতীয় সংসদ নির্বাচন অনুষ্ঠিত হয়"
+
+#: templates/parlelections.html:23
+msgid ""
+"The Awami League-backed Mohajote coalition won 262 of 300 seats. Voter "
+"turnout was 80"
+msgstr "আওয়ামী লীগ-সমর্থিত মহাজোটের জোট 300 টি আসনে ২63 ভোট পেয়ে জয়ী হয়েছে।"
+"ভোটাধিকার ছিল 80"
+
+#: templates/parlelections.html:25
+msgid "The Tenth National Parliamentary Elections were held on 5 January 2014"
+msgstr "5 জানুয়ারী ২014 তারিখে দশম জাতীয় সংসদ নির্বাচন অনুষ্ঠিত হয়"
+
+#: templates/parlelections.html:26
+msgid ""
+"The Awami League won 234 of 300 seats. The Bangladesh Nationalist Party "
+"boycotted the elections"
+msgstr "আওয়ামী লীগ 300 আসনের মধ্যে 234 টি জিতেছে। বাংলাদেশ জাতীয়তাবাদী দল"
+"নির্বাচন বর্জন"
+
+#: templates/parlelections.html:27
+msgid ""
+"154 of 300 constituencies were uncontested. Voter turnout in contested "
+"constituencies was 40"
+msgstr "300 টির মধ্যে 154 টি আসনবিহীন নির্বাচন অনুষ্ঠিত হয়।"
+"নির্বাচনী এলাকা ছিল 40"
+
+#: templates/parlelections.html:29
+msgid ""
+"The \"Winner\" maps display the victories by constituency in the "
+"parliamentary elections"
+msgstr "\" বিজয়ী \ "মানচিত্রগুলি নির্বাচনী এলাকা দ্বারা জয়লাভ প্রদর্শন করে"
+"সংসদীয় নির্বাচন"
+
+#: templates/parlelections.html:30
+msgid ""
+"The darker the color, the larger the margin of victory of the winning "
+"candidate over the runner up"
+msgstr "" রঙ গাঢ়, জয়ী বিজয় বৃহত্তর মার্জ "
+"রানার আপ উপর প্রার্থী"
+
+#: templates/parlelections.html:46
+msgid "About the Data"
+msgstr "ডেটা সম্পর্কে"
+
+#: templates/parlelections.html:49
+msgid "The data was compiled from the"
+msgstr "তথ্য থেকে সংকলিত হয়েছিল"
+
+#: templates/parlelections.html:49
+msgid "Eighth Parliament Election Statistical Report (2001)"
+msgstr "অষ্টম সংসদ নির্বাচন স্ট্যাটিস্টিকাল প্রতিবেদন (2001)"
+
+#: templates/parlelections.html:50
+msgid "the"
+msgstr "দ্য"
+
+#: templates/parlelections.html:50
+msgid "Ninth Parliament Election Statistical Report (2008)"
+msgstr "নবম সংসদ নির্বাচন স্টাটিসনিক প্রতিবেদন (2008)"
+
+#: templates/parlelections.html:51
+msgid "and the Tenth Parliament Election Results (2014)"
+msgstr "এবং দশম সংসদ নির্বাচন ফলাফল (2014)"
+
+#: templates/parlelections.html:51
+msgid "Part I and Part II"
+msgstr "পার্ট 1 এবং পার্ট 2"
+
+#: templates/parlelections.html:52
+msgid "published on the website of the"
+msgstr "ওয়েবসাইটে প্রকাশিত"
+
+#: templates/parlelections.html:52
+msgid "Election Commission of Bangladesh"
+msgstr "নির্বাচন কমিশন বাংলাদেশ"
+
+#: templates/parlelections.html:120
+msgid "Constituency"
+msgstr "কেন্দ্র"
+
+#: templates/parlelections.html:121
+msgid "Valid Votes"
+msgstr "বৈধ ভোট"
+
+#: templates/parlelections.html:122
+msgid "Four Party Alliance"
+msgstr "চার পক্ষের জোট"
+
+#: templates/parlelections.html:123
+msgid "AL"
+msgstr ""
+
+#: templates/parlelections.html:124
+msgid "BNP"
+msgstr ""
+
+#: templates/parlelections.html:125
+msgid "JP"
+msgstr ""
+
+#: templates/parlelections.html:126
+msgid "JIB"
+msgstr ""
+
+#: templates/parlelections.html:127
+msgid "Other"
+msgstr "অন্যান্য"
+
+#: templates/parlelections.html:128
+msgid "Party-Coalition"
+msgstr "পার্টি বা কোয়ালিশন"
+
+#: templates/parlelections.html:129
+msgid "Margin of Victory"
+msgstr "বিজয়ীর মার্জিন"
+
+#: templates/parlelections.html:130
+msgid "Total Votes"
+msgstr "মোট ভোট"
+
+#: templates/parlelections.html:131
+msgid "Total Seats"
+msgstr "মোট আসন"
+
+#: templates/parlelections.html:132
+msgid "Vote Percentage"
+msgstr "ভোটের শতাংশ"
+
+#: templates/parlelections.html:133
+msgid "Votes Received"
+msgstr "ভোট প্রাপ্ত"
+
+#: templates/parlelections.html:134
+msgid "Seats Won"
+msgstr "আসন জিতেছে"
+
+#: templates/parlelections.html:135 templates/parlelections.html:148
+msgid "Difference"
+msgstr "পার্থক্য"
+
+#: templates/parlelections.html:136
+msgid "Other Votes"
+msgstr "অন্যান্য ভোট"
+
+#: templates/parlelections.html:137
+msgid "Other Seats"
+msgstr "অন্যান্য আসন"
+
+#: templates/parlelections.html:138
+msgid "Other Percentage"
+msgstr "অন্যান্য শতাংশ"
+
+#: templates/parlelections.html:139
+msgid "Registered Voters"
+msgstr "নিবন্ধিত ভোটার"
+
+#: templates/parlelections.html:140
+msgid "Total Voters"
+msgstr "মোট ভোটার"
+
+#: templates/parlelections.html:141
+msgid "Turnout Percentage"
+msgstr "ভোটের শতাংশ"
+
+#: templates/parlelections.html:142
+msgid "Registered Female Voters"
+msgstr "নিবন্ধিত মহিলা ভোটার"
+
+#: templates/parlelections.html:143
+msgid "Female Voter Turnout"
+msgstr "মহিলা ভোটার ভোটগ্রহণ"
+
+#: templates/parlelections.html:144
+msgid "Female Turnout Percentage"
+msgstr "মহিলা ভোটের শতাংশ"
+
+#: templates/parlelections.html:145
+msgid "Registered Male Voters"
+msgstr "নিবন্ধিত পুরুষ ভোটার"
+
+#: templates/parlelections.html:146
+msgid "Male Voter Turnout"
+msgstr "পুরুষ ভোটকেন্দ্র"
+
+#: templates/parlelections.html:147
+msgid "Male Turnout Percentage"
+msgstr "পুরুষ ভোটের শতাংশ"
+
+#: templates/parlelections.html:149
+msgid "Ballots Cast"
+msgstr "ব্লেটস কাস্ট"
+
+#: templates/parlelections.html:150
+msgid "Invalid Votes"
+msgstr "অবৈধ ভোট"
+
+#: templates/parlelections.html:151
+msgid "Invalid Percentage"
+msgstr "অবৈধ শতাংশ"
+
+#: templates/parlelections.html:152
+msgid "Winner"
+msgstr "বিজয়ী"
+
+#: templates/parlelections.html:153
+msgid "Runner Up"
+msgstr "রানার আপ"
+
+#: templates/parlelections.html:154
+msgid "Cancelled Ballots"
+msgstr "ভোট বাতিল"
+
+#: templates/parlelections.html:155
+msgid "Cancelled Percentage"
+msgstr "বাতিলকৃত শতাংশ"
+
+#: templates/parlelections.html:156
+msgid "1991 Winner"
+msgstr "1991 বিজয়ী"
+
+#: templates/parlelections.html:157
+msgid "1991 Runner Up"
+msgstr "1991 রানার আপ"
+
+#: templates/parlelections.html:158
+msgid "1996 Winner"
+msgstr "1996 বিজয়ী"
+
+#: templates/parlelections.html:159
+msgid "1996 Runner Up"
+msgstr "1996 রানার আপ"
+
+#: templates/parlelections.html:160
+msgid "2001 Winner"
+msgstr "2001 বিজয়ী"
+
+#: templates/parlelections.html:161
+msgid "2001 Runner Up"
+msgstr "2001 রানার আপ"
+
+#: templates/parlelections.html:162
+msgid "2008 Winner"
+msgstr "2008 বিজয়ী"
+
+#: templates/parlelections.html:163
+msgid "2008 Runner Up"
+msgstr "2008 রানার আপ"
+
+#: templates/parlelections.html:169 templates/parlelections.html:218
+msgid "2014 Elections - Winner"
+msgstr "2014 নির্বাচন - বিজয়ী"
+
+#: templates/parlelections.html:170 templates/parlelections.html:226
+msgid "2008 Elections - Winner"
+msgstr "2008 নির্বাচন - বিজয়ী"
+
+#: templates/parlelections.html:171 templates/parlelections.html:234
+msgid "2001 Elections - Winner"
+msgstr "2001 নির্বাচন - বিজয়ী"
+
+#: templates/parlelections.html:173 templates/parlelections.html:250
+msgid "2014 Elections - Turnout"
+msgstr "2014 নির্বাচন - ভোটের ফলাফল"
+
+#: templates/parlelections.html:174 templates/parlelections.html:258
+msgid "2008 Elections - Turnout"
+msgstr "2008 নির্বাচন - ভোটের ফলাফল"
+
+#: templates/parlelections.html:175 templates/parlelections.html:266
+msgid "2001 Elections - Turnout"
+msgstr "2001 নির্বাচন - ভোটের ফলাফল"
+
+#: templates/parlelections.html:176 templates/parlelections.html:274
+msgid "2014 Elections - AL"
+msgstr "2014 নির্বাচন - AL"
+
+#: templates/parlelections.html:177 templates/parlelections.html:282
+msgid "2008 Elections - AL"
+msgstr "2008 নির্বাচন - AL"
+
+#: templates/parlelections.html:178 templates/parlelections.html:290
+msgid "2001 Elections - AL"
+msgstr "2001 নির্বাচন - AL"
+
+#: templates/parlelections.html:179 templates/parlelections.html:298
+msgid "2008 Elections - BNP"
+msgstr "2008 নির্বাচন - BNP"
+
+#: templates/parlelections.html:180 templates/parlelections.html:306
+msgid "2001 Elections - BNP"
+msgstr "2001 নির্বাচন - BNP"
+
+#: templates/parlelections.html:181 templates/parlelections.html:314
+msgid "2008 Elections - JIB"
+msgstr "2008 নির্বাচন - JIB"
+
+#: templates/parlelections.html:182 templates/parlelections.html:322
+msgid "2001 Elections - JIB"
+msgstr "2001 নির্বাচন - JIB"
+
+#: templates/parlelections.html:183 templates/parlelections.html:330
+msgid "2014 Elections - JP"
+msgstr "2014 নির্বাচন - JP"
+
+#: templates/parlelections.html:184 templates/parlelections.html:338
+msgid "2008 Elections - JP"
+msgstr "2008 নির্বাচন - JP"
+
+#: templates/parlelections.html:185 templates/parlelections.html:346
+msgid "2001 Elections - JP"
+msgstr "2001 নির্বাচন - JP"
+
+#: templates/parlelections.html:186 templates/parlelections.html:354
+msgid "2014 Elections - Other"
+msgstr "2014 নির্বাচন - অন্যান্য""
+
+#: templates/parlelections.html:187 templates/parlelections.html:362
+msgid "2008 Elections - Other"
+msgstr "2008 নির্বাচন - অন্যান্য""
+
+#: templates/parlelections.html:188 templates/parlelections.html:370
+msgid "2001 Elections - Other"
+msgstr "2001 নির্বাচন - অন্যান্য"
+
+#: templates/parlelections.html:189 templates/parlelections.html:378
+msgid "2014 Elections - Cancelled"
+msgstr "2014 নির্বাচন - বাতিল"
+
+#: templates/parlelections.html:190 templates/parlelections.html:386
+msgid "2008 Elections - Cancelled"
+msgstr "2008 নির্বাচন - বাতিল"
+
+#: templates/parlelections.html:191 templates/parlelections.html:394
+msgid "2001 Elections - Cancelled"
+msgstr "2001 নির্বাচন - বাতিল"

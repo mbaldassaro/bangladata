@@ -1,0 +1,469 @@
+# Bengali translations for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-08-07 17:20-0400\n"
+"PO-Revision-Date: 2018-08-07 17:23-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: bn\n"
+"Language-Team: bn <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.1\n"
+
+#: templates/base.html:39
+msgid "Bangladata"
+msgstr ""
+
+#: templates/base.html:43
+msgid "Maps"
+msgstr ""
+
+#: templates/base.html:45
+msgid "Parliamentary Elections"
+msgstr ""
+
+#: templates/base.html:51 templates/base.html:72
+msgid "About"
+msgstr ""
+
+#: templates/base.html:53 templates/base.html:93
+msgid "Data"
+msgstr ""
+
+#: templates/base.html:74
+msgid ""
+"Bangladata is an initiative by Democracy International to collect, open, "
+"visualize and analyze election-related data on an on going basis."
+msgstr ""
+
+#: templates/base.html:75
+msgid ""
+"The goal of Bangladata is to strengthen Bangladeshi democracy through "
+"greater transparency and accountability. DI aims to achieve this goal by:"
+msgstr ""
+
+#: templates/base.html:76
+msgid ""
+"1. Creating a centralized hub of election-related data and maps that "
+"facilitate evidence-based, data-driven decision-making to improve the "
+"electoral process"
+msgstr ""
+
+#: templates/base.html:77
+msgid ""
+"2. Presenting information in a highly accessible way so that stakeholders"
+" can measure progress and identify trends from one election cycle to the "
+"next"
+msgstr ""
+
+#: templates/base.html:78
+msgid ""
+"3. Providing a meaningful lens through which electoral developments and "
+"election observation findings can be contextualized and understood."
+msgstr ""
+
+#: templates/base.html:81 templates/base.html:101
+#: templates/parlelections.html:36 templates/parlelections.html:54
+msgid "Close"
+msgstr ""
+
+#: templates/base.html:95
+msgid "The Bangladata platform utilizes official election data published the"
+msgstr ""
+
+#: templates/base.html:95
+msgid "Bangladesh Election Commission"
+msgstr ""
+
+#: templates/base.html:96
+msgid ""
+"Platform data and maps are available for download by Democracy "
+"International via"
+msgstr ""
+
+#: templates/base.html:97
+msgid "The data is licensed under"
+msgstr ""
+
+#: templates/base.html:98
+msgid "The map layers are available via"
+msgstr ""
+
+#: templates/base.html:98
+msgid "and"
+msgstr ""
+
+#: templates/base.html:125
+msgid "Road"
+msgstr ""
+
+#: templates/base.html:126
+msgid "Terrain"
+msgstr ""
+
+#: templates/base.html:127
+msgid "Satellite"
+msgstr ""
+
+#: templates/parlelections.html:14
+msgid "About The Map"
+msgstr ""
+
+#: templates/parlelections.html:17
+msgid ""
+"These maps display parliamentary election results data from the 2001 and "
+"2008 elections"
+msgstr ""
+
+#: templates/parlelections.html:19
+msgid "The Eighth National Parliamentary Elections were held on 1 October 2001"
+msgstr ""
+
+#: templates/parlelections.html:20
+msgid ""
+"The Bangladesh Nationalist Party-backed Four Party Alliance won 193 of "
+"300 seats. Voter turnout was 75"
+msgstr ""
+
+#: templates/parlelections.html:22
+msgid "The Ninth National Parliamentary Elections were held on 29 December 2008"
+msgstr ""
+
+#: templates/parlelections.html:23
+msgid ""
+"The Awami League-backed Mohajote coalition won 262 of 300 seats. Voter "
+"turnout was 80"
+msgstr ""
+
+#: templates/parlelections.html:25
+msgid "The Tenth National Parliamentary Elections were held on 5 January 2014"
+msgstr ""
+
+#: templates/parlelections.html:26
+msgid ""
+"The Awami League won 234 of 300 seats. The Bangladesh Nationalist Party "
+"boycotted the elections"
+msgstr ""
+
+#: templates/parlelections.html:27
+msgid ""
+"154 of 300 constituencies were uncontested. Voter turnout in contested "
+"constituencies was 40"
+msgstr ""
+
+#: templates/parlelections.html:29
+msgid ""
+"The \"Winner\" maps display the victories by constituency in the "
+"parliamentary elections"
+msgstr ""
+
+#: templates/parlelections.html:30
+msgid ""
+"The darker the color, the larger the margin of victory of the winning "
+"candidate over the runner up"
+msgstr ""
+
+#: templates/parlelections.html:46
+msgid "About the Data"
+msgstr ""
+
+#: templates/parlelections.html:49
+msgid "The data was compiled from the"
+msgstr ""
+
+#: templates/parlelections.html:49
+msgid "Eighth Parliament Election Statistical Report (2001)"
+msgstr ""
+
+#: templates/parlelections.html:50
+msgid "the"
+msgstr ""
+
+#: templates/parlelections.html:50
+msgid "Ninth Parliament Election Statistical Report (2008)"
+msgstr ""
+
+#: templates/parlelections.html:51
+msgid "and the Tenth Parliament Election Results (2014)"
+msgstr ""
+
+#: templates/parlelections.html:51
+msgid "Part I and Part II"
+msgstr ""
+
+#: templates/parlelections.html:52
+msgid "published on the website of the"
+msgstr ""
+
+#: templates/parlelections.html:52
+msgid "Election Commission of Bangladesh"
+msgstr ""
+
+#: templates/parlelections.html:120
+msgid "Constituency"
+msgstr ""
+
+#: templates/parlelections.html:121
+msgid "Valid Votes"
+msgstr ""
+
+#: templates/parlelections.html:122
+msgid "Four Party Alliance"
+msgstr ""
+
+#: templates/parlelections.html:123
+msgid "AL"
+msgstr ""
+
+#: templates/parlelections.html:124
+msgid "BNP"
+msgstr ""
+
+#: templates/parlelections.html:125
+msgid "JP"
+msgstr ""
+
+#: templates/parlelections.html:126
+msgid "JIB"
+msgstr ""
+
+#: templates/parlelections.html:127
+msgid "Other"
+msgstr ""
+
+#: templates/parlelections.html:128
+msgid "Party-Coalition"
+msgstr ""
+
+#: templates/parlelections.html:129
+msgid "Margin of Victory"
+msgstr ""
+
+#: templates/parlelections.html:130
+msgid "Total Votes"
+msgstr ""
+
+#: templates/parlelections.html:131
+msgid "Total Seats"
+msgstr ""
+
+#: templates/parlelections.html:132
+msgid "Vote Percentage"
+msgstr ""
+
+#: templates/parlelections.html:133
+msgid "Votes Received"
+msgstr ""
+
+#: templates/parlelections.html:134
+msgid "Seats Won"
+msgstr ""
+
+#: templates/parlelections.html:135 templates/parlelections.html:148
+msgid "Difference"
+msgstr ""
+
+#: templates/parlelections.html:136
+msgid "Other Votes"
+msgstr ""
+
+#: templates/parlelections.html:137
+msgid "Other Seats"
+msgstr ""
+
+#: templates/parlelections.html:138
+msgid "Other Percentage"
+msgstr ""
+
+#: templates/parlelections.html:139
+msgid "Registered Voters"
+msgstr ""
+
+#: templates/parlelections.html:140
+msgid "Total Voters"
+msgstr ""
+
+#: templates/parlelections.html:141
+msgid "Turnout Percentage"
+msgstr ""
+
+#: templates/parlelections.html:142
+msgid "Registered Female Voters"
+msgstr ""
+
+#: templates/parlelections.html:143
+msgid "Female Voter Turnout"
+msgstr ""
+
+#: templates/parlelections.html:144
+msgid "Female Turnout Percentage"
+msgstr ""
+
+#: templates/parlelections.html:145
+msgid "Registered Male Voters"
+msgstr ""
+
+#: templates/parlelections.html:146
+msgid "Male Voter Turnout"
+msgstr ""
+
+#: templates/parlelections.html:147
+msgid "Male Turnout Percentage"
+msgstr ""
+
+#: templates/parlelections.html:149
+msgid "Ballots Cast"
+msgstr ""
+
+#: templates/parlelections.html:150
+msgid "Invalid Votes"
+msgstr ""
+
+#: templates/parlelections.html:151
+msgid "Invalid Percentage"
+msgstr ""
+
+#: templates/parlelections.html:152
+msgid "Winner"
+msgstr ""
+
+#: templates/parlelections.html:153
+msgid "Runner Up"
+msgstr ""
+
+#: templates/parlelections.html:154
+msgid "Cancelled Ballots"
+msgstr ""
+
+#: templates/parlelections.html:155
+msgid "Cancelled Percentage"
+msgstr ""
+
+#: templates/parlelections.html:156
+msgid "1991 Winner"
+msgstr ""
+
+#: templates/parlelections.html:157
+msgid "1991 Runner Up"
+msgstr ""
+
+#: templates/parlelections.html:158
+msgid "1996 Winner"
+msgstr ""
+
+#: templates/parlelections.html:159
+msgid "1996 Runner Up"
+msgstr ""
+
+#: templates/parlelections.html:160
+msgid "2001 Winner"
+msgstr ""
+
+#: templates/parlelections.html:161
+msgid "2001 Runner Up"
+msgstr ""
+
+#: templates/parlelections.html:162
+msgid "2008 Winner"
+msgstr ""
+
+#: templates/parlelections.html:163
+msgid "2008 Runner Up"
+msgstr ""
+
+#: templates/parlelections.html:169 templates/parlelections.html:218
+msgid "2014 Elections - Winner"
+msgstr ""
+
+#: templates/parlelections.html:170 templates/parlelections.html:226
+msgid "2008 Elections - Winner"
+msgstr ""
+
+#: templates/parlelections.html:171 templates/parlelections.html:234
+msgid "2001 Elections - Winner"
+msgstr ""
+
+#: templates/parlelections.html:173 templates/parlelections.html:250
+msgid "2014 Elections - Turnout"
+msgstr ""
+
+#: templates/parlelections.html:174 templates/parlelections.html:258
+msgid "2008 Elections - Turnout"
+msgstr ""
+
+#: templates/parlelections.html:175 templates/parlelections.html:266
+msgid "2001 Elections - Turnout"
+msgstr ""
+
+#: templates/parlelections.html:176 templates/parlelections.html:274
+msgid "2014 Elections - AL"
+msgstr ""
+
+#: templates/parlelections.html:177 templates/parlelections.html:282
+msgid "2008 Elections - AL"
+msgstr ""
+
+#: templates/parlelections.html:178 templates/parlelections.html:290
+msgid "2001 Elections - AL"
+msgstr ""
+
+#: templates/parlelections.html:179 templates/parlelections.html:298
+msgid "2008 Elections - BNP"
+msgstr ""
+
+#: templates/parlelections.html:180 templates/parlelections.html:306
+msgid "2001 Elections - BNP"
+msgstr ""
+
+#: templates/parlelections.html:181 templates/parlelections.html:314
+msgid "2008 Elections - JIB"
+msgstr ""
+
+#: templates/parlelections.html:182 templates/parlelections.html:322
+msgid "2001 Elections - JIB"
+msgstr ""
+
+#: templates/parlelections.html:183 templates/parlelections.html:330
+msgid "2014 Elections - JP"
+msgstr ""
+
+#: templates/parlelections.html:184 templates/parlelections.html:338
+msgid "2008 Elections - JP"
+msgstr ""
+
+#: templates/parlelections.html:185 templates/parlelections.html:346
+msgid "2001 Elections - JP"
+msgstr ""
+
+#: templates/parlelections.html:186 templates/parlelections.html:354
+msgid "2014 Elections - Other"
+msgstr ""
+
+#: templates/parlelections.html:187 templates/parlelections.html:362
+msgid "2008 Elections - Other"
+msgstr ""
+
+#: templates/parlelections.html:188 templates/parlelections.html:370
+msgid "2001 Elections - Other"
+msgstr ""
+
+#: templates/parlelections.html:189 templates/parlelections.html:378
+msgid "2014 Elections - Cancelled"
+msgstr ""
+
+#: templates/parlelections.html:190 templates/parlelections.html:386
+msgid "2008 Elections - Cancelled"
+msgstr ""
+
+#: templates/parlelections.html:191 templates/parlelections.html:394
+msgid "2001 Elections - Cancelled"
+msgstr ""
+

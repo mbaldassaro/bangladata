@@ -107,13 +107,13 @@ results2014coninfo.onAdd = function(map) {
 
 results2014coninfo.update = function(props) {
     this._div.innerHTML = (props ?
-        '<h6><strong>Constituency: ' + props.constituency + '</strong></h6>' +
-        '<h6><strong>Winner: ' + props.winner + ' ' + '(' + props.winnerPCT + '%)' + '</strong></h6>' +
-        '<h6>Runner Up: ' + props.runnerUp + ' ' + '(' + props.runnerUpPCT + '%)' + '</h6>' +
-        '<h6><strong>Margin of Victory: ' + props.marginPercentage + '%</strong></h6>' +
-        '<h6>AL: ' + props.awami + ' ' + '(' + props.awamiPecentage + '%)</h6>' +
-        '<h6>Jatiya: ' + props.jp + ' ' + '(' + props.jpPercentage + '%)</h6>'  +
-        '<h6>Others: ' + props.other + ' ' + '(' + props.otherPercentage + '%)</h6>' + '':'')
+        '<h6>' + constituency + ': ' + props.constituency + '</strong></h6>' +
+        '<h6><strong>' + winner + ': ' + props.winner + ' ' + '(' + props.winnerPCT + '%)' + '</strong></h6>' +
+        '<h6>' + runnerUp + ': ' + props.runnerUp + ' ' + '(' + props.runnerUpPCT + '%)' + '</h6>' +
+        '<h6><strong>' + margvict + ': ' + props.marginPercentage + '%</strong></h6>' +
+        '<h6>' + al + ': ' + props.awami + ' ' + '(' + props.awamiPecentage + '%)</h6>' +
+        '<h6>' + jp + ': ' + props.jp + ' ' + '(' + props.jpPercentage + '%)</h6>'  +
+        '<h6>' + other + ': ' + props.other + ' ' + '(' + props.otherPercentage + '%)</h6>' + '':'')
     };
 
 results2014conlegend.onAdd = function(map) {

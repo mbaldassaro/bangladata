@@ -1,0 +1,127 @@
+{% extends "base2.html" %}
+{% block head %}
+<link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+<link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/tabletopmap.css') }}">
+{{super()}}
+{% endblock %}
+
+{% block content %}
+<!--info modals-->
+<div class="modal fade" role="dialog" id="modal_about">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About The Maps</h4>
+            </div>
+            <div class="modal-body">
+              <h5>Battleground Constituencies</h5>
+                <h6>"Strong", "lean", and "swing" electoral constituencies are determined from election results data from 1991 to 2008 collected, opened and analyzed by SPL DI.
+                  The method used to determine "strong" vs. "lean" vs. "swing" constituencies is as follows (note: the swing calculation from BNP to AL in the 2008 elections is 8.59%):
+                  <ul>
+                    <li>Strong AL: Won 91, 96, 01 AND won 08 > 8.59%</li>
+                    <li>Strong BNP: Won 91, 96, 01, 08</li>
+                    <li>Strong JP: Won 91, 96, 01, 08</li>
+                    <li>Lean AL: Won 91, 96, 01 AND Won 08 < 8.59% OR Won 08 > 8.59%</li>
+                    <li>Lean BNP: Lost 91, 96, or 01 AND Won 08</li>
+                    <li>Lean JP: Lost 91, 96, or 01 AND Won 08 > 8.59%</li>
+                    <li>Swing: BNP won 3 previous AND AL Won 08 < 8.59% OR JP Won 3 previous AND AL Won 08 < 8.59% OR BNP, AL, or JP Won 2 of 4 and AL Won 08 < 8.59%</li>
+                  </ul>
+                  Based on these calculations, the "swing" constituencies (won by AL, JP or Independents in 2008) can be considered election battlegrounds.
+                  Some "Lean AL", "Lean BNP", and "Lean JP" constituencies could also be in play depending on shifts in public support levels since 2008.
+                </h6>
+                <h5>Political Violence Risk Levels</h5>
+                <h6>Political violence risk levels are determined from SPL VIMS incident data from October 2017 to February 2018.
+                  Political violence incidents are attributable to intra-party, inter-party, and election-related tensions:
+                  <ul>
+                    <li>High: few to several incidents of political violence</li>
+                    <li>Medium: multiple incidents of political violence</li>
+                    <li>Low: one incident of political violence</li>
+                  </ul>
+                </h6>
+                <h5>Political Violence & Swing</h5>
+                  <h6>The Political Violence & Swing map highlights swing constitencies with political violence data per four categories:
+                    <ul>
+                      <li>Swing + High: A swing constituency that has witnessed few to several incidents of political violence</li>
+                      <li>Swing + Medium: A swing constituency that has witnessed multiple incidents of political violence</li>
+                      <li>Swing + Low: A swing constituency that has wintessed one incident of political violence</li>
+                      <li>Swing: A swing constituency that has wintessed zero incidents of political violence</li>
+                    </ul>
+                    This map is complementary to the Political Violence & No Swing map which represents constituencies that are not considered swing constituencies but have experienced varying levels of political violence.
+                  </h6>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- a Bootstrap modal, which we'll bind to the control via the modalId parameter -->
+<div class="modal fade" role="dialog" id="modal_help">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">About the Data</h4>
+            </div>
+            <div class="modal-body">
+                <p></p>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+{{super()}}
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='data/myanmar/cyclones.geojson')}}"></script>
+<script src="{{ url_for('static', filename='js/myanmar/cyclonelines.js')}}"></script>
+<!--<script>
+//$(document).ready(function() {
+L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
+map.flyTo([24, 90], 7);
+//});
+
+var cyclonelinesgeojson;
+
+var overlayMaps = {
+  "Cyclones": cyclonelinesgeojson
+};
+
+//map.addLayer(coveragegeojson);
+map.addLayer(cyclonelinesgeojson);
+L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
+
+</script>-->
+<script>
+L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
+map.flyTo([24, 90], 7);
+
+var layer1;
+var layer2;
+
+cartodb.createLayer(map, 'http://documentation.carto.com/api/v2/viz/2b13c956-e7c1-11e2-806b-5404a6a683d5/viz.json')
+    .on('done', function(layer)
+          //layer.setInteraction(true);
+          //layer.on('featureOver', function(e, latlng, pos, data) {
+            //cartodb.log.log(e, latlng, pos, data);
+          //});
+      //.done(function(layer)
+      { layer1 = layer;
+
+cartodb.createLayer(map, 'http://documentation.carto.com/api/v2/viz/2b13c956-e7c1-11e2-806b-5404a6a683d5/viz.json')
+      //.done(function(layer)
+      .on('done', function(layer) 
+      { layer2 = layer;
+
+          var overlayMaps = {
+            "Layer1": layer1,
+            "Layer2": layer2
+          };
+
+//map.addLayer(layer1);
+L.control.layers(null, overlayMaps, {collapsed: false, position: 'bottomleft'}).addTo(map);
+  });
+});
+    </script>
+{{super()}}
+{% endblock %}

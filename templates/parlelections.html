@@ -11,29 +11,29 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">About The Map</h4>
+                <h4 class="modal-title">{{ _('About The Map') }}</h4>
             </div>
             <div class="modal-body">
-                <p>These maps display parliamentary election results data from the 2001 and 2008 elections.
+                <p>{{ _('These maps display parliamentary election results data from the 2001 and 2008 elections') }}.
                   <br><br>
-                  The Eighth National Parliamentary Elections were held on 1 October 2001.
-                  The Bangladesh Nationalist Party-backed Four Party Alliance won 193 of 300 seats. Voter turnout was 75%
+                  {{ _('The Eighth National Parliamentary Elections were held on 1 October 2001') }}.
+                  {{ _('The Bangladesh Nationalist Party-backed Four Party Alliance won 193 of 300 seats. Voter turnout was 75') }}%.
                   <br><br>
-                  The Ninth National Parliamentary Elections were held on 29 December 2008.
-                  The Awami League-backed Mohajote coalition won 262 of 300 seats. Voter turnout was 80%
+                  {{ _('The Ninth National Parliamentary Elections were held on 29 December 2008') }}.
+                  {{ _('The Awami League-backed Mohajote coalition won 262 of 300 seats. Voter turnout was 80') }}%.
                   <br><br>
-                  The Tenth National Parliamentary Elections were held on 5 January 2014.
-                  The Awami League won 234 of 300 seats. The Bangladesh Nationalist Party boycotted the elections.
-                  154 of 300 constituencies were uncontested. Voter turnout in contested constituencies was 40%.
+                  {{ _('The Tenth National Parliamentary Elections were held on 5 January 2014') }}.
+                  {{ _('The Awami League won 234 of 300 seats. The Bangladesh Nationalist Party boycotted the elections') }}.
+                  {{ _('154 of 300 constituencies were uncontested. Voter turnout in contested constituencies was 40') }}%.
                   <br><br>
-                  The "Winner" maps display the victories by constituency in the parliamentary elections.
-                  The darker the color, the larger the margin of victory of the winning candidate over the runner up.
+                  {{ _('The "Winner" maps display the victories by constituency in the parliamentary elections') }}.
+                  {{ _('The darker the color, the larger the margin of victory of the winning candidate over the runner up') }}.
                   <!--<br><br>
                   The "Swing" map displays the election constituencies that were decided by margins of victory of less than 10% in the 2008 elections.
                   The color of the constituency corresponds to the winning coalition or party.-->
                 </p>
               </div>
-              <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+              <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button></div>
           </div><!-- /.modal-content -->
       </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
@@ -43,15 +43,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">About the Data</h4>
+                <h4 class="modal-title">{{ _('About the Data') }}</h4>
             </div>
             <div class="modal-body">
-                <p>The data was compiled from the <a href="http://www.ec.org.bd/MenuExternalFilesEng/124.pdf" target="_blank">Eight Parliament Election Statistical Report (2001)</a>,
-                  the <a href="http://www.ec.org.bd/MenuExternalFilesEng/304.pdf" target="_blank">Ninth Parliament Election Statistical Report (2008)</a>,
-                  and the Tenth Parliament Election Results (2014) <a href="http://www.ecs.gov.bd/page/election-results" target="_blank">Part I and Part II</a>.
-                  published on the website of the <a href="http://www.ec.org.bd/" target="_blank">Election Commission of Bangladesh</a></p>
+                <p>{{ _('The data was compiled from the') }} <a href="http://www.ec.org.bd/MenuExternalFilesEng/124.pdf" target="_blank">{{ _('Eighth Parliament Election Statistical Report (2001)') }}</a>,
+                  {{ _('the') }} <a href="http://www.ec.org.bd/MenuExternalFilesEng/304.pdf" target="_blank">{{ _('Ninth Parliament Election Statistical Report (2008)') }}</a>,
+                  {{ _('and the Tenth Parliament Election Results (2014)') }}  <a href="http://www.ecs.gov.bd/page/election-results" target="_blank">{{ _('Part I and Part II') }}</a>.
+                  {{ _('published on the website of the') }} <a href="http://www.ec.org.bd/" target="_blank">{{ _('Election Commission of Bangladesh') }}</a></p>
                 </div>
-            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div>
+            <div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button></div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
@@ -117,68 +117,78 @@ L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo
 map.flyTo([24, 90], 7);
 });
 
-var totalVotes = "Total Votes";
-var totalSeats = "Total Seats";
-var pctVote = "Vote Percentage";
-var recVotes = "Votes Received";
-var wonSeats = "Seats Won";
-var diff = "Difference (+/-)";
-var otherVotes = "Other Votes";
-var otherSeats = "Other Seats";
-var otherPct = "Other Percentage";
-var voterReg = "Registered Voters";
-var voterTot = "Total Voters";
-var turnout = "Turnout Percentage";
-var voterRegF = "Registered Female Voters";
-var voterTotF = "Female Voter Turnout";
-var voterPctF = "Female Turnout Percentage";
-var voterRegM = "Registered Male Voters";
-var voterTotM = "Male Voter Turnout";
-var voterPctM = "Male Turnout Percentage";
-var difference = "Difference (+/-)";
-var castBallot = "Ballots Cast";
-var votesInv = "Invalid Votes";
-var pctInv = "Invalid Percentage";
-var winner = "Winner";
-var runnerUp = "Runner Up";
-var cancelled = "Cancelled Ballots";
-var cancelledPercentage = "Cancelled Percentage";
-var winner1991 = "1991 Winner";
-var runnerUp1991 = "1991 Runner Up";
-var winner1996 = "1996 Winner";
-var runnerUp1996 = "1996 Runner Up";
-var winner2001 = "2001 Winner";
-var runnerUp2001 = "2001 Runner Up";
-var winner2008 = "2008 Winner";
-var runnerUp2008 = "2008 Runner Up";
+var constituency = "{{gettext('Constituency')}}";
+var validVotes = "{{gettext('Valid Votes')}}";
+var fourp = "{{gettext('Four Party Alliance')}}";
+var al = "{{gettext('AL')}}";
+var bnp = "{{gettext('BNP')}}";
+var jp = "{{gettext('JP')}}";
+var jib = "{{gettext('JIB')}}";
+var other = "{{gettext('Other')}}";
+var pc = "{{gettext('Party-Coalition')}}";
+var margvict = "{{gettext('Margin of Victory')}}";
+var totalVotes = "{{gettext('Total Votes')}}";
+var totalSeats = "{{gettext('Total Seats')}}";
+var pctVote = "{{gettext('Vote Percentage')}}";
+var recVotes = "{{gettext('Votes Received')}}";
+var wonSeats = "{{gettext('Seats Won')}}";
+var diff = "{{gettext('Difference')}} (+/-)";
+var otherVotes = "{{gettext('Other Votes')}}";
+var otherSeats = "{{gettext('Other Seats')}}";
+var otherPct = "{{gettext('Other Percentage')}}";
+var voterReg = "{{gettext('Registered Voters')}}";
+var voterTot = "{{gettext('Total Voters')}}";
+var turnout = "{{gettext('Turnout Percentage')}}";
+var voterRegF = "{{gettext('Registered Female Voters')}}";
+var voterTotF = "{{gettext('Female Voter Turnout')}}";
+var voterPctF = "{{gettext('Female Turnout Percentage')}}";
+var voterRegM = "{{gettext('Registered Male Voters')}}";
+var voterTotM = "{{gettext('Male Voter Turnout')}}";
+var voterPctM = "{{gettext('Male Turnout Percentage')}}";
+var difference = "{{gettext('Difference')}} (+/-)";
+var castBallot = "{{gettext('Ballots Cast')}}";
+var votesInv = "{{gettext('Invalid Votes')}}";
+var pctInv = "{{gettext('Invalid Percentage')}}";
+var winner = "{{gettext('Winner')}}";
+var runnerUp = "{{gettext('Runner Up')}}";
+var cancelled = "{{gettext('Cancelled Ballots')}}";
+var cancelledPercentage = "{{gettext('Cancelled Percentage')}}";
+var winner1991 = "{{gettext('1991 Winner')}}";
+var runnerUp1991 = "{{gettext('1991 Runner Up')}}";
+var winner1996 = "{{gettext('1996 Winner')}}";
+var runnerUp1996 = "{{gettext('1996 Runner Up')}}";
+var winner2001 = "{{gettext('2001 Winner')}}";
+var runnerUp2001 = "{{gettext('2001 Runner Up')}}";
+var winner2008 = "{{gettext('2008 Winner')}}";
+var runnerUp2008 = "{{gettext('2008 Runner Up')}}";
 
 var overlayMaps = {
   //"Battleground Constituencies": battlegroundgeojson,
   //"2001 Elections - Magnitude": results2001geojson,
   //"2008 Elections - Magnitude": results2008geojson,
-  "2014 Elections - Winner": results2014congeojson,
-  "2008 Elections - Winner": results2008congeojson,
-  "2001 Elections - Winner": results2001congeojson,
+  "{{gettext('2014 Elections - Winner')}}": results2014congeojson,
+  "{{gettext('2008 Elections - Winner')}}": results2008congeojson,
+  "{{gettext('2001 Elections - Winner')}}": results2001congeojson,
   //"2008 Elections - Swing": swinggeojson,
-  "2014 Elections - Turnout": turnout2014geojson,
-  "2008 Elections - Turnout": turnout2008geojson,
-  "2001 Elections - Turnout": turnout2001geojson,
-  "2014 Elections - AL": awami2014geojson,
-  "2008 Elections - AL": awami2008geojson,
-  "2001 Elections - AL": awami2001geojson,
-  "2008 Elections - BNP": bnp2008geojson,
-  "2001 Elections - BNP": bnp2001geojson,
-  "2008 Elections - JIB": jib2008geojson,
-  "2001 Elections - JIB": jib2001geojson,
-  "2014 Elections - JP": jatiya2014geojson,
-  "2008 Elections - JP": jatiya2008geojson,
-  "2001 Elections - JP": jatiya2001geojson,
-  "2014 Elections - Other": other2014geojson,
-  "2008 Elections - Other": other2008geojson,
-  "2001 Elections - Other": other2001geojson,
-  "2014 Elections - Cancelled": cancelled2014geojson,
-  "2008 Elections - Cancelled": cancelled2008geojson,
-  "2001 Elections - Cancelled": cancelled2001geojson
+  "{{gettext('2014 Elections - Turnout')}}": turnout2014geojson,
+  "{{gettext('2008 Elections - Turnout')}}": turnout2008geojson,
+  "{{gettext('2001 Elections - Turnout')}}": turnout2001geojson,
+  "{{gettext('2014 Elections - AL')}}": awami2014geojson,
+  "{{gettext('2008 Elections - AL')}}": awami2008geojson,
+  "{{gettext('2001 Elections - AL')}}": awami2001geojson,
+  "{{gettext('2008 Elections - BNP')}}": bnp2008geojson,
+  "{{gettext('2001 Elections - BNP')}}": bnp2001geojson,
+  "{{gettext('2008 Elections - JIB')}}": jib2008geojson,
+  "{{gettext('2001 Elections - JIB')}}": jib2001geojson,
+  "{{gettext('2014 Elections - JP')}}": jatiya2014geojson,
+  "{{gettext('2008 Elections - JP')}}": jatiya2008geojson,
+  "{{gettext('2001 Elections - JP')}}": jatiya2001geojson,
+  "{{gettext('2014 Elections - Other')}}": other2014geojson,
+  "{{gettext('2008 Elections - Other')}}": other2008geojson,
+  "{{gettext('2001 Elections - Other')}}": other2001geojson,
+  "{{gettext('2014 Elections - Cancelled')}}": cancelled2014geojson,
+  "{{gettext('2008 Elections - Cancelled')}}": cancelled2008geojson,
+  "{{gettext('2001 Elections - Cancelled')}}": cancelled2001geojson
 };
 
 map.addLayer(results2008congeojson);
@@ -205,7 +215,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = results2008info;
     results2008info.addTo(map);
   }*/
-  if(eventLayer.name === '2014 Elections - Winner') {
+  if(eventLayer.name === '{{gettext("2014 Elections - Winner") }}') {
     map.removeControl(currentLegend);
     currentLegend = results2014conlegend;
     results2014conlegend.addTo(map);
@@ -213,7 +223,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = results2014coninfo;
     results2014coninfo.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - Winner') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - Winner')}}") {
     map.removeControl(currentLegend);
     currentLegend = results2008conlegend;
     results2008conlegend.addTo(map);
@@ -221,7 +231,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = results2008coninfo;
     results2008coninfo.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - Winner') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - Winner')}}") {
     map.removeControl(currentLegend);
     currentLegend = results2001conlegend;
     results2001conlegend.addTo(map);
@@ -237,7 +247,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = swinginfo;
     swinginfo.addTo(map);
   }*/
-  else if(eventLayer.name === '2014 Elections - Turnout') {
+  else if(eventLayer.name === "{{gettext('2014 Elections - Turnout')}}") {
     map.removeControl(currentLegend);
     currentLegend = turnout2014legend;
     turnout2014legend.addTo(map);
@@ -245,7 +255,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = turnout2014info;
     turnout2014info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - Turnout') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - Turnout')}}") {
     map.removeControl(currentLegend);
     currentLegend = turnout2008legend;
     turnout2008legend.addTo(map);
@@ -253,7 +263,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = turnout2008info;
     turnout2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - Turnout') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - Turnout')}}") {
     map.removeControl(currentLegend);
     currentLegend = turnout2001legend;
     turnout2001legend.addTo(map);
@@ -261,7 +271,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = turnout2001info;
     turnout2001info.addTo(map);
   }
-  else if(eventLayer.name === '2014 Elections - AL') {
+  else if(eventLayer.name === "{{gettext('2014 Elections - AL')}}") {
     map.removeControl(currentLegend);
     currentLegend = awami2014legend;
     awami2014legend.addTo(map);
@@ -269,7 +279,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = awami2014info;
     awami2014info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - AL') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - AL')}}") {
     map.removeControl(currentLegend);
     currentLegend = awami2008legend;
     awami2008legend.addTo(map);
@@ -277,7 +287,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = awami2008info;
     awami2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - AL') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - AL')}}") {
     map.removeControl(currentLegend);
     currentLegend = awami2001legend;
     awami2001legend.addTo(map);
@@ -285,7 +295,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = awami2001info;
     awami2001info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - BNP') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - BNP')}}") {
     map.removeControl(currentLegend);
     currentLegend = bnp2008legend;
     bnp2008legend.addTo(map);
@@ -293,7 +303,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = bnp2008info;
     bnp2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - BNP') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - BNP')}}") {
     map.removeControl(currentLegend);
     currentLegend = bnp2001legend;
     bnp2001legend.addTo(map);
@@ -301,7 +311,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = bnp2001info;
     bnp2001info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - JIB') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - JIB')}}") {
     map.removeControl(currentLegend);
     currentLegend = jib2008legend;
     jib2008legend.addTo(map);
@@ -309,7 +319,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jib2008info;
     jib2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - JIB') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - JIB')}}") {
     map.removeControl(currentLegend);
     currentLegend = jib2001legend;
     jib2001legend.addTo(map);
@@ -317,7 +327,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jib2001info;
     jib2001info.addTo(map);
   }
-  else if(eventLayer.name === '2014 Elections - JP') {
+  else if(eventLayer.name === "{{gettext('2014 Elections - JP')}}") {
     map.removeControl(currentLegend);
     currentLegend = jatiya2014legend;
     jatiya2014legend.addTo(map);
@@ -325,7 +335,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jatiya2014info;
     jatiya2014info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - JP') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - JP')}}") {
     map.removeControl(currentLegend);
     currentLegend = jatiya2008legend;
     jatiya2008legend.addTo(map);
@@ -333,7 +343,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jatiya2008info;
     jatiya2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - JP') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - JP')}}") {
     map.removeControl(currentLegend);
     currentLegend = jatiya2001legend;
     jatiya2001legend.addTo(map);
@@ -341,7 +351,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = jatiya2001info;
     jatiya2001info.addTo(map);
   }
-  else if(eventLayer.name === '2014 Elections - Other') {
+  else if(eventLayer.name === "{{gettext('2014 Elections - Other')}}") {
     map.removeControl(currentLegend);
     currentLegend = other2014legend;
     other2014legend.addTo(map);
@@ -349,7 +359,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = other2014info;
     other2014info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - Other') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - Other')}}") {
     map.removeControl(currentLegend);
     currentLegend = other2008legend;
     other2008legend.addTo(map);
@@ -357,7 +367,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = other2008info;
     other2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - Other') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - Other')}}") {
     map.removeControl(currentLegend);
     currentLegend = other2001legend;
     other2001legend.addTo(map);
@@ -365,7 +375,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = other2001info;
     other2001info.addTo(map);
   }
-  else if(eventLayer.name === '2014 Elections - Cancelled') {
+  else if(eventLayer.name === "{{gettext('2014 Elections - Cancelled')}}") {
     map.removeControl(currentLegend);
     currentLegend = cancelled2014legend;
     cancelled2014legend.addTo(map);
@@ -373,7 +383,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = cancelled2014info;
     cancelled2014info.addTo(map);
   }
-  else if(eventLayer.name === '2008 Elections - Cancelled') {
+  else if(eventLayer.name === "{{gettext('2008 Elections - Cancelled')}}") {
     map.removeControl(currentLegend);
     currentLegend = cancelled2008legend;
     cancelled2008legend.addTo(map);
@@ -381,7 +391,7 @@ map.on('baselayerchange', function(eventLayer) {
     currentInfo = cancelled2008info;
     cancelled2008info.addTo(map);
   }
-  else if(eventLayer.name === '2001 Elections - Cancelled') {
+  else if(eventLayer.name === "{{gettext('2001 Elections - Cancelled')}}") {
     map.removeControl(currentLegend);
     currentLegend = cancelled2001legend;
     cancelled2001legend.addTo(map);

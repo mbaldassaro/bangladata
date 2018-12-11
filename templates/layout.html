@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" type= "text/css" href= "{{url_for('static', filename=css_file)}}">
+{{super()}}
+{% endblock %}
+
+{% include "language.html" %}
+{% include "models.html" %}
+
+{% block content %}
+{{super()}}
+{% endblock %}
+
+<!-- load scripts -->
+{% block scripts %}
+<script>
+    // we don't have to work with this code base to add new data source
+    // Most of that are to be done in templage/js/<js_file>.js
+    // the maps
+    let overlayMaps = [];
+    // JSON file names, populated by jinja template's "scripts" variable
+    let scripts = {};
+    // from jinja file
+    // store legend information
+    let resultsInfo = {};
+    // legends
+    let resultsLegend = {};
+    // layer properties
+    let allLayerProps = {};
+    // colors used in the map
+    let allColors = {};
+    // labels used for legends
+    let allLabels = {};
+    // color grades
+    let allGrades = {};
+    // titles
+    let allTitles = {};
+    // selected layer
+    let currentKey = null;
+    // load all the information
+    {% for key in scripts %}
+    resultsInfo['{{ key }}'] = L.control({ position: 'bottomright' } );
+    resultsLegend['{{ key }}'] = L.control( { position: 'bottomright' } );
+    scripts["{{key}}"] = "{{ url_for('static', filename=scripts[key][0]) }}";
+    {% include scripts[key][1] %}
+    {%  endfor %}
+    $(document).ready(function() {
+        let things = [];
+        for (let key in scripts) {
+            // load the data file
+            // request for the JSON files
+            things.push(fetch(scripts[key])
+                .then(response => response.json())
+                .then(json => {
+                    let layerProps = allLayerProps[key];
+                    overlayMaps[key] = L.geoJSON(json, {
+                        style: function (feature) {
+                            return {
+                                fillColor: colorByRange(allColors[key].base, feature.properties.magnitude),
+                                weight: 0.5,
+                                opacity: 1,
+                                color: '#ffffff',
+                                dashArray: '0',
+                                fillOpacity: 0.6
+                            }
+                        },
+                        onEachFeature: function(feature, layer) {
+                            layer.on({
+                                mouseover: function (e) {
+                                    let layer = e.target;
+                                    layer.setStyle(layerProps.highlightFeature);
+                                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                                        layer.bringToFront();
+                                    }
+                                    resultsInfo[key].update(layer.feature.properties);
+                                },
+                                mouseout:function (e) {
+                                    overlayMaps[key].resetStyle(e.target);
+                                    resultsInfo[key].update();
+                                },
+                                click: function (e) {
+                                    map.fitBounds(e.target.getBounds());
+                                }
+                            })
+                        }
+                    });
+                    resultsInfo[key].onAdd = function (map) {
+                        this._div = L.DomUtil.create('svg', 'info');
+                        this.update();
+                        return this._div;
+                    };
+                    //
+                    resultsInfo[key].update = layerProps.resultsInfoUpdate;
+                    //
+                    resultsLegend[key].onAdd = function (map) {
+                        this._div = L.DomUtil.create('div', 'info legend');
+                        this.update();
+                        return this._div;
+                    };
+                    resultsLegend[key].update = function (e) {
+                        let title = allTitles[key];
+                        this._div = L.DomUtil.create('div', 'info legend');
+                        let _colors = allColors[key];
+                        let _grades = allGrades[key];
+                        let _labels = allLabels[key];
+                        let labels = [];
+                        for (let grade in _grades)  {
+                            let grade_vals = _grades[grade];
+                            let iLabels = [];
+                            for (let val in grade_vals)  {
+                                iLabels.push('<i class="horizontal" style="background:' + colorByRange(_colors[grade], grade_vals[val] + 1) + '"></i>');
+                            }
+                            labels.push(
+                                iLabels.join('')
+                            );
+                            labels.push(_labels[grade]);
+                        }
+                        this._div.innerHTML = title + labels.join('');
+                        return this._div;
+                    };
+                }));
+        }
+        // We wait for all the requests to complete. Then process all the responses at once
+        Promise.all(things)
+            .then(() => {
+                L.control.layers(overlayMaps, null, { collapsed: false, position: 'bottomleft' }).addTo(map);
+                L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
+                map.flyTo([24, 90], 7);
+                currentKey = Object.keys(overlayMaps).pop();
+                map.addLayer(overlayMaps[currentKey]);
+                resultsLegend[currentKey].addTo(map);
+                resultsInfo[currentKey].addTo(map);
+                map.on('baselayerchange', function(eventLayer) {
+                    map.removeControl(resultsLegend[currentKey]);
+                    map.removeControl(resultsInfo[currentKey]);
+                    currentKey = eventLayer.name;
+                    resultsLegend[currentKey].addTo(map);
+                    resultsInfo[currentKey].addTo(map);
+                });
+            });
+    });
+</script>
+
+{{super()}}
+{% endblock %}
+
+<!-- end loading scripts -->
+
+

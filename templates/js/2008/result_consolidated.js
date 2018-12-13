@@ -42,6 +42,7 @@
     };
 
     allLayerProps["{{ key }}"] = {
+        single: false,
         highlightFeature: {
             weight: 2,
             color: '#FFFFFF',

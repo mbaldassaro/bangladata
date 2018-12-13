@@ -53,10 +53,18 @@
                 .then(response => response.json())
                 .then(json => {
                     let layerProps = allLayerProps[key];
+                    let noMatchColor = "gray";
+                    if(layerProps.hasOwnProperty('noMatchColor')) {
+                        noMatchColor = layerProps.noMatchColor;
+                    }
                     overlayMaps[key] = L.geoJSON(json, {
                         style: function (feature) {
+                            let color = colorByRange(allColors[key].base, feature.properties.magnitude, noMatchColor);
+                            if(layerProps.single === true) {
+                                color = colorByRange(allColors[key].base, layerProps.getColorProperty(feature), noMatchColor);
+                            }
                             return {
-                                fillColor: colorByRange(allColors[key].base, feature.properties.magnitude),
+                                fillColor: color,
                                 weight: 0.5,
                                 opacity: 1,
                                 color: '#ffffff',
@@ -98,31 +106,45 @@
                         return this._div;
                     };
                     resultsLegend[key].update = function (e) {
-                        let title = allTitles[key];
-                        this._div = L.DomUtil.create('div', 'info legend');
                         let _colors = allColors[key];
                         let _grades = allGrades[key];
                         let _labels = allLabels[key];
                         let labels = [];
-                        for (let grade in _grades)  {
-                            let grade_vals = _grades[grade];
-                            let iLabels = [];
-                            for (let val in grade_vals)  {
-                                iLabels.push('<i class="horizontal" style="background:' + colorByRange(_colors[grade], grade_vals[val] + 1) + '"></i>');
+                        let title = allTitles[key];
+                        if(layerProps.single === true) {
+                            this._div = L.DomUtil.create('div', 'info legend');
+                            labels.push(title);
+                            for (let i = 0; i < _grades.length; i++) {
+                                labels.push(
+                                    '<i style="background: ' + colorByRange(_colors.base, _grades[i] + 1, noMatchColor) + '"></i> '
+                                    + _grades[i] + (_grades[i + 1] ? '&ndash;' + _grades[i + 1]
+                                    + '%<br>' : '%+'));
                             }
-                            labels.push(
-                                iLabels.join('')
-                            );
-                            labels.push(_labels[grade]);
+                            this._div.innerHTML = labels.join('');
+                            return this._div;
+                        } else {
+                            this._div = L.DomUtil.create('div', 'info legend');
+                            for (let grade in _grades)  {
+                                let grade_vals = _grades[grade];
+                                let iLabels = [];
+                                for (let val in grade_vals)  {
+                                    iLabels.push('<i class="horizontal" style="background:' + colorByRange(_colors[grade], grade_vals[val] + 1) + '"></i>');
+                                }
+                                labels.push(
+                                    iLabels.join('')
+                                );
+                                labels.push(_labels[grade]);
+                            }
+                            this._div.innerHTML = title + labels.join('');
+                            return this._div;
                         }
-                        this._div.innerHTML = title + labels.join('');
-                        return this._div;
                     };
                 }));
         }
         // We wait for all the requests to complete. Then process all the responses at once
         Promise.all(things)
             .then(() => {
+                overlayMaps.sort();
                 L.control.layers(overlayMaps, null, { collapsed: false, position: 'bottomleft' }).addTo(map);
                 L.control.layers(baseLayers, null, {collapsed: true, position: 'topleft'}).addTo(map);
                 map.flyTo([24, 90], 7);

@@ -8,12 +8,6 @@ app.config['BABEL_DEFAULT_LOCALE'] = 'bn'
 bootstrap = Bootstrap(app)
 babel = Babel(app)
 
-
-@babel.localeselector
-def get_locale():
-    return 'bn'
-
-
 @app.route('/')
 def index():
     return render_template('parlelections.html')

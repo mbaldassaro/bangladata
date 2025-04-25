@@ -1,13 +1,11 @@
 from flask import Flask, session, url_for, redirect, render_template
 from flask_babel import Babel, refresh
 from flask_bootstrap import Bootstrap
-from flask_script import Manager
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'a1'
 app.config['BABEL_DEFAULT_LOCALE'] = 'bn'
 bootstrap = Bootstrap(app)
-manager = Manager(app)
 babel = Babel(app)
 
 
